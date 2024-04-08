@@ -13,9 +13,9 @@
     },
     {
         "id": 3,
-        "title": "Blog",
-        "href": "blog.html",
-        "icon": "fa fa-pencil"
+        "title": "Certificate",
+        "href": "certificate.html",
+        "icon": "fa fa-book"
     },
     {
         "id": 4,
