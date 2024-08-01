@@ -1,0 +1,14 @@
+[
+    {
+        "id": 0,
+        "title": "Deploy a website using Github Pages",
+        "author": "Tilis Tiadi",
+        "publish": "8 May 2023",
+        "reference_url": "",
+        "article_url": "articles/2023/05/deploy-a-website-using-github-pages.html",
+        "article_short_desc": "1. Create a GitHub repository, The first step in deploying a website using GitHub Pages is to create a new repository",
+        "tags": [
+            "Github", "Devops"
+        ]
+    }
+]

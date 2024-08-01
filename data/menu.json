@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Profile",
+        "href": "index.html",
+        "icon": "fa fa-home"
+    },
+    {
+        "id": 2,
+        "title": "Resume",
+        "href": "resume.html",
+        "icon": "fa fa-list"
+    },
+    {
+        "id": 3,
+        "title": "Certificate",
+        "href": "certificate.html",
+        "icon": "fa fa-book"
+    },
+    {
+        "id": 4,
+        "title": "Contact",
+        "href": "contact.html",
+        "icon": "fa fa-user"
+    }
+]
