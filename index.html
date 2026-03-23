@@ -29,6 +29,7 @@
 				<li><a href="#portfolio">Portfolio</a></li>
 				<li><a href="#store">Store</a></li>
 				<li><a href="services.html">Services</a></li>
+				<li><a href="testimonial.html">Testimonial</a></li>
 				<li><a href="#cv">CV</a></li>
 				<li><a href="#contact">Contact</a></li>
 			</ul>
@@ -922,6 +923,23 @@
 			</svg></a
 		>
 
+		<div
+			class="testimonial-toast"
+			id="testimonialToast"
+			role="status"
+			aria-live="polite"
+			aria-atomic="true"
+		>
+			<div class="testimonial-toast__head">
+				<div class="testimonial-toast__avatar" aria-hidden="true">★</div>
+				<div class="testimonial-toast__meta">
+					<div class="testimonial-toast__name" id="testimonialToastName"></div>
+					<div class="testimonial-toast__stars" id="testimonialToastStars"></div>
+				</div>
+			</div>
+			<div class="testimonial-toast__message" id="testimonialToastMessage"></div>
+		</div>
+
 		<script>
 			// Smooth scroll untuk navbar links
 			document.querySelectorAll(".navbar-menu a").forEach((anchor) => {
@@ -1682,7 +1700,408 @@
 
 			loadHomePortfolio();
 			loadHomeStore();
+
+			// Testimonials rotator + form (optional Supabase)
+			const testimonialToastEl = document.getElementById("testimonialToast");
+			const testimonialToastNameEl =
+				document.getElementById("testimonialToastName");
+			const testimonialToastMessageEl =
+				document.getElementById("testimonialToastMessage");
+			const testimonialToastStarsEl =
+				document.getElementById("testimonialToastStars");
+
+			const SUPABASE_URL = "https://pseurhmszxiltzefptfe.supabase.co";
+			const SUPABASE_ANON_KEY = "sb_publishable_L-YJ4bsZZPIzFDeJneXzIA_XGX_tWvg";
+
+				const TESTIMONIALS_LOCAL_KEY = "testimonials_local_v1";
+				const TESTIMONIALS_SUPABASE_CACHE_KEY = "testimonials_supabase_cache_v1";
+				const TESTIMONIALS_SUPABASE_CACHE_TS_KEY =
+					"testimonials_supabase_cache_ts_v1";
+				const TESTIMONIALS_SUPABASE_CACHE_LATEST_KEY =
+					"testimonials_supabase_cache_latest_v1";
+				const TESTIMONIALS_CACHE_MAX_AGE_MS = 60 * 60 * 1000;
+				const SUPABASE_REFRESH_MS = 60_000; // refresh every 1 minute
+				let testimonialItems = [];
+				let testimonialIndex = 0;
+				let testimonialIntervalId = null;
+				let testimonialHideTimeoutId = null;
+				let supabaseRefreshIntervalId = null;
+				let supabaseRefreshTimeoutId = null;
+				let supabaseRefreshInFlight = null;
+
+			function isSupabaseEnabled() {
+				return (
+					typeof SUPABASE_URL === "string" &&
+					SUPABASE_URL.trim() !== "" &&
+					typeof SUPABASE_ANON_KEY === "string" &&
+					SUPABASE_ANON_KEY.trim() !== ""
+				);
+			}
+
+			function readLocalTestimonials() {
+				try {
+					const raw = localStorage.getItem(TESTIMONIALS_LOCAL_KEY);
+					if (!raw) return [];
+					const parsed = JSON.parse(raw);
+					return Array.isArray(parsed) ? parsed : [];
+				} catch {
+					return [];
+				}
+			}
+
+			function writeLocalTestimonials(items) {
+				try {
+					localStorage.setItem(TESTIMONIALS_LOCAL_KEY, JSON.stringify(items));
+				} catch {
+					// ignore
+				}
+			}
+
+			function readSupabaseTestimonialsCache() {
+				try {
+					const rawItems = localStorage.getItem(TESTIMONIALS_SUPABASE_CACHE_KEY);
+					const rawTs = localStorage.getItem(TESTIMONIALS_SUPABASE_CACHE_TS_KEY);
+					const latestCreatedAt =
+						localStorage.getItem(TESTIMONIALS_SUPABASE_CACHE_LATEST_KEY) || "";
+					if (!rawItems || !rawTs) return null;
+
+					const items = JSON.parse(rawItems);
+					const ts = Number(rawTs);
+					if (!Array.isArray(items) || !Number.isFinite(ts)) return null;
+
+					return { items, ts, latestCreatedAt };
+				} catch {
+					return null;
+				}
+			}
+
+			function writeSupabaseTestimonialsCache(items) {
+				try {
+					const normalizedItems = Array.isArray(items) ? items : [];
+					localStorage.setItem(
+						TESTIMONIALS_SUPABASE_CACHE_KEY,
+						JSON.stringify(normalizedItems),
+					);
+					localStorage.setItem(
+						TESTIMONIALS_SUPABASE_CACHE_TS_KEY,
+						String(Date.now()),
+					);
+					localStorage.setItem(
+						TESTIMONIALS_SUPABASE_CACHE_LATEST_KEY,
+						getLatestCreatedAt(normalizedItems),
+					);
+				} catch {
+					// ignore
+				}
+			}
+
+			function isSupabaseCacheFresh(cache) {
+				return (
+					cache &&
+					Number.isFinite(cache.ts) &&
+					Date.now() - cache.ts < TESTIMONIALS_CACHE_MAX_AGE_MS
+				);
+			}
+
+			function getInitials(name) {
+				const parts = String(name || "")
+					.trim()
+					.split(/\s+/)
+					.filter(Boolean)
+					.slice(0, 2);
+				if (parts.length === 0) return "★";
+				return parts.map((p) => p.slice(0, 1).toUpperCase()).join("");
+			}
+
+			function showTestimonialToast(item) {
+				if (!testimonialToastEl) return;
+				testimonialToastNameEl.textContent = item?.name || "";
+				testimonialToastMessageEl.textContent = item?.message || "";
+
+				const rating = Number(item?.rating);
+				const r = Number.isFinite(rating) ? Math.max(1, Math.min(5, rating)) : 5;
+				if (testimonialToastStarsEl) {
+					testimonialToastStarsEl.textContent =
+						"★".repeat(r) + "☆".repeat(5 - r);
+				}
+
+				const avatar = testimonialToastEl.querySelector(
+					".testimonial-toast__avatar",
+				);
+				if (avatar) avatar.textContent = getInitials(item?.name);
+
+				testimonialToastEl.classList.add("is-show");
+				clearTimeout(testimonialHideTimeoutId);
+				testimonialHideTimeoutId = setTimeout(() => {
+					testimonialToastEl.classList.remove("is-show");
+				}, 4200);
+			}
+
+			async function readResponseBody(res) {
+				let text = "";
+				try {
+					text = await res.text();
+				} catch {
+					return "";
+				}
+
+				const ct = res.headers.get("content-type") || "";
+				if (!ct.includes("application/json")) return text;
+				try {
+					const json = JSON.parse(text);
+					return (
+						json?.message ||
+						json?.msg ||
+						json?.error_description ||
+						json?.error ||
+						text
+					);
+				} catch {
+					return text;
+				}
+			}
+
+			function startTestimonialRotation() {
+				if (!testimonialToastEl) return;
+				if (!Array.isArray(testimonialItems) || testimonialItems.length === 0) {
+					testimonialToastEl.classList.remove("is-show");
+					return;
+				}
+
+				const tick = () => {
+					const item = testimonialItems[testimonialIndex % testimonialItems.length];
+					testimonialIndex = (testimonialIndex + 1) % testimonialItems.length;
+					showTestimonialToast(item);
+				};
+
+				clearInterval(testimonialIntervalId);
+				tick();
+				testimonialIntervalId = setInterval(tick, 5200);
+			}
+
+			function normalizeTestimonial(item) {
+				const name = String(item?.name || "").trim();
+				const message = String(item?.message || "").trim();
+				const rating = Number(item?.rating);
+				const createdAt = String(item?.created_at || item?.createdAt || "").trim();
+
+				if (!name || !message) return null;
+
+				return {
+					name,
+					message,
+					rating: Number.isFinite(rating) ? Math.max(1, Math.min(5, rating)) : 5,
+					createdAt,
+				};
+			}
+
+			function dedupeTestimonials(items) {
+				const seen = new Set();
+				return (Array.isArray(items) ? items : [])
+					.map(normalizeTestimonial)
+					.filter(Boolean)
+					.filter((item) => {
+						const key = `${item.name}::${item.message}::${item.createdAt}`;
+						if (seen.has(key)) return false;
+						seen.add(key);
+						return true;
+					});
+			}
+
+			function getLatestCreatedAt(items) {
+				for (const item of Array.isArray(items) ? items : []) {
+					const createdAt = String(
+						item?.createdAt || item?.created_at || "",
+					).trim();
+					if (createdAt) return createdAt;
+				}
+				return "";
+			}
+
+			function applyTestimonialItems(items) {
+				testimonialItems = dedupeTestimonials(items).slice(0, 40);
+				if (testimonialIndex >= testimonialItems.length) {
+					testimonialIndex = 0;
+				}
+				startTestimonialRotation();
+			}
+
+			async function fetchSupabaseTestimonials() {
+				const base = SUPABASE_URL.replace(/\/+$/, "");
+				const urlBase =
+					`${base}/rest/v1/testimonials` +
+					`?select=name,message,rating,created_at` +
+					`&limit=40`;
+				const tryFetch = async (url) =>
+					fetch(url, {
+						headers: {
+							apikey: SUPABASE_ANON_KEY,
+							Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+						},
+						cache: "no-store",
+					});
+
+				let res = await tryFetch(`${urlBase}&order=created_at.desc`);
+				if (!res.ok) {
+					const body = await readResponseBody(res);
+					const maybeMissingCreatedAt =
+						res.status === 400 && /created_at/i.test(String(body || ""));
+
+					if (maybeMissingCreatedAt) {
+						res = await tryFetch(urlBase);
+					}
+				}
+
+				if (!res.ok) {
+					const body = await readResponseBody(res);
+					throw new Error(
+						`Supabase fetch failed (${res.status}). ${body || "No details."}`,
+					);
+				}
+
+				const items = await res.json();
+				return Array.isArray(items) ? items : [];
+			}
+
+			async function fetchLatestSupabaseCreatedAt() {
+				const base = SUPABASE_URL.replace(/\/+$/, "");
+				const url =
+					`${base}/rest/v1/testimonials` +
+					`?select=created_at&order=created_at.desc&limit=1`;
+				const res = await fetch(url, {
+					headers: {
+						apikey: SUPABASE_ANON_KEY,
+						Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+					},
+					cache: "no-store",
+				});
+
+				if (!res.ok) {
+					const body = await readResponseBody(res);
+					throw new Error(
+						`Supabase latest-check failed (${res.status}). ${body || "No details."}`,
+					);
+				}
+
+				const items = await res.json();
+				if (!Array.isArray(items) || items.length === 0) return "";
+				return String(items[0]?.created_at || "").trim();
+			}
+
+			async function loadTestimonialsFromFallback() {
+				const fromLocal = readLocalTestimonials();
+				if (Array.isArray(fromLocal) && fromLocal.length > 0) return fromLocal;
+
+				try {
+					const res = await fetch("data/testimonials.json", { cache: "no-store" });
+					if (!res.ok) throw new Error("Failed to fetch testimonials.json");
+					const items = await res.json();
+					return Array.isArray(items) ? items : [];
+				} catch {
+					return [];
+				}
+			}
+
+			async function refreshTestimonialsFromSupabase(force = false) {
+				if (!isSupabaseEnabled()) return null;
+				if (supabaseRefreshInFlight && !force) return supabaseRefreshInFlight;
+
+				supabaseRefreshInFlight = (async () => {
+					const items = await fetchSupabaseTestimonials();
+					writeSupabaseTestimonialsCache(items);
+					applyTestimonialItems(items);
+					scheduleSupabaseRefresh();
+					return items;
+				})();
+
+				try {
+					return await supabaseRefreshInFlight;
+				} finally {
+					supabaseRefreshInFlight = null;
+				}
+			}
+
+			async function checkForNewTestimonials() {
+				if (!isSupabaseEnabled()) return;
+
+				try {
+					const latestRemoteCreatedAt = await fetchLatestSupabaseCreatedAt();
+					const cache = readSupabaseTestimonialsCache();
+					const latestCachedCreatedAt = String(
+						cache?.latestCreatedAt || getLatestCreatedAt(cache?.items || []),
+					).trim();
+
+					if (
+						latestRemoteCreatedAt &&
+						latestRemoteCreatedAt !== latestCachedCreatedAt
+					) {
+						await refreshTestimonialsFromSupabase(true);
+					}
+				} catch {
+					// ignore background check failures
+				}
+			}
+
+			function scheduleSupabaseRefresh() {
+				clearInterval(supabaseRefreshIntervalId);
+				clearTimeout(supabaseRefreshTimeoutId);
+
+				if (!isSupabaseEnabled()) return;
+
+				const cache = readSupabaseTestimonialsCache();
+				const cacheAgeMs = cache ? Date.now() - cache.ts : TESTIMONIALS_CACHE_MAX_AGE_MS;
+				const ttlRemainingMs = Math.max(
+					0,
+					TESTIMONIALS_CACHE_MAX_AGE_MS - cacheAgeMs,
+				);
+
+				supabaseRefreshTimeoutId = setTimeout(() => {
+					refreshTestimonialsFromSupabase(true).catch(() => {
+						// ignore timed refresh failures
+					});
+				}, ttlRemainingMs);
+
+				supabaseRefreshIntervalId = setInterval(() => {
+					checkForNewTestimonials();
+				}, SUPABASE_REFRESH_MS);
+			}
+
+			// submit is handled in testimonial.html
+
+			function setTestimonialFormMessage(text, kind = "info") {
+				// form moved to testimonial.html
+			}
+
+			async function initTestimonials() {
+				if (isSupabaseEnabled()) {
+					const cache = readSupabaseTestimonialsCache();
+					if (cache?.items?.length) {
+						applyTestimonialItems(cache.items);
+						scheduleSupabaseRefresh();
+					}
+
+					if (!cache || !isSupabaseCacheFresh(cache)) {
+						try {
+							await refreshTestimonialsFromSupabase(true);
+						} catch {
+							if (!cache?.items?.length) {
+								applyTestimonialItems(await loadTestimonialsFromFallback());
+							}
+						}
+					}
+				} else {
+					applyTestimonialItems(await loadTestimonialsFromFallback());
+				}
+
+				testimonialToastEl?.addEventListener("mouseenter", () => {
+					clearInterval(testimonialIntervalId);
+				});
+				testimonialToastEl?.addEventListener("mouseleave", () => {
+					startTestimonialRotation();
+				});
+			}
+
+			initTestimonials();
 		</script>
 	</body>
 </html>
-

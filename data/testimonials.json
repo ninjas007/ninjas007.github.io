@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"name": "Andi",
+		"message": "Respons cepat, hasil rapi. Recommended!",
+		"rating": 5
+	},
+	{
+		"id": 2,
+		"name": "Siti",
+		"message": "Landing page-nya bagus dan mobile friendly.",
+		"rating": 5
+	},
+	{
+		"id": 3,
+		"name": "Budi",
+		"message": "Deploy lancar, dibantu sampai beres.",
+		"rating": 5
+	},
+	{
+		"id": 4,
+		"name": "Rina",
+		"message": "Desain posternya keren dan sesuai request.",
+		"rating": 5
+	}
+]
