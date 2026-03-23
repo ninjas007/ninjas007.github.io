@@ -1,91 +1,97 @@
 [
     {
         "id": 1,
-        "title": "Portfolio (PDF)",
-        "description": "Download portfolio in PDF format (projects, screenshots, highlights).",
-        "url": "Portofolio.pdf",
+        "title": "Font Store",
+        "description": "Website untuk penjualan font online",
+        "url": "",
         "images": [
-            "images/porfolio/p1-1.svg",
-            "images/porfolio/p1-2.svg"
+            "images/porfolio/fontstore1.png",
+            "images/porfolio/fontstore2.png"
         ],
-        "tags": ["PDF", "Projects", "Highlights"]
+        "tags": ["Web", "Projects", "PHP", "Payment Gateway"]
     },
     {
         "id": 2,
-        "title": "Resume",
-        "description": "Work experience, skills, and downloadable portfolio.",
-        "url": "resume.html",
+        "title": "Management Membership System",
+        "description": "Aplikasi website manajemen anggota dan pengingat masa berlaku anggota website",
+        "url": "",
         "images": [
-            "images/porfolio/p2-1.svg",
-            "images/porfolio/p2-2.svg"
+            "images/porfolio/orlok.png"
         ],
-        "tags": ["Experience", "Skills"]
+        "tags": ["Web", "Codeigniter", "Cron Job", "PHP", "Email Notification"]
     },
     {
         "id": 3,
-        "title": "Certificates",
-        "description": "List of certificates and training documents completed.",
-        "url": "certificate.html",
+        "title": "Website Jualan Ikan",
+        "description": "Website untuk penjualan ikan online",
+        "url": "",
         "images": [
-            "images/porfolio/p3-1.svg",
-            "images/porfolio/p3-2.svg"
+            "images/porfolio/ikan.png"
         ],
-        "tags": ["Training", "Learning"]
+        "tags": ["Web", "Projects", "Codeigniter", "PHP"]
     },
     {
         "id": 4,
-        "title": "Blog",
-        "description": "Technical notes and articles about web development and IT.",
-        "url": "blog.html",
+        "title": "Website Generate CV",
+        "description": "Website untuk generate CV online. Anda bisa membuat CV online dengan mudah.",
+        "url": "https://lokersulawesi.com/cv-kerja",
         "images": [
-            "images/porfolio/p4-1.svg",
-            "images/porfolio/p4-2.svg"
+            "images/porfolio/cvgenerate.png"
         ],
-        "tags": ["Articles", "Notes"]
+        "tags": ["Web", "Laravel", "PDF Generator", "PHP"]
     },
     {
         "id": 5,
-        "title": "GitHub",
-        "description": "Open-source projects, experiments, and code samples.",
-        "url": "https://github.com/ninjas007",
+        "title": "Website Loker Sulawesi",
+        "description": "Website untuk pencarian lowongan pekerjaan di Sulawesi. Otomatis mencari lowongan pekerjaan di Sulawesi dan post ke Linkedin dan Facebook.",
+        "url": "https://lokersulawesi.com",
         "images": [
-            "images/porfolio/p5-1.svg",
-            "images/porfolio/p5-2.svg"
+            "images/porfolio/loker.png",
+            "images/porfolio/loker1.png"
         ],
-        "tags": ["Open Source", "Code"]
+        "tags": ["Web", "Cron Job", "Scrapping", "Laravel", "PHP"]
     },
     {
         "id": 6,
-        "title": "LinkedIn",
-        "description": "Connect for collaboration, opportunities, and updates.",
-        "url": "https://www.linkedin.com/in/tilis-tiadi-b7008163/",
+        "title": "Website PPOB",
+        "description": "Website aplikasi PPOB online. Penjualan Pulsa, Paket Data, dan Internet, dll",
+        "url": "https://zia-link.com",
         "images": [
-            "images/porfolio/p6-1.svg",
-            "images/porfolio/p6-2.svg"
+            "images/porfolio/zialink.png",
+            "images/porfolio/zialink1.png",
+            "images/porfolio/zialink2.png",
+            "images/porfolio/zialink3.png",
+            "images/porfolio/zialink4.png",
+            "images/porfolio/zialink5.png"
         ],
-        "tags": ["Networking", "Career"]
+        "tags": ["Web", "Web View", "Laravel", "PHP", "Payment Gateway"]
     },
     {
         "id": 7,
-        "title": "Store",
-        "description": "Dummy products and digital assets (coming soon).",
-        "url": "store.html",
+        "title": "Aplikasi Posyandu",
+        "description": "Aplikasi Posyandu untuk kegiatan Posyandu.",
+        "url": "",
         "images": [
-            "images/porfolio/p7-1.svg",
-            "images/porfolio/p7-2.svg"
+            "images/porfolio/posyandu1.png",
+            "images/porfolio/posyandu2.png",
+            "images/porfolio/posyandu3.png",
+            "images/porfolio/posyandu4.png",
+            "images/porfolio/posyandu5.png",
+            "images/porfolio/posyandu6.png",
+            "images/porfolio/posyandu7.png"
         ],
-        "tags": ["Products", "Digital"]
+        "tags": ["Desktop", "Python", "Tkinter"]
     },
     {
         "id": 8,
-        "title": "Contact",
-        "description": "Email, WhatsApp, and social links.",
-        "url": "index.html#contact",
+        "title": "Aplikasi Pantau Ibu Hamil",
+        "description": "Aplikasi Pantau Ibu Hamil untuk kegiatan Pantau Ibu Hamil.",
+        "url": "",
         "images": [
-            "images/porfolio/p8-1.svg",
-            "images/porfolio/p8-2.svg"
+            "images/porfolio/jihp.png",
+            "images/porfolio/jihp1.png",
+            "images/porfolio/jihp2.png"
         ],
-        "tags": ["Email", "WhatsApp"]
+        "tags": ["Mobile App", "Java", "Android Studio"]
     }
 ]
-
