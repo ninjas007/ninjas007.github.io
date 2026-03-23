@@ -1,0 +1,362 @@
+﻿<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="styles/style-portfolio.css" />
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar-brand">Profile</div>
+			<button class="menu-toggle" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="navbar-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li><a href="certificate.html">Certificate</a></li>
+				<li><a href="store.html">Store</a></li>
+				<li><a href="index.html#contact">Contact</a></li>
+			</ul>
+		</nav>
+
+		<div class="container">
+			<section class="hero">
+				<h1>Portfolio</h1>
+				<p>Kumpulan link portfolio, halaman, dan profil.</p>
+				<div class="hero-buttons">
+					<a href="index.html" class="btn btn-secondary">Back Home</a>
+					<a href="Curicullum_Vitae.pdf" target="_blank" class="btn btn-primary"
+						>Download CV</a
+					>
+				</div>
+			</section>
+
+			<section class="section" id="portfolio">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Portfolio</h2>
+				</div>
+
+				<div class="portfolio-grid" id="portfolioGrid" aria-live="polite">
+					<div style="color: var(--muted); font-size: 14px">Loading...</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- Portfolio Modal -->
+		<dialog
+			class="portfolio-modal"
+			id="portfolioModal"
+			aria-label="Portfolio details"
+		>
+			<div class="portfolio-modal__header">
+				<h3 class="portfolio-modal__title" id="portfolioModalTitle">Portfolio</h3>
+				<button
+					type="button"
+					class="portfolio-modal__close"
+					id="portfolioModalClose"
+					aria-label="Close modal"
+				>
+					&times;
+				</button>
+			</div>
+			<p class="portfolio-modal__desc" id="portfolioModalDesc"></p>
+
+			<div class="portfolio-modal__slider" aria-label="Portfolio images">
+				<button
+					type="button"
+					class="portfolio-modal__nav"
+					id="portfolioModalPrev"
+					aria-label="Previous image"
+				>
+					&lsaquo;
+				</button>
+
+				<div class="portfolio-modal__frame">
+					<img class="portfolio-modal__img" id="portfolioModalImg" alt="" />
+					<div class="portfolio-modal__empty" id="portfolioModalEmpty">
+						No images available.
+					</div>
+				</div>
+
+				<button
+					type="button"
+					class="portfolio-modal__nav"
+					id="portfolioModalNext"
+					aria-label="Next image"
+				>
+					&rsaquo;
+				</button>
+			</div>
+
+			<div class="portfolio-modal__dots" id="portfolioModalDots"></div>
+
+			<div class="portfolio-modal__footer">
+				<a
+					href="#"
+					class="btn btn-primary"
+					id="portfolioModalOpenLink"
+					rel="noreferrer"
+					>Open</a
+				>
+				<button
+					type="button"
+					class="btn btn-secondary"
+					id="portfolioModalClose2"
+				>
+					Close
+				</button>
+			</div>
+		</dialog>
+
+		<script>
+			document
+				.querySelector(".menu-toggle")
+				.addEventListener("click", function () {
+					const menu = document.querySelector(".navbar-menu");
+					menu.classList.toggle("open");
+				});
+
+			// Portfolio modal + slider
+			const portfolioModalEl = document.getElementById("portfolioModal");
+			const portfolioModalTitleEl =
+				document.getElementById("portfolioModalTitle");
+			const portfolioModalDescEl = document.getElementById("portfolioModalDesc");
+			const portfolioModalImgEl = document.getElementById("portfolioModalImg");
+			const portfolioModalEmptyEl =
+				document.getElementById("portfolioModalEmpty");
+			const portfolioModalDotsEl =
+				document.getElementById("portfolioModalDots");
+			const portfolioModalPrevEl = document.getElementById("portfolioModalPrev");
+			const portfolioModalNextEl = document.getElementById("portfolioModalNext");
+			const portfolioModalCloseEl =
+				document.getElementById("portfolioModalClose");
+			const portfolioModalClose2El =
+				document.getElementById("portfolioModalClose2");
+			const portfolioModalOpenLinkEl =
+				document.getElementById("portfolioModalOpenLink");
+
+			const portfolioModalState = {
+				item: null,
+				images: [],
+				index: 0,
+				lastFocus: null,
+			};
+
+			function portfolioModalSetSlide(nextIndex) {
+				if (!portfolioModalEl) return;
+				const total = portfolioModalState.images.length;
+
+				if (total === 0) {
+					portfolioModalState.index = 0;
+					portfolioModalImgEl.style.display = "none";
+					portfolioModalImgEl.removeAttribute("src");
+					portfolioModalEmptyEl.style.display = "block";
+					portfolioModalDotsEl.innerHTML = "";
+					return;
+				}
+
+				const normalized = ((nextIndex % total) + total) % total;
+				portfolioModalState.index = normalized;
+				const src = portfolioModalState.images[normalized];
+
+				portfolioModalEmptyEl.style.display = "none";
+				portfolioModalImgEl.style.display = "block";
+				portfolioModalImgEl.src = encodeURI(src);
+				const title = portfolioModalState.item?.title || "Portfolio";
+				portfolioModalImgEl.alt = `${title} image ${normalized + 1}`;
+
+				for (const dot of portfolioModalDotsEl.querySelectorAll("button")) {
+					const idx = Number(dot.dataset.index);
+					dot.setAttribute("aria-current", String(idx === normalized));
+				}
+			}
+
+			function portfolioModalRenderDots() {
+				if (!portfolioModalEl) return;
+				portfolioModalDotsEl.innerHTML = "";
+				const total = portfolioModalState.images.length;
+				if (total <= 1) return;
+
+				for (let i = 0; i < total; i++) {
+					const dot = document.createElement("button");
+					dot.type = "button";
+					dot.className = "portfolio-modal__dot";
+					dot.dataset.index = String(i);
+					dot.setAttribute("aria-label", `Go to image ${i + 1}`);
+					dot.setAttribute("aria-current", "false");
+					dot.addEventListener("click", () => portfolioModalSetSlide(i));
+					portfolioModalDotsEl.appendChild(dot);
+				}
+			}
+
+			function openPortfolioModal(item) {
+				if (!portfolioModalEl) return;
+
+				portfolioModalState.lastFocus = document.activeElement;
+				portfolioModalState.item = item || null;
+				portfolioModalState.images = Array.isArray(item?.images)
+					? item.images.filter(Boolean)
+					: [];
+				portfolioModalState.index = 0;
+
+				portfolioModalTitleEl.textContent = item?.title || "Untitled";
+				portfolioModalDescEl.textContent = item?.description || "";
+
+				const rawUrl = String(item?.url || "").trim();
+				const showOpen = rawUrl !== "" && rawUrl !== "#";
+				const url = showOpen ? rawUrl : "#";
+				const isExternal = /^https?:\/\//i.test(url);
+
+				portfolioModalOpenLinkEl.href = encodeURI(url);
+				portfolioModalOpenLinkEl.target = isExternal ? "_blank" : "_self";
+				portfolioModalOpenLinkEl.rel = isExternal ? "noreferrer" : "";
+				portfolioModalOpenLinkEl.style.display = showOpen ? "" : "none";
+				portfolioModalOpenLinkEl.setAttribute(
+					"aria-hidden",
+					showOpen ? "false" : "true",
+				);
+
+				portfolioModalRenderDots();
+				portfolioModalSetSlide(0);
+
+				try {
+					portfolioModalEl.showModal();
+				} catch {
+					portfolioModalEl.setAttribute("open", "");
+				}
+
+				setTimeout(() => portfolioModalCloseEl?.focus?.(), 0);
+			}
+
+			function closePortfolioModal() {
+				if (!portfolioModalEl) return;
+				try {
+					portfolioModalEl.close();
+				} catch {
+					portfolioModalEl.removeAttribute("open");
+				}
+			}
+
+			if (portfolioModalEl) {
+				portfolioModalCloseEl?.addEventListener("click", closePortfolioModal);
+				portfolioModalClose2El?.addEventListener("click", closePortfolioModal);
+				portfolioModalPrevEl?.addEventListener("click", () =>
+					portfolioModalSetSlide(portfolioModalState.index - 1)
+				);
+				portfolioModalNextEl?.addEventListener("click", () =>
+					portfolioModalSetSlide(portfolioModalState.index + 1)
+				);
+
+				portfolioModalEl.addEventListener("click", (e) => {
+					if (e.target === portfolioModalEl) closePortfolioModal();
+				});
+
+				portfolioModalEl.addEventListener("keydown", (e) => {
+					if (e.key === "ArrowLeft") {
+						e.preventDefault();
+						portfolioModalSetSlide(portfolioModalState.index - 1);
+					}
+					if (e.key === "ArrowRight") {
+						e.preventDefault();
+						portfolioModalSetSlide(portfolioModalState.index + 1);
+					}
+				});
+
+				portfolioModalEl.addEventListener("close", () => {
+					const el = portfolioModalState.lastFocus;
+					if (el && typeof el.focus === "function") el.focus();
+				});
+			}
+
+			async function loadPortfolio() {
+				const container = document.getElementById("portfolioGrid");
+				if (!container) return;
+
+				try {
+					const res = await fetch("data/portfolio.json", { cache: "no-store" });
+					if (!res.ok) throw new Error("Failed to fetch portfolio.json");
+					const items = await res.json();
+
+					container.innerHTML = "";
+					for (const item of items || []) {
+						const url = item.url || "#";
+						const card = document.createElement("a");
+						card.className = "portfolio-card";
+						card.href = url;
+						card.style.textDecoration = "none";
+						card.style.color = "inherit";
+						card.setAttribute("role", "button");
+						card.setAttribute(
+							"aria-label",
+							`Open details for ${item.title || "portfolio item"}`,
+						);
+						card.addEventListener("click", (e) => {
+							e.preventDefault();
+							openPortfolioModal(item);
+						});
+						card.addEventListener("keydown", (e) => {
+							if (e.key === " ") {
+								e.preventDefault();
+								openPortfolioModal(item);
+							}
+						});
+
+						const img = document.createElement("div");
+						img.className = "portfolio-image";
+						img.textContent = item.icon || "\u{1F310}";
+
+						const content = document.createElement("div");
+						content.className = "portfolio-content";
+
+						const h3 = document.createElement("h3");
+						h3.textContent = item.title || "Untitled";
+
+						const p = document.createElement("p");
+						p.textContent = item.description || "";
+
+						const tagsWrap = document.createElement("div");
+						tagsWrap.className = "portfolio-tags";
+						const tags = Array.isArray(item.tags) ? item.tags : [];
+						for (const t of tags.slice(0, 3)) {
+							const tag = document.createElement("span");
+							tag.className = "portfolio-tag";
+							tag.textContent = t;
+							tagsWrap.appendChild(tag);
+						}
+
+						content.appendChild(h3);
+						content.appendChild(p);
+						content.appendChild(tagsWrap);
+
+						card.appendChild(img);
+						card.appendChild(content);
+						container.appendChild(card);
+					}
+				} catch (err) {
+					container.innerHTML = "";
+					const msg = document.createElement("div");
+					msg.style.color = "var(--muted)";
+					msg.style.fontSize = "14px";
+					msg.textContent = "Failed to load portfolio.";
+					container.appendChild(msg);
+					console.error(err);
+				}
+			}
+
+			loadPortfolio();
+		</script>
+	</body>
+</html>
+

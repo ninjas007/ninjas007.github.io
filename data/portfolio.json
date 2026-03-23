@@ -1,0 +1,91 @@
+[
+    {
+        "id": 1,
+        "title": "Portfolio (PDF)",
+        "description": "Download portfolio in PDF format (projects, screenshots, highlights).",
+        "url": "Portofolio.pdf",
+        "images": [
+            "images/porfolio/p1-1.svg",
+            "images/porfolio/p1-2.svg"
+        ],
+        "tags": ["PDF", "Projects", "Highlights"]
+    },
+    {
+        "id": 2,
+        "title": "Resume",
+        "description": "Work experience, skills, and downloadable portfolio.",
+        "url": "resume.html",
+        "images": [
+            "images/porfolio/p2-1.svg",
+            "images/porfolio/p2-2.svg"
+        ],
+        "tags": ["Experience", "Skills"]
+    },
+    {
+        "id": 3,
+        "title": "Certificates",
+        "description": "List of certificates and training documents completed.",
+        "url": "certificate.html",
+        "images": [
+            "images/porfolio/p3-1.svg",
+            "images/porfolio/p3-2.svg"
+        ],
+        "tags": ["Training", "Learning"]
+    },
+    {
+        "id": 4,
+        "title": "Blog",
+        "description": "Technical notes and articles about web development and IT.",
+        "url": "blog.html",
+        "images": [
+            "images/porfolio/p4-1.svg",
+            "images/porfolio/p4-2.svg"
+        ],
+        "tags": ["Articles", "Notes"]
+    },
+    {
+        "id": 5,
+        "title": "GitHub",
+        "description": "Open-source projects, experiments, and code samples.",
+        "url": "https://github.com/ninjas007",
+        "images": [
+            "images/porfolio/p5-1.svg",
+            "images/porfolio/p5-2.svg"
+        ],
+        "tags": ["Open Source", "Code"]
+    },
+    {
+        "id": 6,
+        "title": "LinkedIn",
+        "description": "Connect for collaboration, opportunities, and updates.",
+        "url": "https://www.linkedin.com/in/tilis-tiadi-b7008163/",
+        "images": [
+            "images/porfolio/p6-1.svg",
+            "images/porfolio/p6-2.svg"
+        ],
+        "tags": ["Networking", "Career"]
+    },
+    {
+        "id": 7,
+        "title": "Store",
+        "description": "Dummy products and digital assets (coming soon).",
+        "url": "store.html",
+        "images": [
+            "images/porfolio/p7-1.svg",
+            "images/porfolio/p7-2.svg"
+        ],
+        "tags": ["Products", "Digital"]
+    },
+    {
+        "id": 8,
+        "title": "Contact",
+        "description": "Email, WhatsApp, and social links.",
+        "url": "index.html#contact",
+        "images": [
+            "images/porfolio/p8-1.svg",
+            "images/porfolio/p8-2.svg"
+        ],
+        "tags": ["Email", "WhatsApp"]
+    }
+]
+

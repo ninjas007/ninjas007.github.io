@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id">
 	<head>
 		<meta charset="UTF-8" />
@@ -12,728 +12,7 @@
 			rel="stylesheet"
 		/>
 
-		<style>
-			:root {
-				--bg-0: #0b0f16;
-				--bg-1: #0f1523;
-				--bg-2: #141b2b;
-				--accent-red: #e74c3c;
-				--accent-blue: #3498db;
-				--accent-gold: #ffd24d;
-				--text: #e8edf7;
-				--muted: #9aa6c5;
-				--panel: #0f1726;
-				--panel-border: rgba(255, 255, 255, 0.08);
-			}
-
-			* {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
-
-			body {
-				font-family: "Rajdhani", sans-serif;
-				color: var(--text);
-				background:
-					radial-gradient(
-						circle at 20% 10%,
-						rgba(255, 255, 255, 0.06),
-						transparent 45%
-					),
-					radial-gradient(
-						circle at 85% 30%,
-						rgba(52, 152, 219, 0.12),
-						transparent 45%
-					),
-					linear-gradient(
-						180deg,
-						var(--bg-0),
-						var(--bg-1) 55%,
-						var(--bg-2)
-					);
-				min-height: 100vh;
-				overflow-x: hidden;
-			}
-
-			.navbar {
-				position: fixed;
-				top: 0;
-				width: 100%;
-				background: rgba(11, 15, 22, 0.95);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-				backdrop-filter: blur(10px);
-				z-index: 1000;
-				padding: 16px 24px;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-
-			.navbar-brand {
-				font-family: "Oswald", sans-serif;
-				font-size: 20px;
-				font-weight: 700;
-				letter-spacing: 0.08em;
-				color: var(--accent-gold);
-				text-transform: uppercase;
-			}
-
-			.navbar-menu {
-				display: flex;
-				gap: 30px;
-				list-style: none;
-			}
-
-			.menu-toggle {
-				display: none;
-				flex-direction: column;
-				justify-content: space-between;
-				width: 25px;
-				height: 20px;
-				background: transparent;
-				border: none;
-				cursor: pointer;
-				padding: 0;
-			}
-
-			.menu-toggle span {
-				display: block;
-				height: 3px;
-				background: var(--text);
-				border-radius: 3px;
-			}
-
-			.navbar-menu a {
-				color: var(--text);
-				text-decoration: none;
-				font-size: 14px;
-				letter-spacing: 0.05em;
-				text-transform: uppercase;
-				position: relative;
-				transition: color 0.3s ease;
-			}
-
-			.navbar-menu a:hover {
-				color: var(--accent-blue);
-			}
-
-			.navbar-menu a::after {
-				content: "";
-				position: absolute;
-				bottom: -5px;
-				left: 0;
-				width: 0;
-				height: 2px;
-				background: linear-gradient(
-					90deg,
-					var(--accent-blue),
-					var(--accent-gold)
-				);
-				transition: width 0.3s ease;
-			}
-
-			.navbar-menu a:hover::after {
-				width: 100%;
-			}
-
-			.container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 100px 24px 40px;
-			}
-
-			/* Hero Section */
-			.hero {
-				text-align: center;
-				padding: 60px 0;
-				margin-bottom: 80px;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.hero::before {
-				content: "";
-				position: absolute;
-				top: -50%;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 600px;
-				height: 600px;
-				background: radial-gradient(
-					circle,
-					rgba(52, 152, 219, 0.15),
-					transparent 70%
-				);
-				pointer-events: none;
-				animation: float 6s ease-in-out infinite;
-			}
-
-			@keyframes float {
-				0%,
-				100% {
-					transform: translateX(-50%) translateY(0);
-				}
-				50% {
-					transform: translateX(-50%) translateY(20px);
-				}
-			}
-
-			.hero-content {
-				position: relative;
-				z-index: 1;
-			}
-
-			.hero h1 {
-				font-family: "Oswald", sans-serif;
-				font-size: 56px;
-				font-weight: 700;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-				margin-bottom: 16px;
-				background: linear-gradient(
-					135deg,
-					var(--accent-gold),
-					var(--accent-blue)
-				);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-				animation: slideInDown 0.8s ease;
-			}
-
-			@keyframes slideInDown {
-				from {
-					opacity: 0;
-					transform: translateY(-30px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			.hero p {
-				font-size: 18px;
-				color: var(--muted);
-				letter-spacing: 0.03em;
-				margin-bottom: 24px;
-				animation: slideInUp 0.8s ease 0.2s backwards;
-			}
-
-			@keyframes slideInUp {
-				from {
-					opacity: 0;
-					transform: translateY(30px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			.hero-buttons {
-				display: flex;
-				gap: 16px;
-				justify-content: center;
-				flex-wrap: wrap;
-				animation: slideInUp 0.8s ease 0.4s backwards;
-			}
-
-			.btn {
-				padding: 14px 32px;
-				border-radius: 8px;
-				border: none;
-				font-family: "Oswald", sans-serif;
-				text-transform: uppercase;
-				letter-spacing: 0.08em;
-				font-size: 14px;
-				cursor: pointer;
-				transition: all 0.3s ease;
-				text-decoration: none;
-				display: inline-block;
-			}
-
-			.btn-primary {
-				background: linear-gradient(
-					135deg,
-					var(--accent-blue),
-					#2980b9
-				);
-				color: white;
-				border: 1px solid var(--accent-blue);
-				box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
-			}
-
-			.btn-primary:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
-			}
-
-			.btn-secondary {
-				background: transparent;
-				color: var(--accent-gold);
-				border: 2px solid var(--accent-gold);
-			}
-
-			.btn-secondary:hover {
-				background: var(--accent-gold);
-				color: var(--bg-0);
-				transform: translateY(-2px);
-			}
-
-			/* Section Styles */
-			.section {
-				margin-bottom: 80px;
-			}
-
-			.section-title {
-				font-family: "Oswald", sans-serif;
-				font-size: 36px;
-				font-weight: 700;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-				margin-bottom: 40px;
-				position: relative;
-				display: inline-block;
-			}
-
-			.section-title::after {
-				content: "";
-				position: absolute;
-				bottom: -12px;
-				left: 0;
-				width: 60%;
-				height: 3px;
-				background: linear-gradient(
-					90deg,
-					var(--accent-red),
-					transparent
-				);
-				border-radius: 2px;
-			}
-
-			/* About Me Section */
-			.about-content {
-				display: grid;
-				grid-template-columns: 140px 1fr;
-				gap: 32px;
-				align-items: start;
-			}
-
-			.about-text h3 {
-				font-family: "Oswald", sans-serif;
-				font-size: 24px;
-				margin-bottom: 16px;
-				color: var(--accent-gold);
-			}
-
-			.about-text p {
-				color: var(--muted);
-				line-height: 1.8;
-				margin-bottom: 16px;
-				font-size: 15px;
-			}
-
-			.about-header-row {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 24px;
-				align-items: end;
-			}
-
-			.about-heading {
-				margin-bottom: 8px;
-			}
-
-			.about-split {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 24px;
-				margin-top: 6px;
-			}
-
-			.skills {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 12px;
-				margin-top: 24px;
-			}
-
-			.about-split .skills {
-				margin-top: 0;
-			}
-
-			.skill-tag {
-				padding: 8px 16px;
-				background: rgba(52, 152, 219, 0.2);
-				border: 1px solid var(--accent-blue);
-				border-radius: 20px;
-				color: var(--accent-blue);
-				font-size: 13px;
-				letter-spacing: 0.05em;
-				transition: all 0.3s ease;
-			}
-
-			.skill-tag:hover {
-				background: var(--accent-blue);
-				color: white;
-				transform: translateY(-3px);
-				box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
-			}
-
-			.about-image {
-				display: flex;
-				align-items: flex-start;
-				justify-content: center;
-			}
-
-			.about-image img {
-				width: 120px;
-				height: 120px;
-				object-fit: cover;
-				border-radius: 999px;
-				border: 2px solid var(--panel-border);
-				box-shadow:
-					0 12px 28px rgba(0, 0, 0, 0.35),
-					0 0 0 4px rgba(52, 152, 219, 0.14);
-			}
-
-			/* Portfolio Section */
-			.portfolio-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 24px;
-				margin-top: 40px;
-			}
-
-			.portfolio-card {
-				background: var(--panel);
-				border: 1px solid var(--panel-border);
-				border-radius: 8px;
-				overflow: hidden;
-				transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-				cursor: pointer;
-				position: relative;
-				height: 350px;
-				display: flex;
-				flex-direction: column;
-			}
-
-			.portfolio-card:hover {
-				transform: translateY(-10px);
-				border-color: var(--accent-blue);
-				box-shadow: 0 20px 40px rgba(52, 152, 219, 0.3);
-			}
-
-			.portfolio-image {
-				width: 100%;
-				height: 200px;
-				background: linear-gradient(
-					135deg,
-					rgba(52, 152, 219, 0.2),
-					rgba(231, 76, 60, 0.2)
-				);
-				position: relative;
-				overflow: hidden;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: 48px;
-			}
-
-			.portfolio-image::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-				background: linear-gradient(
-					45deg,
-					transparent 30%,
-					rgba(255, 255, 255, 0.1) 50%,
-					transparent 70%
-				);
-				transform: translateX(-100%);
-				animation: shimmer 2s infinite;
-			}
-
-			@keyframes shimmer {
-				0% {
-					transform: translateX(-100%);
-				}
-				100% {
-					transform: translateX(100%);
-				}
-			}
-
-			.portfolio-content {
-				padding: 20px;
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-			}
-
-			.portfolio-content h3 {
-				font-family: "Oswald", sans-serif;
-				font-size: 18px;
-				margin-bottom: 8px;
-				color: var(--accent-gold);
-			}
-
-			.portfolio-content p {
-				color: var(--muted);
-				font-size: 14px;
-				line-height: 1.6;
-				flex: 1;
-				margin-bottom: 12px;
-			}
-
-			.portfolio-tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-			}
-
-			.portfolio-tag {
-				padding: 4px 10px;
-				background: rgba(255, 255, 255, 0.08);
-				border: 1px solid rgba(255, 255, 255, 0.12);
-				border-radius: 4px;
-				font-size: 12px;
-				color: var(--muted);
-			}
-
-			/* CV Section */
-			.cv-container {
-				display: grid;
-				grid-template-columns: 1fr 2fr;
-				gap: 32px;
-			}
-
-			.cv-sidebar {
-				display: flex;
-				flex-direction: column;
-				gap: 24px;
-			}
-
-			.cv-section {
-				background: var(--panel);
-				border: 1px solid var(--panel-border);
-				border-radius: 8px;
-				padding: 20px;
-				transition: all 0.3s ease;
-			}
-
-			.cv-section:hover {
-				border-color: var(--accent-blue);
-				transform: translateX(4px);
-			}
-
-			.cv-section h4 {
-				font-family: "Oswald", sans-serif;
-				font-size: 14px;
-				text-transform: uppercase;
-				letter-spacing: 0.08em;
-				margin-bottom: 12px;
-				color: var(--accent-blue);
-			}
-
-			.cv-item {
-				margin-bottom: 12px;
-				padding-bottom: 12px;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-			}
-
-			.cv-item:last-child {
-				margin-bottom: 0;
-				padding-bottom: 0;
-				border-bottom: none;
-			}
-
-			.cv-item-title {
-				color: var(--text);
-				font-weight: 600;
-				font-size: 14px;
-				margin-bottom: 4px;
-			}
-
-			.cv-item-subtitle {
-				color: var(--muted);
-				font-size: 13px;
-			}
-
-			.cv-main {
-				display: flex;
-				flex-direction: column;
-				gap: 24px;
-			}
-
-			.experience-card {
-				background: var(--panel);
-				border: 1px solid var(--panel-border);
-				border-radius: 8px;
-				padding: 24px;
-				position: relative;
-				overflow: hidden;
-				transition: all 0.3s ease;
-			}
-
-			.experience-card::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 4px;
-				height: 100%;
-				background: linear-gradient(
-					180deg,
-					var(--accent-blue),
-					var(--accent-gold)
-				);
-				transform: scaleY(0);
-				transform-origin: top;
-				transition: transform 0.3s ease;
-			}
-
-			.experience-card:hover {
-				border-color: var(--accent-blue);
-				transform: translateX(8px);
-			}
-
-			.experience-card:hover::before {
-				transform: scaleY(1);
-			}
-
-			.experience-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: start;
-				margin-bottom: 12px;
-			}
-
-			.experience-title {
-				font-family: "Oswald", sans-serif;
-				font-size: 18px;
-				font-weight: 600;
-				color: var(--accent-gold);
-			}
-
-			.experience-date {
-				color: var(--muted);
-				font-size: 13px;
-				letter-spacing: 0.05em;
-			}
-
-			.experience-company {
-				color: var(--accent-blue);
-				font-size: 14px;
-				margin-bottom: 12px;
-				font-weight: 600;
-			}
-
-			.experience-description {
-				color: var(--muted);
-				font-size: 14px;
-				line-height: 1.6;
-				margin-bottom: 12px;
-			}
-
-			.experience-methods {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-			}
-
-			.method-tag {
-				padding: 4px 10px;
-				background: rgba(231, 76, 60, 0.15);
-				border: 1px solid rgba(231, 76, 60, 0.3);
-				border-radius: 4px;
-				font-size: 12px;
-				color: var(--accent-red);
-			}
-
-			/* Responsive */
-			@media (max-width: 768px) {
-				.menu-toggle {
-					display: flex;
-				}
-
-				.navbar {
-					padding: 14px 16px;
-				}
-
-				.navbar-menu {
-					position: absolute;
-					top: 60px;
-					left: 0;
-					width: 100%;
-					flex-direction: column;
-					align-items: center;
-					gap: 12px;
-					background: rgba(11, 15, 22, 0.96);
-					padding: 12px 0;
-					border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-					border-top: 1px solid rgba(255, 255, 255, 0.08);
-					backdrop-filter: blur(5px);
-					transform: translateY(-10px);
-					opacity: 0;
-					pointer-events: none;
-					transition:
-						opacity 0.3s ease,
-						transform 0.3s ease;
-				}
-
-				.navbar-menu.open {
-					transform: translateY(0);
-					opacity: 1;
-					pointer-events: auto;
-				}
-
-				.navbar-menu li {
-					width: 100%;
-					text-align: center;
-				}
-
-				.navbar-menu a {
-					width: 100%;
-					display: inline-block;
-					padding: 10px 0;
-				}
-
-				.hero h1 {
-					font-size: 36px;
-				}
-
-				.about-content,
-				.cv-container {
-					grid-template-columns: 1fr;
-				}
-
-				.about-split {
-					grid-template-columns: 1fr;
-				}
-
-				.about-header-row {
-					grid-template-columns: 1fr;
-				}
-
-				.about-image {
-					justify-content: center;
-				}
-
-				.portfolio-grid {
-					grid-template-columns: 1fr;
-				}
-
-				.section-title {
-					font-size: 28px;
-				}
-			}
-
-			.section-title-wrapper {
-				margin-bottom: 40px;
-			}
-		</style>
+		<link rel="stylesheet" href="styles/style-index.css" />
 	</head>
 
 	<body>
@@ -917,126 +196,18 @@
 				<div class="section-title-wrapper">
 					<h2 class="section-title">Portfolio</h2>
 				</div>
-				<div class="portfolio-grid">
-					<a
-						class="portfolio-card"
-						href="Portofolio.pdf"
-						target="_blank"
-						style="text-decoration: none; color: inherit"
+				<div class="portfolio-grid" id="homePortfolioGrid" aria-live="polite">
+					<div style="color: var(--muted); font-size: 14px">
+						Loading...
+					</div>
+				</div>
+				<div
+					class="hero-buttons"
+					style="justify-content: flex-start; margin-top: 22px"
+				>
+					<a href="portfolio.html" class="btn btn-secondary"
+						>View All Portfolio</a
 					>
-						<div class="portfolio-image">📄</div>
-						<div class="portfolio-content">
-							<h3>Portofolio (PDF)</h3>
-							<p>
-								Download my portfolio in PDF format (projects,
-								screenshots, and highlights).
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">PDF</span>
-								<span class="portfolio-tag">Projects</span>
-								<span class="portfolio-tag">Highlights</span>
-							</div>
-						</div>
-					</a>
-
-					<a
-						class="portfolio-card"
-						href="resume.html"
-						style="text-decoration: none; color: inherit"
-					>
-						<div class="portfolio-image">🧾</div>
-						<div class="portfolio-content">
-							<h3>Resume</h3>
-							<p>
-								Work experience, skills, and downloadable
-								portfolio.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Experience</span>
-								<span class="portfolio-tag">Skills</span>
-							</div>
-						</div>
-					</a>
-
-					<a
-						class="portfolio-card"
-						href="certificate.html"
-						style="text-decoration: none; color: inherit"
-					>
-						<div class="portfolio-image">🏅</div>
-						<div class="portfolio-content">
-							<h3>Certificates</h3>
-							<p>
-								List of certificates and training documents I've
-								completed.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Training</span>
-								<span class="portfolio-tag">Learning</span>
-							</div>
-						</div>
-					</a>
-
-					<a
-						class="portfolio-card"
-						href="blog.html"
-						style="text-decoration: none; color: inherit"
-					>
-						<div class="portfolio-image">📝</div>
-						<div class="portfolio-content">
-							<h3>Blog</h3>
-							<p>
-								Technical notes and articles about web
-								development and DevOps.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Articles</span>
-								<span class="portfolio-tag">Notes</span>
-							</div>
-						</div>
-					</a>
-
-					<a
-						class="portfolio-card"
-						href="https://github.com/ninjas007"
-						target="_blank"
-						rel="noreferrer"
-						style="text-decoration: none; color: inherit"
-					>
-						<div class="portfolio-image">💻</div>
-						<div class="portfolio-content">
-							<h3>GitHub</h3>
-							<p>
-								Open-source projects, experiments, and code
-								samples.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Open Source</span>
-								<span class="portfolio-tag">Code</span>
-							</div>
-						</div>
-					</a>
-
-					<a
-						class="portfolio-card"
-						href="https://www.linkedin.com/in/tilis-tiadi-b7008163/"
-						target="_blank"
-						rel="noreferrer"
-						style="text-decoration: none; color: inherit"
-					>
-						<div class="portfolio-image">🔗</div>
-						<div class="portfolio-content">
-							<h3>LinkedIn</h3>
-							<p>
-								Connect with me for collaboration,
-								opportunities, and updates.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Networking</span>
-								<span class="portfolio-tag">Career</span>
-							</div>
-						</div>
-					</a>
 				</div>
 			</section>
 
@@ -1047,7 +218,7 @@
 				</div>
 				<div class="portfolio-grid">
 					<div class="portfolio-card">
-						<div class="portfolio-image">🛒</div>
+						<div class="portfolio-image">&#x1F6D2;</div>
 						<div class="portfolio-content">
 							<h3>Productivity Template</h3>
 							<p>
@@ -1060,7 +231,7 @@
 						</div>
 					</div>
 					<div class="portfolio-card">
-						<div class="portfolio-image">🎁</div>
+						<div class="portfolio-image">&#x1F381;</div>
 						<div class="portfolio-content">
 							<h3>Design Assets Pack</h3>
 							<p>
@@ -1074,7 +245,7 @@
 						</div>
 					</div>
 					<div class="portfolio-card">
-						<div class="portfolio-image">⚡</div>
+						<div class="portfolio-image">&#x26A1;</div>
 						<div class="portfolio-content">
 							<h3>REST API Starter Kit</h3>
 							<p>
@@ -1587,6 +758,72 @@
 			</section>
 		</div>
 
+		<!-- Portfolio Modal -->
+		<dialog
+			class="portfolio-modal"
+			id="portfolioModal"
+			aria-label="Portfolio details"
+		>
+			<div class="portfolio-modal__header">
+				<h3 class="portfolio-modal__title" id="portfolioModalTitle">Portfolio</h3>
+				<button
+					type="button"
+					class="portfolio-modal__close"
+					id="portfolioModalClose"
+					aria-label="Close modal"
+				>
+					&times;
+				</button>
+			</div>
+			<p class="portfolio-modal__desc" id="portfolioModalDesc"></p>
+
+			<div class="portfolio-modal__slider" aria-label="Portfolio images">
+				<button
+					type="button"
+					class="portfolio-modal__nav"
+					id="portfolioModalPrev"
+					aria-label="Previous image"
+				>
+					&lsaquo;
+				</button>
+
+				<div class="portfolio-modal__frame">
+					<img class="portfolio-modal__img" id="portfolioModalImg" alt="" />
+					<div class="portfolio-modal__empty" id="portfolioModalEmpty">
+						No images available.
+					</div>
+				</div>
+
+				<button
+					type="button"
+					class="portfolio-modal__nav"
+					id="portfolioModalNext"
+					aria-label="Next image"
+				>
+					&rsaquo;
+				</button>
+			</div>
+
+			<div class="portfolio-modal__dots" id="portfolioModalDots"></div>
+
+			<div class="portfolio-modal__footer">
+				<a
+					href="#"
+					class="btn btn-primary"
+					id="portfolioModalOpenLink"
+					rel="noreferrer"
+					>Open</a
+				>
+				<button
+					type="button"
+					class="btn btn-secondary"
+					id="portfolioModalClose2"
+				>
+					Close
+				</button>
+			</div>
+		</dialog>
+
 		<script>
 			// Smooth scroll untuk navbar links
 			document.querySelectorAll(".navbar-menu a").forEach((anchor) => {
@@ -1754,6 +991,239 @@
 			}
 
 			loadSidebarCertificates();
+
+			// Portfolio modal + slider
+			const portfolioModalEl = document.getElementById("portfolioModal");
+			const portfolioModalTitleEl =
+				document.getElementById("portfolioModalTitle");
+			const portfolioModalDescEl = document.getElementById("portfolioModalDesc");
+			const portfolioModalImgEl = document.getElementById("portfolioModalImg");
+			const portfolioModalEmptyEl =
+				document.getElementById("portfolioModalEmpty");
+			const portfolioModalDotsEl =
+				document.getElementById("portfolioModalDots");
+			const portfolioModalPrevEl = document.getElementById("portfolioModalPrev");
+			const portfolioModalNextEl = document.getElementById("portfolioModalNext");
+			const portfolioModalCloseEl =
+				document.getElementById("portfolioModalClose");
+			const portfolioModalClose2El =
+				document.getElementById("portfolioModalClose2");
+			const portfolioModalOpenLinkEl =
+				document.getElementById("portfolioModalOpenLink");
+
+			const portfolioModalState = {
+				item: null,
+				images: [],
+				index: 0,
+				lastFocus: null,
+			};
+
+			function portfolioModalSetSlide(nextIndex) {
+				if (!portfolioModalEl) return;
+				const total = portfolioModalState.images.length;
+
+				if (total === 0) {
+					portfolioModalState.index = 0;
+					portfolioModalImgEl.style.display = "none";
+					portfolioModalImgEl.removeAttribute("src");
+					portfolioModalEmptyEl.style.display = "block";
+					portfolioModalDotsEl.innerHTML = "";
+					return;
+				}
+
+				const normalized = ((nextIndex % total) + total) % total;
+				portfolioModalState.index = normalized;
+				const src = portfolioModalState.images[normalized];
+
+				portfolioModalEmptyEl.style.display = "none";
+				portfolioModalImgEl.style.display = "block";
+				portfolioModalImgEl.src = encodeURI(src);
+				const title = portfolioModalState.item?.title || "Portfolio";
+				portfolioModalImgEl.alt = `${title} image ${normalized + 1}`;
+
+				for (const dot of portfolioModalDotsEl.querySelectorAll("button")) {
+					const idx = Number(dot.dataset.index);
+					dot.setAttribute("aria-current", String(idx === normalized));
+				}
+			}
+
+			function portfolioModalRenderDots() {
+				if (!portfolioModalEl) return;
+				portfolioModalDotsEl.innerHTML = "";
+				const total = portfolioModalState.images.length;
+				if (total <= 1) return;
+
+				for (let i = 0; i < total; i++) {
+					const dot = document.createElement("button");
+					dot.type = "button";
+					dot.className = "portfolio-modal__dot";
+					dot.dataset.index = String(i);
+					dot.setAttribute("aria-label", `Go to image ${i + 1}`);
+					dot.setAttribute("aria-current", "false");
+					dot.addEventListener("click", () => portfolioModalSetSlide(i));
+					portfolioModalDotsEl.appendChild(dot);
+				}
+			}
+
+			function openPortfolioModal(item) {
+				if (!portfolioModalEl) return;
+
+				portfolioModalState.lastFocus = document.activeElement;
+				portfolioModalState.item = item || null;
+				portfolioModalState.images = Array.isArray(item?.images)
+					? item.images.filter(Boolean)
+					: [];
+				portfolioModalState.index = 0;
+
+				portfolioModalTitleEl.textContent = item?.title || "Untitled";
+				portfolioModalDescEl.textContent = item?.description || "";
+
+				const rawUrl = String(item?.url || "").trim();
+				const showOpen = rawUrl !== "" && rawUrl !== "#";
+				const url = showOpen ? rawUrl : "#";
+				const isExternal = /^https?:\/\//i.test(url);
+
+				portfolioModalOpenLinkEl.href = encodeURI(url);
+				portfolioModalOpenLinkEl.target = isExternal ? "_blank" : "_self";
+				portfolioModalOpenLinkEl.rel = isExternal ? "noreferrer" : "";
+				portfolioModalOpenLinkEl.style.display = showOpen ? "" : "none";
+				portfolioModalOpenLinkEl.setAttribute(
+					"aria-hidden",
+					showOpen ? "false" : "true",
+				);
+
+				portfolioModalRenderDots();
+				portfolioModalSetSlide(0);
+
+				try {
+					portfolioModalEl.showModal();
+				} catch {
+					portfolioModalEl.setAttribute("open", "");
+				}
+
+				setTimeout(() => portfolioModalCloseEl?.focus?.(), 0);
+			}
+
+			function closePortfolioModal() {
+				if (!portfolioModalEl) return;
+				try {
+					portfolioModalEl.close();
+				} catch {
+					portfolioModalEl.removeAttribute("open");
+				}
+			}
+
+			if (portfolioModalEl) {
+				portfolioModalCloseEl?.addEventListener("click", closePortfolioModal);
+				portfolioModalClose2El?.addEventListener("click", closePortfolioModal);
+				portfolioModalPrevEl?.addEventListener("click", () =>
+					portfolioModalSetSlide(portfolioModalState.index - 1)
+				);
+				portfolioModalNextEl?.addEventListener("click", () =>
+					portfolioModalSetSlide(portfolioModalState.index + 1)
+				);
+
+				portfolioModalEl.addEventListener("click", (e) => {
+					if (e.target === portfolioModalEl) closePortfolioModal();
+				});
+
+				portfolioModalEl.addEventListener("keydown", (e) => {
+					if (e.key === "ArrowLeft") {
+						e.preventDefault();
+						portfolioModalSetSlide(portfolioModalState.index - 1);
+					}
+					if (e.key === "ArrowRight") {
+						e.preventDefault();
+						portfolioModalSetSlide(portfolioModalState.index + 1);
+					}
+				});
+
+				portfolioModalEl.addEventListener("close", () => {
+					const el = portfolioModalState.lastFocus;
+					if (el && typeof el.focus === "function") el.focus();
+				});
+			}
+
+			async function loadHomePortfolio() {
+				const container = document.getElementById("homePortfolioGrid");
+				if (!container) return;
+
+				try {
+					const res = await fetch("data/portfolio.json", {
+						cache: "no-store",
+					});
+					if (!res.ok) throw new Error("Failed to fetch portfolio.json");
+					const items = await res.json();
+
+					container.innerHTML = "";
+					for (const item of (items || []).slice(0, 6)) {
+						const url = item.url || "#";
+						const tags = Array.isArray(item.tags) ? item.tags : [];
+
+						const card = document.createElement("a");
+						card.className = "portfolio-card";
+						card.href = url;
+						card.style.textDecoration = "none";
+						card.style.color = "inherit";
+						card.setAttribute("role", "button");
+						card.setAttribute(
+							"aria-label",
+							`Open details for ${item.title || "portfolio item"}`,
+						);
+						card.addEventListener("click", (e) => {
+							e.preventDefault();
+							openPortfolioModal(item);
+						});
+						card.addEventListener("keydown", (e) => {
+							if (e.key === " ") {
+								e.preventDefault();
+								openPortfolioModal(item);
+							}
+						});
+
+						const img = document.createElement("div");
+						img.className = "portfolio-image";
+						img.textContent = item.icon || "\u{1F310}";
+
+						const content = document.createElement("div");
+						content.className = "portfolio-content";
+
+						const h3 = document.createElement("h3");
+						h3.textContent = item.title || "Untitled";
+
+						const p = document.createElement("p");
+						p.textContent = item.description || "";
+
+						const tagsWrap = document.createElement("div");
+						tagsWrap.className = "portfolio-tags";
+						for (const t of tags.slice(0, 3)) {
+							const tag = document.createElement("span");
+							tag.className = "portfolio-tag";
+							tag.textContent = t;
+							tagsWrap.appendChild(tag);
+						}
+
+						content.appendChild(h3);
+						content.appendChild(p);
+						content.appendChild(tagsWrap);
+
+						card.appendChild(img);
+						card.appendChild(content);
+						container.appendChild(card);
+					}
+				} catch (err) {
+					container.innerHTML = "";
+					const msg = document.createElement("div");
+					msg.style.color = "var(--muted)";
+					msg.style.fontSize = "14px";
+					msg.textContent = "Failed to load portfolio.";
+					container.appendChild(msg);
+					console.error(err);
+				}
+			}
+
+			loadHomePortfolio();
 		</script>
 	</body>
 </html>
+

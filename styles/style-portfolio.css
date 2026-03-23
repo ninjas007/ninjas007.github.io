@@ -1,0 +1,484 @@
+﻿:root {
+				--bg-0: #0b0f16;
+				--bg-1: #0f1523;
+				--bg-2: #141b2b;
+				--accent-red: #e74c3c;
+				--accent-blue: #3498db;
+				--accent-gold: #ffd24d;
+				--text: #e8edf7;
+				--muted: #9aa6c5;
+				--panel: #0f1726;
+				--panel-border: rgba(255, 255, 255, 0.08);
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: "Rajdhani", sans-serif;
+				color: var(--text);
+				background:
+					radial-gradient(
+						circle at 20% 10%,
+						rgba(255, 255, 255, 0.06),
+						transparent 45%
+					),
+					radial-gradient(
+						circle at 85% 30%,
+						rgba(52, 152, 219, 0.12),
+						transparent 45%
+					),
+					linear-gradient(
+						180deg,
+						var(--bg-0),
+						var(--bg-1) 55%,
+						var(--bg-2)
+					);
+				min-height: 100vh;
+				overflow-x: hidden;
+			}
+
+			.navbar {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				background: rgba(11, 15, 22, 0.95);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				z-index: 1000;
+				padding: 16px 24px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.navbar-brand {
+				font-family: "Oswald", sans-serif;
+				font-size: 20px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				color: var(--accent-gold);
+				text-transform: uppercase;
+			}
+
+			.navbar-menu {
+				display: flex;
+				gap: 30px;
+				list-style: none;
+			}
+
+			.navbar-menu a {
+				color: var(--text);
+				text-decoration: none;
+				font-size: 14px;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				position: relative;
+				transition: color 0.3s ease;
+			}
+
+			.navbar-menu a:hover {
+				color: var(--accent-blue);
+			}
+
+			.menu-toggle {
+				display: none;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 25px;
+				height: 20px;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 0;
+			}
+
+			.menu-toggle span {
+				display: block;
+				height: 3px;
+				background: var(--text);
+				border-radius: 3px;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 100px 24px 40px;
+			}
+
+			.section {
+				margin-bottom: 80px;
+			}
+
+			.hero {
+				text-align: center;
+				padding: 60px 0 30px;
+				margin-bottom: 20px;
+			}
+
+			.hero h1 {
+				font-family: "Oswald", sans-serif;
+				font-size: 56px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 12px;
+				background: linear-gradient(
+					135deg,
+					var(--accent-gold),
+					var(--accent-blue)
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.hero p {
+				color: var(--muted);
+				font-size: 16px;
+				letter-spacing: 0.03em;
+				max-width: 760px;
+				margin: 0 auto;
+				line-height: 1.7;
+			}
+
+			.hero-buttons {
+				display: flex;
+				gap: 14px;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-top: 22px;
+			}
+
+			.btn {
+				padding: 14px 28px;
+				border-radius: 8px;
+				border: none;
+				font-family: "Oswald", sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-size: 14px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.btn-primary {
+				background: linear-gradient(
+					135deg,
+					var(--accent-blue),
+					var(--accent-gold)
+				);
+				color: #0b0f16;
+			}
+
+			.btn-secondary {
+				background: transparent;
+				border: 1px solid var(--panel-border);
+				color: var(--text);
+			}
+
+			.btn-secondary:hover {
+				border-color: var(--accent-blue);
+				color: var(--accent-blue);
+				transform: translateY(-2px);
+			}
+
+			.section-title-wrapper {
+				margin-bottom: 40px;
+			}
+
+			.section-title {
+				font-family: "Oswald", sans-serif;
+				font-size: 36px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 40px;
+				position: relative;
+				display: inline-block;
+				color: var(--accent-gold);
+			}
+
+			.section-title::after {
+				content: "";
+				position: absolute;
+				bottom: -12px;
+				left: 0;
+				width: 60%;
+				height: 3px;
+				background: linear-gradient(
+					90deg,
+					var(--accent-red),
+					transparent
+				);
+				border-radius: 2px;
+			}
+
+			.portfolio-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 24px;
+				margin-top: 40px;
+			}
+
+			.portfolio-card {
+				background: var(--panel);
+				border: 1px solid var(--panel-border);
+				border-radius: 8px;
+				overflow: hidden;
+				transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+				cursor: pointer;
+				position: relative;
+				height: 350px;
+				display: flex;
+				flex-direction: column;
+				text-decoration: none;
+				color: inherit;
+			}
+
+			.portfolio-card:hover {
+				transform: translateY(-10px);
+				border-color: var(--accent-blue);
+				box-shadow: 0 20px 40px rgba(52, 152, 219, 0.3);
+			}
+
+			.portfolio-image {
+				width: 100%;
+				height: 200px;
+				background: linear-gradient(
+					135deg,
+					rgba(52, 152, 219, 0.2),
+					rgba(231, 76, 60, 0.2)
+				);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 48px;
+				border-bottom: 1px solid var(--panel-border);
+			}
+
+			.portfolio-content {
+				padding: 20px;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.portfolio-content h3 {
+				font-family: "Oswald", sans-serif;
+				font-size: 20px;
+				margin-bottom: 10px;
+				letter-spacing: 0.05em;
+			}
+
+			.portfolio-content p {
+				color: var(--muted);
+				font-size: 14px;
+				line-height: 1.6;
+				margin-bottom: 12px;
+				flex: 1;
+			}
+
+			.portfolio-tags {
+				display: flex;
+				gap: 10px;
+				flex-wrap: wrap;
+			}
+
+			.portfolio-tag {
+				padding: 6px 12px;
+				background: rgba(231, 76, 60, 0.15);
+				border: 1px solid rgba(231, 76, 60, 0.3);
+				border-radius: 16px;
+				font-size: 12px;
+				color: var(--accent-red);
+				letter-spacing: 0.05em;
+			}
+
+			/* Portfolio Modal */
+			.portfolio-modal {
+				width: min(920px, calc(100vw - 32px));
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				max-height: calc(100vh - 32px);
+				overflow: auto;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 14px;
+				background: rgba(11, 15, 22, 0.98);
+				color: var(--text);
+				padding: 18px;
+				box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+			}
+
+			.portfolio-modal::backdrop {
+				background: rgba(0, 0, 0, 0.6);
+				backdrop-filter: blur(8px);
+			}
+
+			.portfolio-modal__header {
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				gap: 14px;
+				margin-bottom: 10px;
+			}
+
+			.portfolio-modal__title {
+				font-family: "Oswald", sans-serif;
+				letter-spacing: 0.06em;
+				font-size: 22px;
+				line-height: 1.2;
+				margin: 0;
+			}
+
+			.portfolio-modal__close {
+				width: 38px;
+				height: 38px;
+				border-radius: 10px;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				background: rgba(255, 255, 255, 0.06);
+				color: var(--text);
+				cursor: pointer;
+				font-size: 20px;
+				display: grid;
+				place-items: center;
+			}
+
+			.portfolio-modal__close:hover {
+				border-color: rgba(52, 152, 219, 0.55);
+				background: rgba(52, 152, 219, 0.12);
+			}
+
+			.portfolio-modal__desc {
+				color: var(--muted);
+				margin: 6px 0 14px;
+				line-height: 1.6;
+				font-size: 14px;
+			}
+
+			.portfolio-modal__slider {
+				display: grid;
+				grid-template-columns: 44px 1fr 44px;
+				gap: 12px;
+				align-items: center;
+			}
+
+			.portfolio-modal__nav {
+				width: 44px;
+				height: 44px;
+				border-radius: 12px;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				background: rgba(255, 255, 255, 0.06);
+				color: var(--text);
+				cursor: pointer;
+				font-size: 22px;
+				display: grid;
+				place-items: center;
+				user-select: none;
+			}
+
+			.portfolio-modal__nav:hover {
+				border-color: rgba(52, 152, 219, 0.55);
+				background: rgba(52, 152, 219, 0.12);
+			}
+
+			.portfolio-modal__frame {
+				border-radius: 14px;
+				overflow: hidden;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				background: rgba(0, 0, 0, 0.25);
+				aspect-ratio: 16 / 9;
+				display: grid;
+				place-items: center;
+				position: relative;
+			}
+
+			.portfolio-modal__img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				display: none;
+				background: rgba(0, 0, 0, 0.22);
+			}
+
+			.portfolio-modal__empty {
+				color: var(--muted);
+				font-size: 14px;
+				padding: 16px;
+				text-align: center;
+			}
+
+			.portfolio-modal__dots {
+				display: flex;
+				gap: 8px;
+				justify-content: center;
+				align-items: center;
+				margin-top: 12px;
+			}
+
+			.portfolio-modal__dot {
+				width: 10px;
+				height: 10px;
+				border-radius: 999px;
+				border: 1px solid rgba(255, 255, 255, 0.22);
+				background: rgba(255, 255, 255, 0.08);
+				cursor: pointer;
+				padding: 0;
+			}
+
+			.portfolio-modal__dot[aria-current="true"] {
+				background: var(--accent-blue);
+				border-color: rgba(52, 152, 219, 0.85);
+			}
+
+			.portfolio-modal__footer {
+				display: flex;
+				gap: 12px;
+				justify-content: flex-end;
+				flex-wrap: wrap;
+				margin-top: 16px;
+			}
+
+			@media (max-width: 640px) {
+				.portfolio-modal {
+					padding: 14px;
+				}
+				.portfolio-modal__slider {
+					grid-template-columns: 1fr;
+				}
+				.portfolio-modal__nav {
+					width: 100%;
+					height: 42px;
+				}
+			}
+
+			@media (max-width: 900px) {
+				.menu-toggle {
+					display: flex;
+				}
+
+				.navbar-menu {
+					position: fixed;
+					top: 64px;
+					right: 16px;
+					left: 16px;
+					background: rgba(11, 15, 22, 0.98);
+					border: 1px solid rgba(255, 255, 255, 0.1);
+					border-radius: 12px;
+					padding: 18px 16px;
+					flex-direction: column;
+					gap: 16px;
+					display: none;
+				}
+
+				.navbar-menu.open {
+					display: flex;
+				}
+			}
