@@ -1,0 +1,51 @@
+[
+	{
+		"id": 1,
+		"title": "Productivity Template",
+		"description": "Template modern untuk landing page / profile dengan struktur yang rapi.",
+		"price": "Rp 75.000",
+		"images": ["images/store/s1-1.svg", "images/store/s1-2.svg"],
+		"tags": ["Template", "UI", "HTML/CSS"]
+	},
+	{
+		"id": 2,
+		"title": "Design Assets Pack",
+		"description": "Kumpulan icon, ilustrasi, dan gradient untuk project web.",
+		"price": "Rp 50.000",
+		"images": ["images/store/s2-1.svg", "images/store/s2-2.svg"],
+		"tags": ["Design", "Assets", "Icons"]
+	},
+	{
+		"id": 3,
+		"title": "REST API Starter Kit",
+		"description": "Starter kit untuk API yang rapi: struktur folder, contoh endpoint, dan best practice.",
+		"price": "Rp 150.000",
+		"images": ["images/store/s3-1.svg", "images/store/s3-2.svg"],
+		"tags": ["REST API", "Node.js", "Express"]
+	},
+	{
+		"id": 4,
+		"title": "MQTT Demo Project",
+		"description": "Contoh implementasi publish/subscribe MQTT untuk IoT (dummy).",
+		"price": "Rp 120.000",
+		"images": ["images/store/s4-1.svg", "images/store/s4-2.svg"],
+		"tags": ["MQTT", "IoT", "Node.js"]
+	},
+	{
+		"id": 5,
+		"title": "Component UI Pack",
+		"description": "Kumpulan komponen UI reusable (dummy) untuk mempercepat development.",
+		"price": "Rp 90.000",
+		"images": ["images/store/s5-1.svg", "images/store/s5-2.svg"],
+		"tags": ["Components", "CSS", "Reusable"]
+	},
+	{
+		"id": 6,
+		"title": "Deploy Checklist",
+		"description": "Checklist & template dokumentasi untuk deployment yang rapi (dummy).",
+		"price": "Rp 25.000",
+		"images": ["images/store/s6-1.svg", "images/store/s6-2.svg"],
+		"tags": ["DevOps", "Docs", "Checklist"]
+	}
+]
+

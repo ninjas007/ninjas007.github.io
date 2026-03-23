@@ -425,6 +425,17 @@
 				align-items: center;
 				justify-content: center;
 				font-size: 48px;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.portfolio-image--photo {
+				font-size: 0;
+			}
+
+			.portfolio-image--photo::before {
+				content: none;
 			}
 
 			.portfolio-image::before {
@@ -462,6 +473,14 @@
 				font-size: 18px;
 				margin-bottom: 8px;
 				color: var(--accent-gold);
+			}
+
+			.store-price {
+				font-family: "Oswald", sans-serif;
+				letter-spacing: 0.06em;
+				color: var(--accent-gold);
+				font-size: 14px;
+				margin: -6px 0 10px;
 			}
 
 			.portfolio-content p {
@@ -642,6 +661,173 @@
 					grid-template-columns: 1fr;
 				}
 				.portfolio-modal__nav {
+					width: 100%;
+					height: 42px;
+				}
+			}
+
+			/* Store Modal */
+			.store-modal {
+				width: min(920px, calc(100vw - 32px));
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				max-height: calc(100vh - 32px);
+				overflow: auto;
+				border: 1px solid var(--panel-border);
+				border-radius: 14px;
+				background: rgba(15, 23, 38, 0.98);
+				color: var(--text);
+				padding: 18px;
+				box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+			}
+
+			.store-modal::backdrop {
+				background: rgba(0, 0, 0, 0.6);
+				backdrop-filter: blur(8px);
+			}
+
+			.store-modal__header {
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				gap: 14px;
+				margin-bottom: 6px;
+			}
+
+			.store-modal__title {
+				font-family: "Oswald", sans-serif;
+				letter-spacing: 0.06em;
+				color: var(--accent-gold);
+				font-size: 22px;
+				line-height: 1.2;
+				margin: 0;
+			}
+
+			.store-modal__close {
+				width: 38px;
+				height: 38px;
+				border-radius: 10px;
+				border: 1px solid var(--panel-border);
+				background: rgba(255, 255, 255, 0.06);
+				color: var(--text);
+				cursor: pointer;
+				font-size: 20px;
+				display: grid;
+				place-items: center;
+			}
+
+			.store-modal__close:hover {
+				border-color: rgba(52, 152, 219, 0.55);
+				background: rgba(52, 152, 219, 0.12);
+			}
+
+			.store-modal__desc {
+				color: var(--muted);
+				margin: 6px 0 8px;
+				line-height: 1.6;
+				font-size: 14px;
+			}
+
+			.store-modal__price {
+				font-family: "Oswald", sans-serif;
+				letter-spacing: 0.06em;
+				color: var(--accent-gold);
+				margin: 0 0 14px;
+			}
+
+			.store-modal__slider {
+				display: grid;
+				grid-template-columns: 44px 1fr 44px;
+				gap: 12px;
+				align-items: center;
+			}
+
+			.store-modal__nav {
+				width: 44px;
+				height: 44px;
+				border-radius: 12px;
+				border: 1px solid var(--panel-border);
+				background: rgba(255, 255, 255, 0.06);
+				color: var(--text);
+				cursor: pointer;
+				font-size: 22px;
+				display: grid;
+				place-items: center;
+				user-select: none;
+			}
+
+			.store-modal__nav:hover {
+				border-color: rgba(52, 152, 219, 0.55);
+				background: rgba(52, 152, 219, 0.12);
+			}
+
+			.store-modal__frame {
+				border-radius: 14px;
+				overflow: hidden;
+				border: 1px solid var(--panel-border);
+				background: rgba(0, 0, 0, 0.25);
+				aspect-ratio: 16 / 9;
+				display: grid;
+				place-items: center;
+				position: relative;
+			}
+
+			.store-modal__img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				display: none;
+				background: rgba(0, 0, 0, 0.22);
+			}
+
+			.store-modal__empty {
+				color: var(--muted);
+				font-size: 14px;
+				padding: 16px;
+				text-align: center;
+			}
+
+			.store-modal__dots {
+				display: flex;
+				gap: 8px;
+				justify-content: center;
+				align-items: center;
+				margin-top: 12px;
+			}
+
+			.store-modal__dot {
+				width: 10px;
+				height: 10px;
+				border-radius: 999px;
+				border: 1px solid rgba(255, 255, 255, 0.22);
+				background: rgba(255, 255, 255, 0.08);
+				cursor: pointer;
+				padding: 0;
+			}
+
+			.store-modal__dot[aria-current="true"] {
+				background: var(--accent-blue);
+				border-color: rgba(52, 152, 219, 0.85);
+			}
+
+			.store-modal__footer {
+				display: flex;
+				gap: 12px;
+				justify-content: flex-end;
+				flex-wrap: wrap;
+				margin-top: 16px;
+			}
+
+			@media (max-width: 640px) {
+				.store-modal {
+					padding: 14px;
+				}
+				.store-modal__slider {
+					grid-template-columns: 1fr;
+				}
+				.store-modal__nav {
 					width: 100%;
 					height: 42px;
 				}

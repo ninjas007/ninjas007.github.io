@@ -49,105 +49,71 @@
 					<h2 class="section-title">Products</h2>
 				</div>
 
-				<div class="portfolio-grid">
-					<div class="portfolio-card">
-						<div class="portfolio-image">&#x1F6D2;</div>
-						<div class="portfolio-content">
-							<h3>Productivity Template</h3>
-							<p>
-								Template modern untuk landing page / profile
-								dengan struktur yang rapi.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Template</span>
-								<span class="portfolio-tag">UI</span>
-								<span class="portfolio-tag">HTML/CSS</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="portfolio-card">
-						<div class="portfolio-image">&#x1F381;</div>
-						<div class="portfolio-content">
-							<h3>Design Assets Pack</h3>
-							<p>
-								Kumpulan icon, ilustrasi, dan gradient untuk
-								project web.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Design</span>
-								<span class="portfolio-tag">Assets</span>
-								<span class="portfolio-tag">Icons</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="portfolio-card">
-						<div class="portfolio-image">&#x26A1;</div>
-						<div class="portfolio-content">
-							<h3>REST API Starter Kit</h3>
-							<p>
-								Starter kit untuk API yang rapi: struktur
-								folder, contoh endpoint, dan best practice.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">REST API</span>
-								<span class="portfolio-tag">Node.js</span>
-								<span class="portfolio-tag">Express</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="portfolio-card">
-						<div class="portfolio-image">&#x1F6E0;</div>
-						<div class="portfolio-content">
-							<h3>MQTT Demo Project</h3>
-							<p>
-								Dummy product: contoh implementasi publish /
-								subscribe MQTT untuk IoT.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">MQTT</span>
-								<span class="portfolio-tag">IoT</span>
-								<span class="portfolio-tag">Node.js</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="portfolio-card">
-						<div class="portfolio-image">&#x1F9E9;</div>
-						<div class="portfolio-content">
-							<h3>Component UI Pack</h3>
-							<p>
-								Kumpulan komponen UI reusable (dummy) untuk
-								mempercepat development.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">Components</span>
-								<span class="portfolio-tag">CSS</span>
-								<span class="portfolio-tag">Reusable</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="portfolio-card">
-						<div class="portfolio-image">&#x1F4E6;</div>
-						<div class="portfolio-content">
-							<h3>Deploy Checklist</h3>
-							<p>
-								Dummy product: checklist & template dokumentasi
-								untuk deployment yang rapi.
-							</p>
-							<div class="portfolio-tags">
-								<span class="portfolio-tag">DevOps</span>
-								<span class="portfolio-tag">Docs</span>
-								<span class="portfolio-tag">Checklist</span>
-							</div>
-						</div>
-					</div>
+				<div class="portfolio-grid" id="storeGrid" aria-live="polite">
+					<div style="color: var(--muted); font-size: 14px">Loading...</div>
 				</div>
 			</section>
 		</div>
+
+		<!-- Store Modal -->
+		<dialog class="store-modal" id="storeModal" aria-label="Product details">
+			<div class="store-modal__header">
+				<h3 class="store-modal__title" id="storeModalTitle">Product</h3>
+				<button
+					type="button"
+					class="store-modal__close"
+					id="storeModalClose"
+					aria-label="Close modal"
+				>
+					&times;
+				</button>
+			</div>
+			<p class="store-modal__desc" id="storeModalDesc"></p>
+			<div class="store-modal__price" id="storeModalPrice"></div>
+
+			<div class="store-modal__slider" aria-label="Product images">
+				<button
+					type="button"
+					class="store-modal__nav"
+					id="storeModalPrev"
+					aria-label="Previous image"
+				>
+					&lsaquo;
+				</button>
+
+				<div class="store-modal__frame">
+					<img class="store-modal__img" id="storeModalImg" alt="" />
+					<div class="store-modal__empty" id="storeModalEmpty">
+						No images available.
+					</div>
+				</div>
+
+				<button
+					type="button"
+					class="store-modal__nav"
+					id="storeModalNext"
+					aria-label="Next image"
+				>
+					&rsaquo;
+				</button>
+			</div>
+
+			<div class="store-modal__dots" id="storeModalDots"></div>
+
+			<div class="store-modal__footer">
+				<a
+					href="#"
+					class="btn btn-primary"
+					id="storeModalOrder"
+					target="_blank"
+					rel="noreferrer"
+					>Order</a
+				>
+				<button type="button" class="btn btn-secondary" id="storeModalClose2">
+					Close
+				</button>
+			</div>
+		</dialog>
 
 		<script>
 			document
@@ -156,6 +122,226 @@
 					const menu = document.querySelector(".navbar-menu");
 					menu.classList.toggle("open");
 				});
+
+			// Store modal + slider
+			const storeModalEl = document.getElementById("storeModal");
+			const storeModalTitleEl = document.getElementById("storeModalTitle");
+			const storeModalDescEl = document.getElementById("storeModalDesc");
+			const storeModalPriceEl = document.getElementById("storeModalPrice");
+			const storeModalImgEl = document.getElementById("storeModalImg");
+			const storeModalEmptyEl = document.getElementById("storeModalEmpty");
+			const storeModalDotsEl = document.getElementById("storeModalDots");
+			const storeModalPrevEl = document.getElementById("storeModalPrev");
+			const storeModalNextEl = document.getElementById("storeModalNext");
+			const storeModalCloseEl = document.getElementById("storeModalClose");
+			const storeModalClose2El = document.getElementById("storeModalClose2");
+			const storeModalOrderEl = document.getElementById("storeModalOrder");
+
+			const storeModalState = { item: null, images: [], index: 0, lastFocus: null };
+			const storeWhatsappNumber = "6281371458031";
+
+			function storeModalSetSlide(nextIndex) {
+				const total = storeModalState.images.length;
+
+				if (total === 0) {
+					storeModalState.index = 0;
+					storeModalImgEl.style.display = "none";
+					storeModalImgEl.removeAttribute("src");
+					storeModalEmptyEl.style.display = "block";
+					storeModalDotsEl.innerHTML = "";
+					return;
+				}
+
+				const normalized = ((nextIndex % total) + total) % total;
+				storeModalState.index = normalized;
+				const src = storeModalState.images[normalized];
+
+				storeModalEmptyEl.style.display = "none";
+				storeModalImgEl.style.display = "block";
+				storeModalImgEl.src = encodeURI(src);
+				const title = storeModalState.item?.title || "Product";
+				storeModalImgEl.alt = `${title} image ${normalized + 1}`;
+
+				for (const dot of storeModalDotsEl.querySelectorAll("button")) {
+					const idx = Number(dot.dataset.index);
+					dot.setAttribute("aria-current", String(idx === normalized));
+				}
+			}
+
+			function storeModalRenderDots() {
+				storeModalDotsEl.innerHTML = "";
+				const total = storeModalState.images.length;
+				if (total <= 1) return;
+
+				for (let i = 0; i < total; i++) {
+					const dot = document.createElement("button");
+					dot.type = "button";
+					dot.className = "store-modal__dot";
+					dot.dataset.index = String(i);
+					dot.setAttribute("aria-label", `Go to image ${i + 1}`);
+					dot.setAttribute("aria-current", "false");
+					dot.addEventListener("click", () => storeModalSetSlide(i));
+					storeModalDotsEl.appendChild(dot);
+				}
+			}
+
+			function openStoreModal(item) {
+				if (!storeModalEl) return;
+
+				storeModalState.lastFocus = document.activeElement;
+				storeModalState.item = item || null;
+				storeModalState.images = Array.isArray(item?.images) ? item.images.filter(Boolean) : [];
+				storeModalState.index = 0;
+
+				storeModalTitleEl.textContent = item?.title || "Untitled";
+				storeModalDescEl.textContent = item?.description || "";
+				storeModalPriceEl.textContent = item?.price ? `Price: ${item.price}` : "";
+				storeModalPriceEl.style.display = item?.price ? "" : "none";
+
+				const message = `Halo, saya mau order: ${item?.title || "produk"}${item?.price ? ` (${item.price})` : ""}.`;
+				storeModalOrderEl.href = `https://wa.me/${storeWhatsappNumber}?text=${encodeURIComponent(message)}`;
+
+				storeModalRenderDots();
+				storeModalSetSlide(0);
+
+				try {
+					storeModalEl.showModal();
+				} catch {
+					storeModalEl.setAttribute("open", "");
+				}
+
+				setTimeout(() => storeModalCloseEl?.focus?.(), 0);
+			}
+
+			function closeStoreModal() {
+				if (!storeModalEl) return;
+				try {
+					storeModalEl.close();
+				} catch {
+					storeModalEl.removeAttribute("open");
+				}
+			}
+
+			if (storeModalEl) {
+				storeModalCloseEl?.addEventListener("click", closeStoreModal);
+				storeModalClose2El?.addEventListener("click", closeStoreModal);
+				storeModalPrevEl?.addEventListener("click", () =>
+					storeModalSetSlide(storeModalState.index - 1),
+				);
+				storeModalNextEl?.addEventListener("click", () =>
+					storeModalSetSlide(storeModalState.index + 1),
+				);
+
+				storeModalEl.addEventListener("click", (e) => {
+					if (e.target === storeModalEl) closeStoreModal();
+				});
+
+				storeModalEl.addEventListener("keydown", (e) => {
+					if (e.key === "ArrowLeft") {
+						e.preventDefault();
+						storeModalSetSlide(storeModalState.index - 1);
+					}
+					if (e.key === "ArrowRight") {
+						e.preventDefault();
+						storeModalSetSlide(storeModalState.index + 1);
+					}
+				});
+
+				storeModalEl.addEventListener("close", () => {
+					const el = storeModalState.lastFocus;
+					if (el && typeof el.focus === "function") el.focus();
+				});
+			}
+
+			async function loadStore() {
+				const container = document.getElementById("storeGrid");
+				if (!container) return;
+
+				try {
+					const res = await fetch("data/store.json", { cache: "no-store" });
+					if (!res.ok) throw new Error("Failed to fetch store.json");
+					const items = await res.json();
+
+					container.innerHTML = "";
+					for (const item of items || []) {
+						const tags = Array.isArray(item.tags) ? item.tags : [];
+						const images = Array.isArray(item.images) ? item.images : [];
+
+						const card = document.createElement("a");
+						card.className = "portfolio-card";
+						card.href = "#";
+						card.style.textDecoration = "none";
+						card.style.color = "inherit";
+						card.setAttribute("role", "button");
+						card.setAttribute(
+							"aria-label",
+							`Open details for ${item.title || "product"}`,
+						);
+						card.addEventListener("click", (e) => {
+							e.preventDefault();
+							openStoreModal(item);
+						});
+						card.addEventListener("keydown", (e) => {
+							if (e.key === " ") {
+								e.preventDefault();
+								openStoreModal(item);
+							}
+						});
+
+						const img = document.createElement("div");
+						img.className = "portfolio-image";
+						if (images[0]) {
+							img.classList.add("portfolio-image--photo");
+							img.style.backgroundImage = `url('${encodeURI(images[0])}')`;
+							img.textContent = "";
+						} else {
+							img.textContent = "\u{1F6D2}";
+						}
+
+						const content = document.createElement("div");
+						content.className = "portfolio-content";
+
+						const h3 = document.createElement("h3");
+						h3.textContent = item.title || "Untitled";
+
+						const price = document.createElement("div");
+						price.className = "store-price";
+						price.textContent = item.price || "";
+						price.style.display = item.price ? "" : "none";
+
+						const p = document.createElement("p");
+						p.textContent = item.description || "";
+
+						const tagsWrap = document.createElement("div");
+						tagsWrap.className = "portfolio-tags";
+						for (const t of tags.slice(0, 3)) {
+							const tag = document.createElement("span");
+							tag.className = "portfolio-tag";
+							tag.textContent = t;
+							tagsWrap.appendChild(tag);
+						}
+
+						content.appendChild(h3);
+						content.appendChild(price);
+						content.appendChild(p);
+						content.appendChild(tagsWrap);
+
+						card.appendChild(img);
+						card.appendChild(content);
+						container.appendChild(card);
+					}
+				} catch (err) {
+					container.innerHTML = "";
+					const msg = document.createElement("div");
+					msg.style.color = "var(--muted)";
+					msg.style.fontSize = "14px";
+					msg.textContent = "Failed to load products.";
+					container.appendChild(msg);
+					console.error(err);
+				}
+			}
+
+			loadStore();
 		</script>
 	</body>
 </html>
