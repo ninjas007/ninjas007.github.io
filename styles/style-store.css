@@ -402,6 +402,17 @@
 				align-items: center;
 			}
 
+			.store-modal__slider.is-single {
+				grid-template-columns: 1fr;
+			}
+
+			.store-modal__tools {
+				display: flex;
+				gap: 12px;
+				flex-wrap: wrap;
+				margin-right: auto;
+			}
+
 			.store-modal__nav {
 				width: 44px;
 				height: 44px;
@@ -423,7 +434,7 @@
 
 			.store-modal__frame {
 				border-radius: 14px;
-				overflow: hidden;
+				overflow: auto;
 				border: 1px solid var(--panel-border);
 				background: rgba(0, 0, 0, 0.25);
 				aspect-ratio: 16 / 9;

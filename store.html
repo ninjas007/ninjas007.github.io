@@ -101,6 +101,32 @@
 			<div class="store-modal__dots" id="storeModalDots"></div>
 
 			<div class="store-modal__footer">
+				<div class="store-modal__tools" id="storeModalTools">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="storeModalZoomOut"
+						aria-label="Zoom out"
+					>
+						-
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="storeModalZoomIn"
+						aria-label="Zoom in"
+					>
+						+
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="storeModalZoomReset"
+						aria-label="Reset zoom"
+					>
+						Reset
+					</button>
+				</div>
 				<a
 					href="#"
 					class="btn btn-primary"
@@ -136,15 +162,55 @@
 			const storeModalCloseEl = document.getElementById("storeModalClose");
 			const storeModalClose2El = document.getElementById("storeModalClose2");
 			const storeModalOrderEl = document.getElementById("storeModalOrder");
+			const storeModalToolsEl = document.getElementById("storeModalTools");
+			const storeModalZoomOutEl = document.getElementById("storeModalZoomOut");
+			const storeModalZoomInEl = document.getElementById("storeModalZoomIn");
+			const storeModalZoomResetEl = document.getElementById("storeModalZoomReset");
+			const storeModalFrameEl = storeModalEl?.querySelector(".store-modal__frame");
+			const storeModalSliderEl = storeModalEl?.querySelector(".store-modal__slider");
 
 			const storeModalState = { item: null, images: [], index: 0, lastFocus: null };
 			const storeWhatsappNumber = "6281371458031";
+			let storeModalZoom = 1;
+
+			function storeModalApplyZoom(nextZoom, { resetScroll = false } = {}) {
+				const total = storeModalState.images.length;
+				if (total === 0) return;
+
+				const clamped = Math.min(4, Math.max(1, nextZoom));
+				storeModalZoom = Math.round(clamped * 100) / 100;
+
+				if (storeModalZoom === 1) {
+					storeModalImgEl.style.width = "100%";
+					storeModalImgEl.style.height = "100%";
+				} else {
+					storeModalImgEl.style.width = `${storeModalZoom * 100}%`;
+					storeModalImgEl.style.height = `${storeModalZoom * 100}%`;
+				}
+
+				if (resetScroll && storeModalFrameEl) {
+					storeModalFrameEl.scrollTop = 0;
+					storeModalFrameEl.scrollLeft = 0;
+				}
+			}
+
+			function storeModalUpdateChrome(total) {
+				const single = total <= 1;
+
+				storeModalPrevEl.style.display = single ? "none" : "";
+				storeModalNextEl.style.display = single ? "none" : "";
+				storeModalDotsEl.style.display = total > 1 ? "" : "none";
+				storeModalToolsEl.style.display = total > 0 ? "flex" : "none";
+				storeModalSliderEl?.classList.toggle("is-single", single);
+			}
 
 			function storeModalSetSlide(nextIndex) {
 				const total = storeModalState.images.length;
+				storeModalUpdateChrome(total);
 
 				if (total === 0) {
 					storeModalState.index = 0;
+					storeModalZoom = 1;
 					storeModalImgEl.style.display = "none";
 					storeModalImgEl.removeAttribute("src");
 					storeModalEmptyEl.style.display = "block";
@@ -159,6 +225,7 @@
 				storeModalEmptyEl.style.display = "none";
 				storeModalImgEl.style.display = "block";
 				storeModalImgEl.src = encodeURI(src);
+				storeModalApplyZoom(1, { resetScroll: true });
 				const title = storeModalState.item?.title || "Product";
 				storeModalImgEl.alt = `${title} image ${normalized + 1}`;
 
@@ -251,6 +318,27 @@
 					const el = storeModalState.lastFocus;
 					if (el && typeof el.focus === "function") el.focus();
 				});
+
+				storeModalZoomOutEl?.addEventListener("click", () =>
+					storeModalApplyZoom(storeModalZoom - 0.25),
+				);
+				storeModalZoomInEl?.addEventListener("click", () =>
+					storeModalApplyZoom(storeModalZoom + 0.25),
+				);
+				storeModalZoomResetEl?.addEventListener("click", () =>
+					storeModalApplyZoom(1, { resetScroll: true }),
+				);
+
+				storeModalFrameEl?.addEventListener(
+					"wheel",
+					(e) => {
+						if (!e.ctrlKey && !e.metaKey) return;
+						e.preventDefault();
+						const dir = e.deltaY > 0 ? -0.1 : 0.1;
+						storeModalApplyZoom(storeModalZoom + dir);
+					},
+					{ passive: false },
+				);
 			}
 
 			async function loadStore() {

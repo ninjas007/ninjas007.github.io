@@ -767,6 +767,32 @@
 			<div class="portfolio-modal__dots" id="portfolioModalDots"></div>
 
 			<div class="portfolio-modal__footer">
+				<div class="portfolio-modal__tools" id="portfolioModalTools">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="portfolioModalZoomOut"
+						aria-label="Zoom out"
+					>
+						-
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="portfolioModalZoomIn"
+						aria-label="Zoom in"
+					>
+						+
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="portfolioModalZoomReset"
+						aria-label="Reset zoom"
+					>
+						Reset
+					</button>
+				</div>
 				<a
 					href="#"
 					class="btn btn-primary"
@@ -830,6 +856,32 @@
 			<div class="store-modal__dots" id="storeModalDots"></div>
 
 			<div class="store-modal__footer">
+				<div class="store-modal__tools" id="storeModalTools">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="storeModalZoomOut"
+						aria-label="Zoom out"
+					>
+						-
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="storeModalZoomIn"
+						aria-label="Zoom in"
+					>
+						+
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="storeModalZoomReset"
+						aria-label="Reset zoom"
+					>
+						Reset
+					</button>
+				</div>
 				<a
 					href="#"
 					class="btn btn-primary"
@@ -1030,6 +1082,20 @@
 				document.getElementById("portfolioModalClose2");
 			const portfolioModalOpenLinkEl =
 				document.getElementById("portfolioModalOpenLink");
+			const portfolioModalToolsEl =
+				document.getElementById("portfolioModalTools");
+			const portfolioModalZoomOutEl =
+				document.getElementById("portfolioModalZoomOut");
+			const portfolioModalZoomInEl =
+				document.getElementById("portfolioModalZoomIn");
+			const portfolioModalZoomResetEl =
+				document.getElementById("portfolioModalZoomReset");
+			const portfolioModalFrameEl = portfolioModalEl?.querySelector(
+				".portfolio-modal__frame",
+			);
+			const portfolioModalSliderEl = portfolioModalEl?.querySelector(
+				".portfolio-modal__slider",
+			);
 
 			const portfolioModalState = {
 				item: null,
@@ -1038,12 +1104,49 @@
 				lastFocus: null,
 			};
 
+			let portfolioModalZoom = 1;
+
+			function portfolioModalApplyZoom(nextZoom, { resetScroll = false } = {}) {
+				if (!portfolioModalEl) return;
+				const total = portfolioModalState.images.length;
+				if (total === 0) return;
+
+				const clamped = Math.min(4, Math.max(1, nextZoom));
+				portfolioModalZoom = Math.round(clamped * 100) / 100;
+
+				if (portfolioModalZoom === 1) {
+					portfolioModalImgEl.style.width = "100%";
+					portfolioModalImgEl.style.height = "100%";
+				} else {
+					portfolioModalImgEl.style.width = `${portfolioModalZoom * 100}%`;
+					portfolioModalImgEl.style.height = `${portfolioModalZoom * 100}%`;
+				}
+
+				if (resetScroll && portfolioModalFrameEl) {
+					portfolioModalFrameEl.scrollTop = 0;
+					portfolioModalFrameEl.scrollLeft = 0;
+				}
+			}
+
+			function portfolioModalUpdateChrome(total) {
+				if (!portfolioModalEl) return;
+				const single = total <= 1;
+
+				portfolioModalPrevEl.style.display = single ? "none" : "";
+				portfolioModalNextEl.style.display = single ? "none" : "";
+				portfolioModalDotsEl.style.display = total > 1 ? "" : "none";
+				portfolioModalToolsEl.style.display = total > 0 ? "flex" : "none";
+				portfolioModalSliderEl?.classList.toggle("is-single", single);
+			}
+
 			function portfolioModalSetSlide(nextIndex) {
 				if (!portfolioModalEl) return;
 				const total = portfolioModalState.images.length;
+				portfolioModalUpdateChrome(total);
 
 				if (total === 0) {
 					portfolioModalState.index = 0;
+					portfolioModalZoom = 1;
 					portfolioModalImgEl.style.display = "none";
 					portfolioModalImgEl.removeAttribute("src");
 					portfolioModalEmptyEl.style.display = "block";
@@ -1058,6 +1161,7 @@
 				portfolioModalEmptyEl.style.display = "none";
 				portfolioModalImgEl.style.display = "block";
 				portfolioModalImgEl.src = encodeURI(src);
+				portfolioModalApplyZoom(1, { resetScroll: true });
 				const title = portfolioModalState.item?.title || "Portfolio";
 				portfolioModalImgEl.alt = `${title} image ${normalized + 1}`;
 
@@ -1162,6 +1266,27 @@
 					const el = portfolioModalState.lastFocus;
 					if (el && typeof el.focus === "function") el.focus();
 				});
+
+				portfolioModalZoomOutEl?.addEventListener("click", () =>
+					portfolioModalApplyZoom(portfolioModalZoom - 0.25),
+				);
+				portfolioModalZoomInEl?.addEventListener("click", () =>
+					portfolioModalApplyZoom(portfolioModalZoom + 0.25),
+				);
+				portfolioModalZoomResetEl?.addEventListener("click", () =>
+					portfolioModalApplyZoom(1, { resetScroll: true }),
+				);
+
+				portfolioModalFrameEl?.addEventListener(
+					"wheel",
+					(e) => {
+						if (!e.ctrlKey && !e.metaKey) return;
+						e.preventDefault();
+						const dir = e.deltaY > 0 ? -0.1 : 0.1;
+						portfolioModalApplyZoom(portfolioModalZoom + dir);
+					},
+					{ passive: false },
+				);
 			}
 
 			// Store modal + slider (Home)
@@ -1177,16 +1302,60 @@
 			const storeModalCloseEl = document.getElementById("storeModalClose");
 			const storeModalClose2El = document.getElementById("storeModalClose2");
 			const storeModalOrderEl = document.getElementById("storeModalOrder");
+			const storeModalToolsEl = document.getElementById("storeModalTools");
+			const storeModalZoomOutEl = document.getElementById("storeModalZoomOut");
+			const storeModalZoomInEl = document.getElementById("storeModalZoomIn");
+			const storeModalZoomResetEl =
+				document.getElementById("storeModalZoomReset");
+			const storeModalFrameEl = storeModalEl?.querySelector(".store-modal__frame");
+			const storeModalSliderEl =
+				storeModalEl?.querySelector(".store-modal__slider");
 
 			const storeModalState = { item: null, images: [], index: 0, lastFocus: null };
 			const storeWhatsappNumber = "6281371458031";
+			let storeModalZoom = 1;
+
+			function storeModalApplyZoom(nextZoom, { resetScroll = false } = {}) {
+				if (!storeModalEl) return;
+				const total = storeModalState.images.length;
+				if (total === 0) return;
+
+				const clamped = Math.min(4, Math.max(1, nextZoom));
+				storeModalZoom = Math.round(clamped * 100) / 100;
+
+				if (storeModalZoom === 1) {
+					storeModalImgEl.style.width = "100%";
+					storeModalImgEl.style.height = "100%";
+				} else {
+					storeModalImgEl.style.width = `${storeModalZoom * 100}%`;
+					storeModalImgEl.style.height = `${storeModalZoom * 100}%`;
+				}
+
+				if (resetScroll && storeModalFrameEl) {
+					storeModalFrameEl.scrollTop = 0;
+					storeModalFrameEl.scrollLeft = 0;
+				}
+			}
+
+			function storeModalUpdateChrome(total) {
+				if (!storeModalEl) return;
+				const single = total <= 1;
+
+				storeModalPrevEl.style.display = single ? "none" : "";
+				storeModalNextEl.style.display = single ? "none" : "";
+				storeModalDotsEl.style.display = total > 1 ? "" : "none";
+				storeModalToolsEl.style.display = total > 0 ? "flex" : "none";
+				storeModalSliderEl?.classList.toggle("is-single", single);
+			}
 
 			function storeModalSetSlide(nextIndex) {
 				if (!storeModalEl) return;
 				const total = storeModalState.images.length;
+				storeModalUpdateChrome(total);
 
 				if (total === 0) {
 					storeModalState.index = 0;
+					storeModalZoom = 1;
 					storeModalImgEl.style.display = "none";
 					storeModalImgEl.removeAttribute("src");
 					storeModalEmptyEl.style.display = "block";
@@ -1201,6 +1370,7 @@
 				storeModalEmptyEl.style.display = "none";
 				storeModalImgEl.style.display = "block";
 				storeModalImgEl.src = encodeURI(src);
+				storeModalApplyZoom(1, { resetScroll: true });
 				const title = storeModalState.item?.title || "Product";
 				storeModalImgEl.alt = `${title} image ${normalized + 1}`;
 
@@ -1294,6 +1464,27 @@
 					const el = storeModalState.lastFocus;
 					if (el && typeof el.focus === "function") el.focus();
 				});
+
+				storeModalZoomOutEl?.addEventListener("click", () =>
+					storeModalApplyZoom(storeModalZoom - 0.25),
+				);
+				storeModalZoomInEl?.addEventListener("click", () =>
+					storeModalApplyZoom(storeModalZoom + 0.25),
+				);
+				storeModalZoomResetEl?.addEventListener("click", () =>
+					storeModalApplyZoom(1, { resetScroll: true }),
+				);
+
+				storeModalFrameEl?.addEventListener(
+					"wheel",
+					(e) => {
+						if (!e.ctrlKey && !e.metaKey) return;
+						e.preventDefault();
+						const dir = e.deltaY > 0 ? -0.1 : 0.1;
+						storeModalApplyZoom(storeModalZoom + dir);
+					},
+					{ passive: false },
+				);
 			}
 
 			async function loadHomeStore() {
