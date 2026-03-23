@@ -748,7 +748,6 @@
 			<ul class="navbar-menu">
 				<li><a href="#about">About</a></li>
 				<li><a href="#portfolio">Portfolio</a></li>
-				<li><a href="#certificate">Certificate</a></li>
 				<li><a href="#store">Store</a></li>
 				<li><a href="#cv">CV</a></li>
 				<li><a href="#contact">Contact</a></li>
@@ -762,7 +761,7 @@
 				<div class="hero-content">
 					<h1>Tilis Tiadi</h1>
 					<p>
-						Website developer from Kendari, Indonesia and currently
+						Software developer from Kendari, Indonesia and currently
 						resides in Bantul, Yogyakarta.
 					</p>
 					<div class="hero-buttons">
@@ -797,7 +796,7 @@
 						<div class="about-split">
 							<div>
 								<p style="font-style: italic; text-align: left">
-									"Website developer from Kendari, Indonesia
+									"Software developer from Kendari, Indonesia
 									and currently resides in Bantul, Yogyakarta.
 									I always give my best effort to every given
 									project. I also feel responsible for every
@@ -1041,62 +1040,6 @@
 				</div>
 			</section>
 
-			<!-- Certificate Section -->
-			<section class="section" id="certificate">
-				<div class="section-title-wrapper">
-					<h2 class="section-title">Certificate</h2>
-				</div>
-				<div class="cv-main" style="display: grid; gap: 18px">
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Bootcamp NestJS.pdf"
-								target="_blank"
-								rel="noreferrer"
-								style="color: inherit; text-decoration: none"
-								>Bootcamp NestJS</a
-							>
-						</div>
-						<div class="experience-company">Certificate</div>
-						<div class="experience-date"></div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Hacktiv8%20Trial%20Class%20JavaScript%202.0.pdf"
-								target="_blank"
-								rel="noreferrer"
-								style="color: inherit; text-decoration: none"
-								>Hacktiv8 Trial Class JavaScript 2.0</a
-							>
-						</div>
-						<div class="experience-company">Certificate</div>
-						<div class="experience-date"></div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Sertifikat%20-%20Tilis%20Tiadi.pdf"
-								target="_blank"
-								rel="noreferrer"
-								style="color: inherit; text-decoration: none"
-								>Web Penetration Testing</a
-							>
-						</div>
-						<div class="experience-company">Certificate</div>
-						<div class="experience-date"></div>
-					</div>
-				</div>
-				<div
-					class="hero-buttons"
-					style="justify-content: flex-start; margin-top: 22px"
-				>
-					<a href="certificate.html" class="btn btn-secondary"
-						>View All Certificates</a
-					>
-				</div>
-			</section>
-
 			<!-- Store Section -->
 			<section class="section" id="store">
 				<div class="section-title-wrapper">
@@ -1179,21 +1122,23 @@
 						<!-- Certifications -->
 						<div class="cv-section">
 							<h4>Certifications</h4>
-							<div class="cv-item">
-								<div class="cv-item-title">Bootcamp NestJS</div>
-								<div class="cv-item-subtitle">Certificate</div>
-							</div>
-							<div class="cv-item">
-								<div class="cv-item-title">
-									Web Penetration Testing
+							<div id="sidebarCertList" aria-live="polite">
+								<div
+									class="cv-item"
+									style="border-bottom: none; padding-bottom: 0; margin-bottom: 0"
+								>
+									<div class="cv-item-subtitle">
+										Loading...
+									</div>
 								</div>
-								<div class="cv-item-subtitle">Certificate</div>
 							</div>
-							<div class="cv-item">
-								<div class="cv-item-title">
-									Introduction to Figma
-								</div>
-								<div class="cv-item-subtitle">Certificate</div>
+							<div style="margin-top: 14px">
+								<a
+									href="certificate.html"
+									class="btn btn-secondary"
+									style="padding: 10px 14px; font-size: 12px"
+									>View All Certificates</a
+								>
 							</div>
 						</div>
 
@@ -1749,6 +1694,66 @@
 			}
 
 			loadRecentPosts();
+
+			async function loadSidebarCertificates() {
+				const container = document.getElementById("sidebarCertList");
+				if (!container) return;
+
+				try {
+					const res = await fetch("data/certificate.json", {
+						cache: "no-store",
+					});
+					if (!res.ok) throw new Error("Failed to fetch certificate.json");
+					const items = await res.json();
+
+					container.innerHTML = "";
+					for (const item of (items || []).slice(0, 3)) {
+						const url = item.url || "#";
+						const type = (item.type || "").toUpperCase() || "FILE";
+
+						const wrap = document.createElement("div");
+						wrap.className = "cv-item";
+
+						const title = document.createElement("div");
+						title.className = "cv-item-title";
+
+						const link = document.createElement("a");
+						link.href = encodeURI(url);
+						link.target = "_blank";
+						link.rel = "noreferrer";
+						link.style.color = "inherit";
+						link.style.textDecoration = "none";
+						link.textContent = item.title || url;
+
+						title.appendChild(link);
+
+						const sub = document.createElement("div");
+						sub.className = "cv-item-subtitle";
+						sub.textContent = type;
+
+						wrap.appendChild(title);
+						wrap.appendChild(sub);
+						container.appendChild(wrap);
+					}
+				} catch (err) {
+					container.innerHTML = "";
+					const fallback = document.createElement("div");
+					fallback.className = "cv-item";
+					fallback.style.borderBottom = "none";
+					fallback.style.paddingBottom = "0";
+					fallback.style.marginBottom = "0";
+
+					const sub = document.createElement("div");
+					sub.className = "cv-item-subtitle";
+					sub.textContent = "Failed to load certificates.";
+
+					fallback.appendChild(sub);
+					container.appendChild(fallback);
+					console.error(err);
+				}
+			}
+
+			loadSidebarCertificates();
 		</script>
 	</body>
 </html>

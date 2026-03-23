@@ -334,131 +334,9 @@
 					<h2 class="section-title">Certificate</h2>
 				</div>
 
-				<div class="cv-main">
-					<div class="experience-card">
-						<div class="experience-title">
-							<a href="certificate/Bootcamp%20NestJS.pdf" target="_blank" rel="noreferrer"
-								>Bootcamp NestJS</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a href="certificate/introduction-to-figma.pdf" target="_blank" rel="noreferrer"
-								>Introduction to Figma</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a href="certificate/Chat%20GPT.pdf" target="_blank" rel="noreferrer"
-								>Maximizing the use of ChatGPT</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Create%20Amazing%20Website%20with%20React%20JS.pdf"
-								target="_blank"
-								rel="noreferrer"
-								>Create Amazing Website with React JS</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a href="certificate/Function%20Golang.pdf" target="_blank" rel="noreferrer"
-								>Function On Golang</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Hacktiv8%20Trial%20Class%20JavaScript%202.0.pdf"
-								target="_blank"
-								rel="noreferrer"
-								>Hacktiv8 Trial Class JavaScript 2.0</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a href="certificate/Web%20Developer.jpg" target="_blank" rel="noreferrer"
-								>Web Fundamental</a
-							>
-						</div>
-						<div class="experience-company">JPG</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a href="certificate/Pemograman%20Dart.pdf" target="_blank" rel="noreferrer"
-								>Pemograman Dart</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Belajar%20Membuat%20Aplikasi%20Flutter%20Pemula.pdf"
-								target="_blank"
-								rel="noreferrer"
-								>Belajar Membuat Aplikasi Flutter Pemula</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/English%20-%20Part%20of%20Speech.pdf"
-								target="_blank"
-								rel="noreferrer"
-								>English - Part of Speech</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/English%20-%20Type%20of%20Verb.pdf"
-								target="_blank"
-								rel="noreferrer"
-								>English - Type of Verb</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Laravel%20Docker%20%26%20Laravel%20Sail.pdf"
-								target="_blank"
-								rel="noreferrer"
-								>Laravel Docker & Laravel Sail</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
-					</div>
-					<div class="experience-card">
-						<div class="experience-title">
-							<a
-								href="certificate/Sertifikat%20-%20Tilis%20Tiadi.pdf"
-								target="_blank"
-								rel="noreferrer"
-								>Web Penetration Testing</a
-							>
-						</div>
-						<div class="experience-company">PDF</div>
+				<div class="cv-main" id="certList" aria-live="polite">
+					<div style="color: var(--muted); font-size: 14px">
+						Loading...
 					</div>
 				</div>
 			</section>
@@ -471,6 +349,57 @@
 					const menu = document.querySelector(".navbar-menu");
 					menu.classList.toggle("open");
 				});
+
+			async function loadCertificates() {
+				const container = document.getElementById("certList");
+				if (!container) return;
+
+				try {
+					const res = await fetch("data/certificate.json", {
+						cache: "no-store",
+					});
+					if (!res.ok) throw new Error("Failed to fetch certificate.json");
+					const items = await res.json();
+
+					container.innerHTML = "";
+					for (const item of items || []) {
+						const url = item.url || "#";
+						const type = (item.type || "").toUpperCase() || "FILE";
+
+						const card = document.createElement("div");
+						card.className = "experience-card";
+
+						const titleWrap = document.createElement("div");
+						titleWrap.className = "experience-title";
+
+						const link = document.createElement("a");
+						link.href = encodeURI(url);
+						link.target = "_blank";
+						link.rel = "noreferrer";
+						link.textContent = item.title || url;
+
+						titleWrap.appendChild(link);
+
+						const meta = document.createElement("div");
+						meta.className = "experience-company";
+						meta.textContent = type;
+
+						card.appendChild(titleWrap);
+						card.appendChild(meta);
+						container.appendChild(card);
+					}
+				} catch (err) {
+					container.innerHTML = "";
+					const msg = document.createElement("div");
+					msg.style.color = "var(--muted)";
+					msg.style.fontSize = "14px";
+					msg.textContent = "Failed to load certificates.";
+					container.appendChild(msg);
+					console.error(err);
+				}
+			}
+
+			loadCertificates();
 		</script>
 	</body>
 </html>

@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "title": "Bootcamp NestJS",
+        "url": "certificate/Bootcamp NestJS.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 2,
+        "title": "Introduction to Figma",
+        "url": "certificate/introduction-to-figma.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 3,
+        "title": "Maximizing the use of ChatGPT",
+        "url": "certificate/Chat GPT.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 4,
+        "title": "Create Amazing Website with React JS",
+        "url": "certificate/Create Amazing Website with React JS.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 5,
+        "title": "Function On Golang",
+        "url": "certificate/Function Golang.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 6,
+        "title": "Hacktiv8 Trial Class JavaScript 2.0",
+        "url": "certificate/Hacktiv8 Trial Class JavaScript 2.0.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 7,
+        "title": "Web Fundamental",
+        "url": "certificate/Web Developer.jpg",
+        "type": "jpg"
+    },
+    {
+        "id": 8,
+        "title": "Pemograman Dart",
+        "url": "certificate/Pemograman Dart.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 9,
+        "title": "Belajar Membuat Aplikasi Flutter Pemula",
+        "url": "certificate/Belajar Membuat Aplikasi Flutter Pemula.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 10,
+        "title": "English - Part of Speech",
+        "url": "certificate/English - Part of Speech.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 11,
+        "title": "English - Type of Verb",
+        "url": "certificate/English - Type of Verb.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 12,
+        "title": "Laravel Docker & Laravel Sail",
+        "url": "certificate/Laravel Docker & Laravel Sail.pdf",
+        "type": "pdf"
+    },
+    {
+        "id": 13,
+        "title": "Web Penetration Testing",
+        "url": "certificate/Sertifikat - Tilis Tiadi.pdf",
+        "type": "pdf"
+    }
+]
+
