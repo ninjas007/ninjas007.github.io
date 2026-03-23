@@ -1,0 +1,10 @@
+# Setup Laravel Clone On Mac
+
+```
+### CASE NOT USING MAMP
+
+https://kinsta.com/blog/install-php/#how-to-install-php-on-macos
+https://www.chrissy.dev/notes/install-composer-globally-on-mac-os/
+https://www.markhesketh.com/switching-multiple-php-versions-on-macos/
+https://stackoverflow.com/questions/69555525/error-while-doing-brew-tap-exolnet-homebrew-deprecated
+```

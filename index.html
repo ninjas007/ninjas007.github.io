@@ -1,148 +1,1754 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Web Profile</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PROFILE</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		<style>
+			:root {
+				--bg-0: #0b0f16;
+				--bg-1: #0f1523;
+				--bg-2: #141b2b;
+				--accent-red: #e74c3c;
+				--accent-blue: #3498db;
+				--accent-gold: #ffd24d;
+				--text: #e8edf7;
+				--muted: #9aa6c5;
+				--panel: #0f1726;
+				--panel-border: rgba(255, 255, 255, 0.08);
+			}
 
-    <!-- Start MDBootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
-    <!-- End MDBootstrap -->
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
 
-    <link rel="stylesheet" href="style.css">
-</head>
+			body {
+				font-family: "Rajdhani", sans-serif;
+				color: var(--text);
+				background:
+					radial-gradient(
+						circle at 20% 10%,
+						rgba(255, 255, 255, 0.06),
+						transparent 45%
+					),
+					radial-gradient(
+						circle at 85% 30%,
+						rgba(52, 152, 219, 0.12),
+						transparent 45%
+					),
+					linear-gradient(
+						180deg,
+						var(--bg-0),
+						var(--bg-1) 55%,
+						var(--bg-2)
+					);
+				min-height: 100vh;
+				overflow-x: hidden;
+			}
 
-<body>
-    <div id="wrapper">
-        <div class="body-wrap mb-3">
-            <div class="body">
-                <div class="body-header">
-                    <div class="body-header-content">
-                        PROFILE
-                    </div>
-                </div>
-                <div class="body-content p-2 bg-white text-muted">
-                    <div class="row mt-5">
-                        <div class="col-md-12 d-flex justify-content-center mb-4">
-                            <h4 class="line">ABOUT ME</h4>
-                        </div>
-                        <div class="col-md-12 mb-3 d-flex justify-content-center">
-                            <img src="images/profile.png" class="img-fluid" width="100px" alt="">
-                        </div>
-                        <div class="col-md-12 mb-3 d-flex justify-content-center">
-                            <p style="font-style: italic; padding: 0px 10px; text-align: center;">"Website developer from Kendari, Indonesia and currently resides in Bantul, Yogyakarta. I always give my best effort to every given project. I also feel responsible for every task"</p>
-                        </div>
-                        <table style="width: 100%;" id="tableProfile">
-                            <tr>
-                                <td width="4%">&nbsp;</td>
-                                <td width="25%"><i class="fa fa-user"></i> Name</td>
-                                <td style="padding-left: 10px" class="text-right">Tilis Tiadi</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td><i class="fa fa-phone"></i> Phone</td>
-                                <td style="padding-left: 10px" class="text-right">+62 823-8909-7065</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td><i class="fa fa-pencil"></i> Email</td>
-                                <td style="padding-left: 10px" class="text-right">tilistiadi03@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td><i class="fa fa-map-marker"></i> Address</td>
-                                <td style="padding-left: 10px" class="text-right">Bantul City, DI Yogyakarta, Indonesia
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-md-12 d-flex justify-content-center mb-4">
-                            <h4 class="line">EDUCATION</h4>
-                        </div>
-                        <div class="col-md-12">
-                            <ul class="list-group list-group-light" style="margin: 0px 15px">
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-1 px-2">
-                                            <i class="fa fa-laptop-code" style="font-size: 25px"></i>
-                                        </div>
-                                        <div class="col-10 pl-2">
-                                            <div class="h5">IT Community / Pondok Programmer</div>
-                                            <div class="miring text-muted mb-1">2018 - 2020</div>
-                                            <p class="miring text-muted">Yogyakarta, DI Yogyakarta, Indonesia</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-1 px-2">
-                                            <i class="fa fa-user-graduate" style="font-size: 25px"></i>
-                                        </div>
-                                        <div class="col-10 pl-2">
-                                            <div class="h5">Senior High School / SMK Negeri 4</div>
-                                            <div class="miring text-muted mb-1">2008 - 2011</div>
-                                            <div class="miring text-muted mb-1">Computer and Network Engineering</div>
-                                            <p class="miring text-muted">Kendari, South East Sulawesi, Indonesia</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-1 px-2">
-                                            <i class="fa fa-school" style="font-size: 25px"></i>
-                                        </div>
-                                        <div class="col-10 pl-2">
-                                            <div class="h5">Junior High School / SMP Negeri 10</div>
-                                            <div class="miring text-muted mb-1">2005 - 2008</div>
-                                            <p class="miring text-muted">Kendari, South East Sulawesi, Indonesia</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-1 px-2">
-                                            <i class="fa fa-book-open" style="font-size: 25px"></i>
-                                        </div>
-                                        <div class="col-10 pl-2">
-                                            <div class="h5">Elementary School / SD Negeri 2 Baruga</div>
-                                            <div class="miring text-muted mb-1">1999 - 2005</div>
-                                            <p class="miring text-muted">Kendari, South East Sulawesi, Indonesia</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row mt-5" style="margin-bottom: 100px">
-                        <div class="col-md-12 d-flex justify-content-center">
-                            <a href="Curicullum_Vitae.pdf" target="_blank">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-download"></i> Download CV</button>
-                            </a>
-                        <div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar-wrap">
-            <div class="menubar-footer">
-                
-            </div>
-        </nav>
-    </div>
+			.navbar {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				background: rgba(11, 15, 22, 0.95);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				z-index: 1000;
+				padding: 16px 24px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-</body>
+			.navbar-brand {
+				font-family: "Oswald", sans-serif;
+				font-size: 20px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				color: var(--accent-gold);
+				text-transform: uppercase;
+			}
 
+			.navbar-menu {
+				display: flex;
+				gap: 30px;
+				list-style: none;
+			}
+
+			.menu-toggle {
+				display: none;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 25px;
+				height: 20px;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 0;
+			}
+
+			.menu-toggle span {
+				display: block;
+				height: 3px;
+				background: var(--text);
+				border-radius: 3px;
+			}
+
+			.navbar-menu a {
+				color: var(--text);
+				text-decoration: none;
+				font-size: 14px;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				position: relative;
+				transition: color 0.3s ease;
+			}
+
+			.navbar-menu a:hover {
+				color: var(--accent-blue);
+			}
+
+			.navbar-menu a::after {
+				content: "";
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: linear-gradient(
+					90deg,
+					var(--accent-blue),
+					var(--accent-gold)
+				);
+				transition: width 0.3s ease;
+			}
+
+			.navbar-menu a:hover::after {
+				width: 100%;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 100px 24px 40px;
+			}
+
+			/* Hero Section */
+			.hero {
+				text-align: center;
+				padding: 60px 0;
+				margin-bottom: 80px;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.hero::before {
+				content: "";
+				position: absolute;
+				top: -50%;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 600px;
+				height: 600px;
+				background: radial-gradient(
+					circle,
+					rgba(52, 152, 219, 0.15),
+					transparent 70%
+				);
+				pointer-events: none;
+				animation: float 6s ease-in-out infinite;
+			}
+
+			@keyframes float {
+				0%,
+				100% {
+					transform: translateX(-50%) translateY(0);
+				}
+				50% {
+					transform: translateX(-50%) translateY(20px);
+				}
+			}
+
+			.hero-content {
+				position: relative;
+				z-index: 1;
+			}
+
+			.hero h1 {
+				font-family: "Oswald", sans-serif;
+				font-size: 56px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 16px;
+				background: linear-gradient(
+					135deg,
+					var(--accent-gold),
+					var(--accent-blue)
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				animation: slideInDown 0.8s ease;
+			}
+
+			@keyframes slideInDown {
+				from {
+					opacity: 0;
+					transform: translateY(-30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.hero p {
+				font-size: 18px;
+				color: var(--muted);
+				letter-spacing: 0.03em;
+				margin-bottom: 24px;
+				animation: slideInUp 0.8s ease 0.2s backwards;
+			}
+
+			@keyframes slideInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.hero-buttons {
+				display: flex;
+				gap: 16px;
+				justify-content: center;
+				flex-wrap: wrap;
+				animation: slideInUp 0.8s ease 0.4s backwards;
+			}
+
+			.btn {
+				padding: 14px 32px;
+				border-radius: 8px;
+				border: none;
+				font-family: "Oswald", sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-size: 14px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.btn-primary {
+				background: linear-gradient(
+					135deg,
+					var(--accent-blue),
+					#2980b9
+				);
+				color: white;
+				border: 1px solid var(--accent-blue);
+				box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+			}
+
+			.btn-primary:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
+			}
+
+			.btn-secondary {
+				background: transparent;
+				color: var(--accent-gold);
+				border: 2px solid var(--accent-gold);
+			}
+
+			.btn-secondary:hover {
+				background: var(--accent-gold);
+				color: var(--bg-0);
+				transform: translateY(-2px);
+			}
+
+			/* Section Styles */
+			.section {
+				margin-bottom: 80px;
+			}
+
+			.section-title {
+				font-family: "Oswald", sans-serif;
+				font-size: 36px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 40px;
+				position: relative;
+				display: inline-block;
+			}
+
+			.section-title::after {
+				content: "";
+				position: absolute;
+				bottom: -12px;
+				left: 0;
+				width: 60%;
+				height: 3px;
+				background: linear-gradient(
+					90deg,
+					var(--accent-red),
+					transparent
+				);
+				border-radius: 2px;
+			}
+
+			/* About Me Section */
+			.about-content {
+				display: grid;
+				grid-template-columns: 140px 1fr;
+				gap: 32px;
+				align-items: start;
+			}
+
+			.about-text h3 {
+				font-family: "Oswald", sans-serif;
+				font-size: 24px;
+				margin-bottom: 16px;
+				color: var(--accent-gold);
+			}
+
+			.about-text p {
+				color: var(--muted);
+				line-height: 1.8;
+				margin-bottom: 16px;
+				font-size: 15px;
+			}
+
+			.about-header-row {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 24px;
+				align-items: end;
+			}
+
+			.about-heading {
+				margin-bottom: 8px;
+			}
+
+			.about-split {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 24px;
+				margin-top: 6px;
+			}
+
+			.skills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				margin-top: 24px;
+			}
+
+			.about-split .skills {
+				margin-top: 0;
+			}
+
+			.skill-tag {
+				padding: 8px 16px;
+				background: rgba(52, 152, 219, 0.2);
+				border: 1px solid var(--accent-blue);
+				border-radius: 20px;
+				color: var(--accent-blue);
+				font-size: 13px;
+				letter-spacing: 0.05em;
+				transition: all 0.3s ease;
+			}
+
+			.skill-tag:hover {
+				background: var(--accent-blue);
+				color: white;
+				transform: translateY(-3px);
+				box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+			}
+
+			.about-image {
+				display: flex;
+				align-items: flex-start;
+				justify-content: center;
+			}
+
+			.about-image img {
+				width: 120px;
+				height: 120px;
+				object-fit: cover;
+				border-radius: 999px;
+				border: 2px solid var(--panel-border);
+				box-shadow:
+					0 12px 28px rgba(0, 0, 0, 0.35),
+					0 0 0 4px rgba(52, 152, 219, 0.14);
+			}
+
+			/* Portfolio Section */
+			.portfolio-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 24px;
+				margin-top: 40px;
+			}
+
+			.portfolio-card {
+				background: var(--panel);
+				border: 1px solid var(--panel-border);
+				border-radius: 8px;
+				overflow: hidden;
+				transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+				cursor: pointer;
+				position: relative;
+				height: 350px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.portfolio-card:hover {
+				transform: translateY(-10px);
+				border-color: var(--accent-blue);
+				box-shadow: 0 20px 40px rgba(52, 152, 219, 0.3);
+			}
+
+			.portfolio-image {
+				width: 100%;
+				height: 200px;
+				background: linear-gradient(
+					135deg,
+					rgba(52, 152, 219, 0.2),
+					rgba(231, 76, 60, 0.2)
+				);
+				position: relative;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 48px;
+			}
+
+			.portfolio-image::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(
+					45deg,
+					transparent 30%,
+					rgba(255, 255, 255, 0.1) 50%,
+					transparent 70%
+				);
+				transform: translateX(-100%);
+				animation: shimmer 2s infinite;
+			}
+
+			@keyframes shimmer {
+				0% {
+					transform: translateX(-100%);
+				}
+				100% {
+					transform: translateX(100%);
+				}
+			}
+
+			.portfolio-content {
+				padding: 20px;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.portfolio-content h3 {
+				font-family: "Oswald", sans-serif;
+				font-size: 18px;
+				margin-bottom: 8px;
+				color: var(--accent-gold);
+			}
+
+			.portfolio-content p {
+				color: var(--muted);
+				font-size: 14px;
+				line-height: 1.6;
+				flex: 1;
+				margin-bottom: 12px;
+			}
+
+			.portfolio-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.portfolio-tag {
+				padding: 4px 10px;
+				background: rgba(255, 255, 255, 0.08);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				border-radius: 4px;
+				font-size: 12px;
+				color: var(--muted);
+			}
+
+			/* CV Section */
+			.cv-container {
+				display: grid;
+				grid-template-columns: 1fr 2fr;
+				gap: 32px;
+			}
+
+			.cv-sidebar {
+				display: flex;
+				flex-direction: column;
+				gap: 24px;
+			}
+
+			.cv-section {
+				background: var(--panel);
+				border: 1px solid var(--panel-border);
+				border-radius: 8px;
+				padding: 20px;
+				transition: all 0.3s ease;
+			}
+
+			.cv-section:hover {
+				border-color: var(--accent-blue);
+				transform: translateX(4px);
+			}
+
+			.cv-section h4 {
+				font-family: "Oswald", sans-serif;
+				font-size: 14px;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				margin-bottom: 12px;
+				color: var(--accent-blue);
+			}
+
+			.cv-item {
+				margin-bottom: 12px;
+				padding-bottom: 12px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.cv-item:last-child {
+				margin-bottom: 0;
+				padding-bottom: 0;
+				border-bottom: none;
+			}
+
+			.cv-item-title {
+				color: var(--text);
+				font-weight: 600;
+				font-size: 14px;
+				margin-bottom: 4px;
+			}
+
+			.cv-item-subtitle {
+				color: var(--muted);
+				font-size: 13px;
+			}
+
+			.cv-main {
+				display: flex;
+				flex-direction: column;
+				gap: 24px;
+			}
+
+			.experience-card {
+				background: var(--panel);
+				border: 1px solid var(--panel-border);
+				border-radius: 8px;
+				padding: 24px;
+				position: relative;
+				overflow: hidden;
+				transition: all 0.3s ease;
+			}
+
+			.experience-card::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 4px;
+				height: 100%;
+				background: linear-gradient(
+					180deg,
+					var(--accent-blue),
+					var(--accent-gold)
+				);
+				transform: scaleY(0);
+				transform-origin: top;
+				transition: transform 0.3s ease;
+			}
+
+			.experience-card:hover {
+				border-color: var(--accent-blue);
+				transform: translateX(8px);
+			}
+
+			.experience-card:hover::before {
+				transform: scaleY(1);
+			}
+
+			.experience-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: start;
+				margin-bottom: 12px;
+			}
+
+			.experience-title {
+				font-family: "Oswald", sans-serif;
+				font-size: 18px;
+				font-weight: 600;
+				color: var(--accent-gold);
+			}
+
+			.experience-date {
+				color: var(--muted);
+				font-size: 13px;
+				letter-spacing: 0.05em;
+			}
+
+			.experience-company {
+				color: var(--accent-blue);
+				font-size: 14px;
+				margin-bottom: 12px;
+				font-weight: 600;
+			}
+
+			.experience-description {
+				color: var(--muted);
+				font-size: 14px;
+				line-height: 1.6;
+				margin-bottom: 12px;
+			}
+
+			.experience-methods {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.method-tag {
+				padding: 4px 10px;
+				background: rgba(231, 76, 60, 0.15);
+				border: 1px solid rgba(231, 76, 60, 0.3);
+				border-radius: 4px;
+				font-size: 12px;
+				color: var(--accent-red);
+			}
+
+			/* Responsive */
+			@media (max-width: 768px) {
+				.menu-toggle {
+					display: flex;
+				}
+
+				.navbar {
+					padding: 14px 16px;
+				}
+
+				.navbar-menu {
+					position: absolute;
+					top: 60px;
+					left: 0;
+					width: 100%;
+					flex-direction: column;
+					align-items: center;
+					gap: 12px;
+					background: rgba(11, 15, 22, 0.96);
+					padding: 12px 0;
+					border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+					border-top: 1px solid rgba(255, 255, 255, 0.08);
+					backdrop-filter: blur(5px);
+					transform: translateY(-10px);
+					opacity: 0;
+					pointer-events: none;
+					transition:
+						opacity 0.3s ease,
+						transform 0.3s ease;
+				}
+
+				.navbar-menu.open {
+					transform: translateY(0);
+					opacity: 1;
+					pointer-events: auto;
+				}
+
+				.navbar-menu li {
+					width: 100%;
+					text-align: center;
+				}
+
+				.navbar-menu a {
+					width: 100%;
+					display: inline-block;
+					padding: 10px 0;
+				}
+
+				.hero h1 {
+					font-size: 36px;
+				}
+
+				.about-content,
+				.cv-container {
+					grid-template-columns: 1fr;
+				}
+
+				.about-split {
+					grid-template-columns: 1fr;
+				}
+
+				.about-header-row {
+					grid-template-columns: 1fr;
+				}
+
+				.about-image {
+					justify-content: center;
+				}
+
+				.portfolio-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.section-title {
+					font-size: 28px;
+				}
+			}
+
+			.section-title-wrapper {
+				margin-bottom: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Navigation Bar -->
+		<nav class="navbar">
+			<div class="navbar-brand">Profile</div>
+			<button class="menu-toggle" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="navbar-menu">
+				<li><a href="#about">About</a></li>
+				<li><a href="#portfolio">Portfolio</a></li>
+				<li><a href="#certificate">Certificate</a></li>
+				<li><a href="#store">Store</a></li>
+				<li><a href="#cv">CV</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main Container -->
+		<div class="container">
+			<!-- Hero Section -->
+			<section class="hero">
+				<div class="hero-content">
+					<h1>Tilis Tiadi</h1>
+					<p>
+						Website developer from Kendari, Indonesia and currently
+						resides in Bantul, Yogyakarta.
+					</p>
+					<div class="hero-buttons">
+						<a
+							href="Curicullum_Vitae.pdf"
+							target="_blank"
+							class="btn btn-primary"
+							>Download CV</a
+						>
+						<a href="#contact" class="btn btn-secondary"
+							>Get In Touch</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- About Me Section -->
+			<section class="section" id="about">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">About Me</h2>
+				</div>
+				<div class="about-content">
+					<div class="about-image">
+						<img src="images/profile.png" alt="Tilis Tiadi" />
+					</div>
+					<div class="about-text">
+						<div class="about-header-row">
+							<h3 class="about-heading">Who I Am</h3>
+							<h3 class="about-heading">Skills</h3>
+						</div>
+
+						<div class="about-split">
+							<div>
+								<p style="font-style: italic; text-align: left">
+									"Website developer from Kendari, Indonesia
+									and currently resides in Bantul, Yogyakarta.
+									I always give my best effort to every given
+									project. I also feel responsible for every
+									task"
+								</p>
+
+								<table
+									style="
+										width: 100%;
+										border-collapse: collapse;
+									"
+								>
+									<tr>
+										<td
+											style="
+												padding: 6px 0;
+												color: var(--muted);
+												width: 32%;
+											"
+										>
+											Name
+										</td>
+										<td
+											style="
+												padding: 6px 0;
+												text-align: right;
+											"
+										>
+											Tilis Tiadi
+										</td>
+									</tr>
+									<tr>
+										<td
+											style="
+												padding: 6px 0;
+												color: var(--muted);
+											"
+										>
+											Phone
+										</td>
+										<td
+											style="
+												padding: 6px 0;
+												text-align: right;
+											"
+										>
+											+62 823-8909-7065
+										</td>
+									</tr>
+									<tr>
+										<td
+											style="
+												padding: 6px 0;
+												color: var(--muted);
+											"
+										>
+											Email
+										</td>
+										<td
+											style="
+												padding: 6px 0;
+												text-align: right;
+											"
+										>
+											tilistiadi03@gmail.com
+										</td>
+									</tr>
+									<tr>
+										<td
+											style="
+												padding: 6px 0;
+												color: var(--muted);
+											"
+										>
+											Address
+										</td>
+										<td
+											style="
+												padding: 6px 0;
+												text-align: right;
+											"
+										>
+											Bantul City, DI Yogyakarta,
+											Indonesia
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div>
+								<div class="skills">
+									<span class="skill-tag">HTML & CSS</span>
+									<span class="skill-tag">Bootstrap</span>
+									<span class="skill-tag">Tailwind</span>
+									<span class="skill-tag">JavaScript</span>
+									<span class="skill-tag">Express.js</span>
+									<span class="skill-tag">PHP</span>
+									<span class="skill-tag">Laravel</span>
+									<span class="skill-tag">Codeigniter</span>
+									<span class="skill-tag">.NET Core</span>
+									<span class="skill-tag">Node.js</span>
+									<span class="skill-tag">Express JS</span>
+									<span class="skill-tag">NestJS</span>
+									<span class="skill-tag">MQTT</span>
+									<span class="skill-tag">REST API</span>
+									<span class="skill-tag">SQL Server</span>
+									<span class="skill-tag">PostgreSQL</span>
+									<span class="skill-tag">MySQL</span>
+									<span class="skill-tag">Git</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Portfolio Section -->
+			<section class="section" id="portfolio">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Portfolio</h2>
+				</div>
+				<div class="portfolio-grid">
+					<a
+						class="portfolio-card"
+						href="Portofolio.pdf"
+						target="_blank"
+						style="text-decoration: none; color: inherit"
+					>
+						<div class="portfolio-image">📄</div>
+						<div class="portfolio-content">
+							<h3>Portofolio (PDF)</h3>
+							<p>
+								Download my portfolio in PDF format (projects,
+								screenshots, and highlights).
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">PDF</span>
+								<span class="portfolio-tag">Projects</span>
+								<span class="portfolio-tag">Highlights</span>
+							</div>
+						</div>
+					</a>
+
+					<a
+						class="portfolio-card"
+						href="resume.html"
+						style="text-decoration: none; color: inherit"
+					>
+						<div class="portfolio-image">🧾</div>
+						<div class="portfolio-content">
+							<h3>Resume</h3>
+							<p>
+								Work experience, skills, and downloadable
+								portfolio.
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">Experience</span>
+								<span class="portfolio-tag">Skills</span>
+							</div>
+						</div>
+					</a>
+
+					<a
+						class="portfolio-card"
+						href="certificate.html"
+						style="text-decoration: none; color: inherit"
+					>
+						<div class="portfolio-image">🏅</div>
+						<div class="portfolio-content">
+							<h3>Certificates</h3>
+							<p>
+								List of certificates and training documents I've
+								completed.
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">Training</span>
+								<span class="portfolio-tag">Learning</span>
+							</div>
+						</div>
+					</a>
+
+					<a
+						class="portfolio-card"
+						href="blog.html"
+						style="text-decoration: none; color: inherit"
+					>
+						<div class="portfolio-image">📝</div>
+						<div class="portfolio-content">
+							<h3>Blog</h3>
+							<p>
+								Technical notes and articles about web
+								development and DevOps.
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">Articles</span>
+								<span class="portfolio-tag">Notes</span>
+							</div>
+						</div>
+					</a>
+
+					<a
+						class="portfolio-card"
+						href="https://github.com/ninjas007"
+						target="_blank"
+						rel="noreferrer"
+						style="text-decoration: none; color: inherit"
+					>
+						<div class="portfolio-image">💻</div>
+						<div class="portfolio-content">
+							<h3>GitHub</h3>
+							<p>
+								Open-source projects, experiments, and code
+								samples.
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">Open Source</span>
+								<span class="portfolio-tag">Code</span>
+							</div>
+						</div>
+					</a>
+
+					<a
+						class="portfolio-card"
+						href="https://www.linkedin.com/in/tilis-tiadi-b7008163/"
+						target="_blank"
+						rel="noreferrer"
+						style="text-decoration: none; color: inherit"
+					>
+						<div class="portfolio-image">🔗</div>
+						<div class="portfolio-content">
+							<h3>LinkedIn</h3>
+							<p>
+								Connect with me for collaboration,
+								opportunities, and updates.
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">Networking</span>
+								<span class="portfolio-tag">Career</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</section>
+
+			<!-- Certificate Section -->
+			<section class="section" id="certificate">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Certificate</h2>
+				</div>
+				<div class="cv-main" style="display: grid; gap: 18px">
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Bootcamp NestJS.pdf"
+								target="_blank"
+								rel="noreferrer"
+								style="color: inherit; text-decoration: none"
+								>Bootcamp NestJS</a
+							>
+						</div>
+						<div class="experience-company">Certificate</div>
+						<div class="experience-date"></div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Hacktiv8%20Trial%20Class%20JavaScript%202.0.pdf"
+								target="_blank"
+								rel="noreferrer"
+								style="color: inherit; text-decoration: none"
+								>Hacktiv8 Trial Class JavaScript 2.0</a
+							>
+						</div>
+						<div class="experience-company">Certificate</div>
+						<div class="experience-date"></div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Sertifikat%20-%20Tilis%20Tiadi.pdf"
+								target="_blank"
+								rel="noreferrer"
+								style="color: inherit; text-decoration: none"
+								>Web Penetration Testing</a
+							>
+						</div>
+						<div class="experience-company">Certificate</div>
+						<div class="experience-date"></div>
+					</div>
+				</div>
+				<div
+					class="hero-buttons"
+					style="justify-content: flex-start; margin-top: 22px"
+				>
+					<a href="certificate.html" class="btn btn-secondary"
+						>View All Certificates</a
+					>
+				</div>
+			</section>
+
+			<!-- Store Section -->
+			<section class="section" id="store">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Store</h2>
+				</div>
+				<div class="portfolio-grid">
+					<div class="portfolio-card">
+						<div class="portfolio-image">🛒</div>
+						<div class="portfolio-content">
+							<h3>Productivity Template</h3>
+							<p>
+								Modern HTML/CSS template to boost your workflow.
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">Template</span>
+								<span class="portfolio-tag">UI</span>
+							</div>
+						</div>
+					</div>
+					<div class="portfolio-card">
+						<div class="portfolio-image">🎁</div>
+						<div class="portfolio-content">
+							<h3>Design Assets Pack</h3>
+							<p>
+								Collection icons, illustrations, and gradients
+								for devs.
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">Design</span>
+								<span class="portfolio-tag">Assets</span>
+							</div>
+						</div>
+					</div>
+					<div class="portfolio-card">
+						<div class="portfolio-image">⚡</div>
+						<div class="portfolio-content">
+							<h3>REST API Starter Kit</h3>
+							<p>
+								Dummy product: starter kit for building a clean
+								REST API (structure + examples).
+							</p>
+							<div class="portfolio-tags">
+								<span class="portfolio-tag">REST API</span>
+								<span class="portfolio-tag">Backend</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="hero-buttons"
+					style="justify-content: flex-start; margin-top: 22px"
+				>
+					<a href="store.html" class="btn btn-secondary"
+						>View All Products</a
+					>
+				</div>
+			</section>
+
+			<!-- CV Section -->
+			<section class="section" id="cv">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Experience & Education</h2>
+				</div>
+				<div class="cv-container">
+					<!-- Sidebar -->
+					<div class="cv-sidebar">
+						<!-- Languages -->
+						<div class="cv-section">
+							<h4>Languages</h4>
+							<div class="cv-item">
+								<div class="cv-item-title">Indonesian</div>
+								<div class="cv-item-subtitle">Native</div>
+							</div>
+							<div class="cv-item">
+								<div class="cv-item-title">English</div>
+								<div class="cv-item-subtitle">Basic</div>
+							</div>
+						</div>
+
+						<!-- Certifications -->
+						<div class="cv-section">
+							<h4>Certifications</h4>
+							<div class="cv-item">
+								<div class="cv-item-title">Bootcamp NestJS</div>
+								<div class="cv-item-subtitle">Certificate</div>
+							</div>
+							<div class="cv-item">
+								<div class="cv-item-title">
+									Web Penetration Testing
+								</div>
+								<div class="cv-item-subtitle">Certificate</div>
+							</div>
+							<div class="cv-item">
+								<div class="cv-item-title">
+									Introduction to Figma
+								</div>
+								<div class="cv-item-subtitle">Certificate</div>
+							</div>
+						</div>
+
+						<!-- Recent Posts -->
+						<div class="cv-section">
+							<h4>Recent Posts</h4>
+							<div id="recentPostsList" aria-live="polite">
+								<div
+									class="cv-item"
+									style="border-bottom: none; padding-bottom: 0; margin-bottom: 0"
+								>
+									<div class="cv-item-subtitle">
+										Loading...
+									</div>
+								</div>
+							</div>
+							<div style="margin-top: 14px">
+								<a
+									href="blog.html"
+									class="btn btn-secondary"
+									style="padding: 10px 14px; font-size: 12px"
+									>View All Posts</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Main Content -->
+					<div class="cv-main">
+						<!-- Experience -->
+						<div>
+							<h3
+								class="section-title"
+								style="font-size: 24px; margin-bottom: 24px"
+							>
+								Work Experience
+							</h3>
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Software Developer & Implementator
+										</div>
+										<div class="experience-company">
+											Piranti Cerdas Indonesia (Full Time)
+										</div>
+									</div>
+									<div class="experience-date">
+										Oct 2024 - Present
+									</div>
+								</div>
+								<div class="experience-description">
+									Jakarta, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">.NET Core</span>
+									<span class="method-tag">SQL Server</span>
+									<span class="method-tag">Laravel</span>
+									<span class="method-tag"
+										>Implementation</span
+									>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Software Developer
+										</div>
+										<div class="experience-company">
+											Bio Experience (Full Time)
+										</div>
+									</div>
+									<div class="experience-date">
+										Jun 2024 - Present
+									</div>
+								</div>
+								<div class="experience-description">
+									Jakarta, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Backend</span>
+									<span class="method-tag">Laravel</span>
+									<span class="method-tag">API</span>
+									<span class="method-tag">SQL Server</span>
+									<span class="method-tag">My SQL</span>
+									<span class="method-tag">Node JS</span>
+									<span class="method-tag">MQTT</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											IT Specialist
+										</div>
+										<div class="experience-company">
+											Zia Cooperation
+										</div>
+									</div>
+									<div class="experience-date">
+										May 2024 - Present
+									</div>
+								</div>
+								<div class="experience-description">
+									Kendari, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Laravel</span>
+									<span class="method-tag">PPOB System</span>
+									<span class="method-tag">Optimize Web</span>
+									<span class="method-tag">Wordpress</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Software Engineer
+										</div>
+										<div class="experience-company">
+											Silentmode Sdn. Bhd. (Contract)
+										</div>
+									</div>
+									<div class="experience-date">
+										Nov 2022 - Mei 2024
+									</div>
+								</div>
+								<div class="experience-description">
+									Selangor, Malaysia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Node.js</span>
+									<span class="method-tag">NestJS</span>
+									<span class="method-tag">REST API</span>
+									<span class="method-tag">Laravel</span>
+									<span class="method-tag">Vue JS</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Web Developer / Laravel Developer
+										</div>
+										<div class="experience-company">
+											Medify.id / Global Medika Digitama
+											(Contract)
+										</div>
+									</div>
+									<div class="experience-date">
+										Feb 2021 - Des 2022
+									</div>
+								</div>
+								<div class="experience-description">
+									Surabaya, East Java, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Laravel</span>
+									<span class="method-tag">PHP</span>
+									<span class="method-tag">MySQL</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Owner / Web Maintenance
+										</div>
+										<div class="experience-company">
+											Loker Sulawesi
+										</div>
+									</div>
+									<div class="experience-date">
+										Mar 2020 - Present
+									</div>
+								</div>
+								<div class="experience-description">
+									Work From Anywhere
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Maintenance</span>
+									<span class="method-tag">Web</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Web Developer / Web Maintenance
+										</div>
+										<div class="experience-company">
+											yb6-dxc.net / YB6DXCommunity
+											(Freelance)
+										</div>
+									</div>
+									<div class="experience-date">
+										Aug 2020 - Sep 2022
+									</div>
+								</div>
+								<div class="experience-description">
+									Work From Anywhere, office at Medan, North
+									Sumatra, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Freelance</span>
+									<span class="method-tag">Web</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Back End Developer
+										</div>
+										<div class="experience-company">
+											Kledo.com (Freelance)
+										</div>
+									</div>
+									<div class="experience-date">
+										Jul 2020 - Sep 2020
+									</div>
+								</div>
+								<div class="experience-description">
+									Work From Home, office at Yogyakarta, DI
+									Yogyakarta, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Backend</span>
+									<span class="method-tag">API</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Web Developer
+										</div>
+										<div class="experience-company">
+											Mangrovecorp.id / Mangrove Corp
+											(Full Time)
+										</div>
+									</div>
+									<div class="experience-date">
+										Sep 2019 - Mar 2020
+									</div>
+								</div>
+								<div class="experience-description">
+									Yogyakarta, DI Yogyakarta, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Web</span>
+									<span class="method-tag">Full Time</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Hardware Technician / IT Support
+										</div>
+										<div class="experience-company">
+											Seven Ocean Game Center (Full Time)
+										</div>
+									</div>
+									<div class="experience-date">
+										Sep 2013 - Feb 2018
+									</div>
+								</div>
+								<div class="experience-description">
+									Kendari, South East Sulawesi, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">IT Support</span>
+									<span class="method-tag">Hardware</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Education -->
+						<div>
+							<h3
+								class="section-title"
+								style="font-size: 24px; margin-bottom: 24px"
+							>
+								Education
+							</h3>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											IT Community / Pondok Programmer
+										</div>
+										<div class="experience-company">
+											Yogyakarta, DI Yogyakarta, Indonesia
+										</div>
+									</div>
+									<div class="experience-date">
+										2018 - 2020
+									</div>
+								</div>
+								<div class="experience-description">
+									Intensive learning and community-based
+									practice focused on web development.
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Web Dev</span>
+									<span class="method-tag">Backend</span>
+									<span class="method-tag">Frontend</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Senior High School / SMK Negeri 4
+										</div>
+										<div class="experience-company">
+											Computer and Network Engineering
+										</div>
+									</div>
+									<div class="experience-date">
+										2008 - 2011
+									</div>
+								</div>
+								<div class="experience-description">
+									Kendari, South East Sulawesi, Indonesia
+								</div>
+								<div class="experience-methods">
+									<span class="method-tag">Networking</span>
+									<span class="method-tag">Hardware</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Junior High School / SMP Negeri 10
+										</div>
+										<div class="experience-company">
+											Kendari, South East Sulawesi,
+											Indonesia
+										</div>
+									</div>
+									<div class="experience-date">
+										2005 - 2008
+									</div>
+								</div>
+								<div class="experience-description"></div>
+								<div class="experience-methods">
+									<span class="method-tag">Education</span>
+								</div>
+							</div>
+
+							<div class="experience-card">
+								<div class="experience-header">
+									<div>
+										<div class="experience-title">
+											Elementary School / SD Negeri 2
+											Baruga
+										</div>
+										<div class="experience-company">
+											Kendari, South East Sulawesi,
+											Indonesia
+										</div>
+									</div>
+									<div class="experience-date">
+										1999 - 2005
+									</div>
+								</div>
+								<div class="experience-description"></div>
+								<div class="experience-methods">
+									<span class="method-tag">Education</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Section -->
+			<section
+				class="section"
+				id="contact"
+				style="text-align: center; padding: 60px 0; margin-bottom: 40px"
+			>
+				<h2
+					class="section-title"
+					style="display: block; margin: 0 auto 40px"
+				>
+					Get In Touch
+				</h2>
+				<p
+					style="
+						color: var(--muted);
+						font-size: 16px;
+						margin-bottom: 32px;
+						max-width: 500px;
+						margin-left: auto;
+						margin-right: auto;
+					"
+				>
+					Feel free to reach out for collaboration, freelance work, or
+					opportunities.
+				</p>
+				<div class="hero-buttons">
+					<a
+						href="mailto:tilistiadi03@gmail.com"
+						class="btn btn-primary"
+						>Send Email</a
+					>
+					<a
+						href="https://wa.me/6282389097065"
+						target="_blank"
+						rel="noreferrer"
+						class="btn btn-secondary"
+						>WhatsApp</a
+					>
+					<a
+						href="https://github.com/ninjas007"
+						target="_blank"
+						rel="noreferrer"
+						class="btn btn-secondary"
+						>GitHub</a
+					>
+					<a
+						href="https://www.linkedin.com/in/tilis-tiadi-b7008163/"
+						target="_blank"
+						rel="noreferrer"
+						class="btn btn-secondary"
+						>LinkedIn</a
+					>
+				</div>
+			</section>
+		</div>
+
+		<script>
+			// Smooth scroll untuk navbar links
+			document.querySelectorAll(".navbar-menu a").forEach((anchor) => {
+				anchor.addEventListener("click", function (e) {
+					e.preventDefault();
+					const target = document.querySelector(
+						this.getAttribute("href"),
+					);
+					if (target) {
+						target.scrollIntoView({
+							behavior: "smooth",
+							block: "start",
+						});
+					}
+
+					// close mobile menu setelah klik
+					const menu = document.querySelector(".navbar-menu");
+					if (menu.classList.contains("open")) {
+						menu.classList.remove("open");
+					}
+				});
+			});
+
+			// Mobile menu toggle
+			document
+				.querySelector(".menu-toggle")
+				.addEventListener("click", function () {
+					const menu = document.querySelector(".navbar-menu");
+					menu.classList.toggle("open");
+				});
+
+			async function loadRecentPosts() {
+				const container = document.getElementById("recentPostsList");
+				if (!container) return;
+
+				try {
+					const res = await fetch("data/articles.json", {
+						cache: "no-store",
+					});
+					if (!res.ok) throw new Error("Failed to fetch articles.json");
+					const items = await res.json();
+
+					items.sort((a, b) => {
+						const ad = a.published_at || a.publish || "";
+						const bd = b.published_at || b.publish || "";
+						if (ad !== bd) return bd.localeCompare(ad);
+						const at = a.type === "video" ? 0 : 1;
+						const bt = b.type === "video" ? 0 : 1;
+						if (at !== bt) return at - bt;
+						return (a.title || "").localeCompare(b.title || "");
+					});
+
+					container.innerHTML = "";
+					for (const item of items.slice(0, 10)) {
+						const slug = item.slug || "post";
+						const url = item.url || item.article_url || "#";
+						const tags = Array.isArray(item.tags)
+							? item.tags.filter(Boolean)
+							: [];
+						const isExternal = /^https?:\/\//i.test(url);
+
+						const wrap = document.createElement("div");
+						wrap.className = "cv-item";
+
+						const title = document.createElement("div");
+						title.className = "cv-item-title";
+
+						const link = document.createElement("a");
+						link.href = url;
+						link.style.color = "inherit";
+						link.style.textDecoration = "none";
+						link.textContent = item.title || "Untitled";
+						if (isExternal) {
+							link.target = "_blank";
+							link.rel = "noreferrer";
+						}
+						title.appendChild(link);
+
+						const sub = document.createElement("div");
+						sub.className = "cv-item-subtitle";
+						sub.textContent =
+							tags[0] ||
+							(item.type === "video" ? "Video" : "Article");
+
+						wrap.appendChild(title);
+						wrap.appendChild(sub);
+						container.appendChild(wrap);
+					}
+				} catch (err) {
+					container.innerHTML = "";
+					const fallback = document.createElement("div");
+					fallback.className = "cv-item";
+					fallback.style.borderBottom = "none";
+					fallback.style.paddingBottom = "0";
+					fallback.style.marginBottom = "0";
+
+					const sub = document.createElement("div");
+					sub.className = "cv-item-subtitle";
+					sub.textContent = "Failed to load posts.";
+
+					fallback.appendChild(sub);
+					container.appendChild(fallback);
+					console.error(err);
+				}
+			}
+
+			loadRecentPosts();
+		</script>
+	</body>
 </html>

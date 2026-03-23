@@ -1,0 +1,13 @@
+# Jquery Select2 Not Sortable
+
+```php
+// saat select2 jquery tidak sortable otomatis
+        $("select").on("select2:select", function (event) {
+            var element = event.params.data.element;
+            var $element = $(element);
+            
+            $element.detach();
+            $(this).append($element);
+            $(this).trigger("change");
+        });
+```

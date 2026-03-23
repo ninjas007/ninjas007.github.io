@@ -1,14 +1,602 @@
 [
     {
-        "id": 0,
-        "title": "Deploy a website using Github Pages",
+        "id": 35,
+        "type": "article",
+        "slug": "wkhtmltopdf-windows-setup",
+        "title": "Wkhtmltopdf Windows Setup",
         "author": "Tilis Tiadi",
-        "publish": "8 May 2023",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/wkhtmltopdf-windows-setup.md",
         "reference_url": "",
-        "article_url": "articles/2023/05/deploy-a-website-using-github-pages.html",
-        "article_short_desc": "1. Create a GitHub repository, The first step in deploying a website using GitHub Pages is to create a new repository",
+        "article_url": "article.html?p=articles/wkhtmltopdf-windows-setup.md",
+        "article_short_desc": "",
         "tags": [
-            "Github", "Devops"
-        ]
+            "Windows",
+            "PDF"
+        ],
+        "source_path": "articles/wkhtmltopdf-windows-setup.md"
+    },
+    {
+        "id": 24,
+        "type": "article",
+        "slug": "uninstalled-nvm-if-it-s-already-installed-using-homebrew",
+        "title": "Uninstalled nvm if it’s already installed using Homebrew.",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/install-nvm-on-mac-m1.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/install-nvm-on-mac-m1.md",
+        "article_short_desc": "",
+        "tags": [
+            "Node.js"
+        ],
+        "source_path": "articles/install-nvm-on-mac-m1.md"
+    },
+    {
+        "id": 34,
+        "type": "article",
+        "slug": "ubah-tampilan-harga-woocomerce-dari-0-ke-tulisan-free",
+        "title": "Ubah tampilan harga woocomerce dari 0 ke tulisan free",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/ubah-tampilan-woocommerce-dari-0-ke-free.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/ubah-tampilan-woocommerce-dari-0-ke-free.md",
+        "article_short_desc": "",
+        "tags": [
+            "WordPress"
+        ],
+        "source_path": "articles/ubah-tampilan-woocommerce-dari-0-ke-free.md"
+    },
+    {
+        "id": 33,
+        "type": "article",
+        "slug": "table2excel-custom",
+        "title": "Table2excel Custom",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/table2excel-custom.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/table2excel-custom.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/table2excel-custom.md"
+    },
+    {
+        "id": 32,
+        "type": "article",
+        "slug": "spell-money",
+        "title": "Spell Money",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/spell-money.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/spell-money.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/spell-money.md"
+    },
+    {
+        "id": 31,
+        "type": "article",
+        "slug": "simple-format-number",
+        "title": "Simple Format Number",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/simple-format-number.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/simple-format-number.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/simple-format-number.md"
+    },
+    {
+        "id": 30,
+        "type": "article",
+        "slug": "setup-laravel-clone-on-mac",
+        "title": "Setup Laravel Clone On Mac",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/setup-laravel-clone-on-mac.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/setup-laravel-clone-on-mac.md",
+        "article_short_desc": "",
+        "tags": [
+            "Laravel"
+        ],
+        "source_path": "articles/setup-laravel-clone-on-mac.md"
+    },
+    {
+        "id": 28,
+        "type": "article",
+        "slug": "setelah-resolve-conflict",
+        "title": "Setelah Resolve Conflict",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/rebase-conflict-mr.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/rebase-conflict-mr.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/rebase-conflict-mr.md"
+    },
+    {
+        "id": 13,
+        "type": "article",
+        "slug": "run-query",
+        "title": "RUN QUERY",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/fix-error-duplicate-pk-postgres.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/fix-error-duplicate-pk-postgres.md",
+        "article_short_desc": "",
+        "tags": [
+            "PostgreSQL"
+        ],
+        "source_path": "articles/fix-error-duplicate-pk-postgres.md"
+    },
+    {
+        "id": 27,
+        "type": "article",
+        "slug": "php-download-file",
+        "title": "Php Download File",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/php-download-file.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/php-download-file.md",
+        "article_short_desc": "",
+        "tags": [
+            "PHP"
+        ],
+        "source_path": "articles/php-download-file.md"
+    },
+    {
+        "id": 0,
+        "type": "video",
+        "slug": "laravel-7-upload-file-attachment-email",
+        "title": "Laravel 7: upload file attachment email",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "https://youtu.be/t8S2jB0sW4U",
+        "reference_url": "",
+        "article_url": "https://youtu.be/t8S2jB0sW4U",
+        "article_short_desc": "",
+        "tags": [
+            "Laravel",
+            "Video"
+        ],
+        "source_path": ""
+    },
+    {
+        "id": 25,
+        "type": "article",
+        "slug": "jquery-select2-not-sortable",
+        "title": "Jquery Select2 Not Sortable",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/jquery-select2-not-sortable.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/jquery-select2-not-sortable.md",
+        "article_short_desc": "",
+        "tags": [
+            "jQuery"
+        ],
+        "source_path": "articles/jquery-select2-not-sortable.md"
+    },
+    {
+        "id": 23,
+        "type": "article",
+        "slug": "install-nvm-on-mac-m1-chip",
+        "title": "Install Nvm On Mac M1 Chip",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/install-nvm-on-mac-m1-chip.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/install-nvm-on-mac-m1-chip.md",
+        "article_short_desc": "",
+        "tags": [
+            "Node.js"
+        ],
+        "source_path": "articles/install-nvm-on-mac-m1-chip.md"
+    },
+    {
+        "id": 22,
+        "type": "article",
+        "slug": "indonesian-date-funciton",
+        "title": "Indonesian Date Funciton",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/indonesian-date-funciton.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/indonesian-date-funciton.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/indonesian-date-funciton.md"
+    },
+    {
+        "id": 21,
+        "type": "article",
+        "slug": "how-to-show-password-wifi-on-windows",
+        "title": "How To Show Password Wifi On Windows",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/how-to-show-password-wifi-on-windows.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/how-to-show-password-wifi-on-windows.md",
+        "article_short_desc": "",
+        "tags": [
+            "Windows"
+        ],
+        "source_path": "articles/how-to-show-password-wifi-on-windows.md"
+    },
+    {
+        "id": 20,
+        "type": "article",
+        "slug": "how-to-fix-load-image-dompdf-codeigniter",
+        "title": "How To Fix Load Image Dompdf Codeigniter",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/how-to-fix-load-image-dompdf-codeigniter.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/how-to-fix-load-image-dompdf-codeigniter.md",
+        "article_short_desc": "",
+        "tags": [
+            "PDF"
+        ],
+        "source_path": "articles/how-to-fix-load-image-dompdf-codeigniter.md"
+    },
+    {
+        "id": 19,
+        "type": "article",
+        "slug": "how-to-fix-error",
+        "title": "How To Fix Error",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/how-to-fix-error.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/how-to-fix-error.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/how-to-fix-error.md"
+    },
+    {
+        "id": 18,
+        "type": "article",
+        "slug": "how-to-fix-anydesk-always-disconnect",
+        "title": "How To Fix Anydesk Always Disconnect",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/how-to-fix-anydesk-always-disconnect.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/how-to-fix-anydesk-always-disconnect.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/how-to-fix-anydesk-always-disconnect.md"
+    },
+    {
+        "id": 17,
+        "type": "article",
+        "slug": "gitlog-oneline-pretty",
+        "title": "Gitlog Oneline Pretty",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/gitlog-oneline-pretty.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/gitlog-oneline-pretty.md",
+        "article_short_desc": "",
+        "tags": [
+            "Git"
+        ],
+        "source_path": "articles/gitlog-oneline-pretty.md"
+    },
+    {
+        "id": 16,
+        "type": "article",
+        "slug": "github-dev",
+        "title": "Github Dev",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/github-dev.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/github-dev.md",
+        "article_short_desc": "",
+        "tags": [
+            "Git",
+            "GitHub"
+        ],
+        "source_path": "articles/github-dev.md"
+    },
+    {
+        "id": 15,
+        "type": "article",
+        "slug": "fix-special-char-dompdf",
+        "title": "Fix Special Char Dompdf",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/fix-special-char-dompdf.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/fix-special-char-dompdf.md",
+        "article_short_desc": "",
+        "tags": [
+            "PDF"
+        ],
+        "source_path": "articles/fix-special-char-dompdf.md"
+    },
+    {
+        "id": 14,
+        "type": "article",
+        "slug": "fix-error-failed-compiled-vue-laravel-mix",
+        "title": "Fix Error Failed Compiled Vue Laravel Mix",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/fix-error-failed-compiled-vue-laravel-mix.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/fix-error-failed-compiled-vue-laravel-mix.md",
+        "article_short_desc": "",
+        "tags": [
+            "Laravel"
+        ],
+        "source_path": "articles/fix-error-failed-compiled-vue-laravel-mix.md"
+    },
+    {
+        "id": 12,
+        "type": "article",
+        "slug": "fix-credential-windows-authentication-beda-remote",
+        "title": "Fix Credential Windows Authentication Beda Remote",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/fix-credential-windows-authentication-beda-remote.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/fix-credential-windows-authentication-beda-remote.md",
+        "article_short_desc": "",
+        "tags": [
+            "Windows"
+        ],
+        "source_path": "articles/fix-credential-windows-authentication-beda-remote.md"
+    },
+    {
+        "id": 11,
+        "type": "article",
+        "slug": "find-notes-facebook-versi-new",
+        "title": "Find Notes Facebook Versi New",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/find-notes-facebook-versi-new.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/find-notes-facebook-versi-new.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/find-notes-facebook-versi-new.md"
+    },
+    {
+        "id": 10,
+        "type": "article",
+        "slug": "encrypt-image-to-base64",
+        "title": "Encrypt Image To Base64",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/encrypt-image-to-base64.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/encrypt-image-to-base64.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/encrypt-image-to-base64.md"
+    },
+    {
+        "id": 9,
+        "type": "article",
+        "slug": "deploy-laravel-symlink",
+        "title": "Deploy Laravel Symlink",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/deploy-laravel-symlink.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/deploy-laravel-symlink.md",
+        "article_short_desc": "",
+        "tags": [
+            "Laravel"
+        ],
+        "source_path": "articles/deploy-laravel-symlink.md"
+    },
+    {
+        "id": 2,
+        "type": "article",
+        "slug": "deploy-a-website-using-github-pages",
+        "title": "Deploy A Website Using Github Pages",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/2023/05/deploy-a-website-using-github-pages.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/2023/05/deploy-a-website-using-github-pages.md",
+        "article_short_desc": "",
+        "tags": [
+            "Git",
+            "GitHub"
+        ],
+        "source_path": "articles/2023/05/deploy-a-website-using-github-pages.md"
+    },
+    {
+        "id": 1,
+        "type": "video",
+        "slug": "customize-sweetalert-html",
+        "title": "Customize SweetAlert HTML",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "https://youtu.be/y42yhG95wRY",
+        "reference_url": "",
+        "article_url": "https://youtu.be/y42yhG95wRY",
+        "article_short_desc": "",
+        "tags": [
+            "SweetAlert",
+            "Video"
+        ],
+        "source_path": ""
+    },
+    {
+        "id": 8,
+        "type": "article",
+        "slug": "compress-image-php",
+        "title": "Compress Image Php",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/compress-image-php.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/compress-image-php.md",
+        "article_short_desc": "",
+        "tags": [
+            "PHP"
+        ],
+        "source_path": "articles/compress-image-php.md"
+    },
+    {
+        "id": 29,
+        "type": "article",
+        "slug": "cara-undo-reset-commit-apabila-terlanjur-push-ke-repo-github",
+        "title": "Cara Undo / Reset Commit Apabila Terlanjur Push Ke Repo Github",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/reset-commit-jika-terlanjur-push-ke-repo-github.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/reset-commit-jika-terlanjur-push-ke-repo-github.md",
+        "article_short_desc": "",
+        "tags": [
+            "Git",
+            "GitHub"
+        ],
+        "source_path": "articles/reset-commit-jika-terlanjur-push-ke-repo-github.md"
+    },
+    {
+        "id": 7,
+        "type": "article",
+        "slug": "cara-switch-versi-php-di-linux-ubuntu",
+        "title": "Cara Switch Versi PHP di Linux Ubuntu",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/cara-switch-versi-php-di-linux.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/cara-switch-versi-php-di-linux.md",
+        "article_short_desc": "",
+        "tags": [
+            "PHP",
+            "Linux"
+        ],
+        "source_path": "articles/cara-switch-versi-php-di-linux.md"
+    },
+    {
+        "id": 5,
+        "type": "article",
+        "slug": "cara-membuat-virtual-host-xampp-di-linux-localhost",
+        "title": "Cara Membuat Virtual Host Xampp di Linux Localhost",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/buat-virtual-host-xampp-linux.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/buat-virtual-host-xampp-linux.md",
+        "article_short_desc": "",
+        "tags": [
+            "Linux",
+            "XAMPP"
+        ],
+        "source_path": "articles/buat-virtual-host-xampp-linux.md"
+    },
+    {
+        "id": 6,
+        "type": "article",
+        "slug": "cara-membuat-virtual-host-apache-di-linux-localhost",
+        "title": "Cara Membuat Virtual Host Apache di Linux Localhost",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/buat-virtual-host.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/buat-virtual-host.md",
+        "article_short_desc": "",
+        "tags": [
+            "Linux"
+        ],
+        "source_path": "articles/buat-virtual-host.md"
+    },
+    {
+        "id": 4,
+        "type": "article",
+        "slug": "buat-migration-file-dan-migrate-schema-table-laravel-custom-folder-path",
+        "title": "Buat Migration File dan Migrate Schema Table Laravel Custom Folder Path",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/buat-migration-file-dan-migrate-schema-table-laravel-untuk-custom-folder-path.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/buat-migration-file-dan-migrate-schema-table-laravel-untuk-custom-folder-path.md",
+        "article_short_desc": "",
+        "tags": [
+            "Laravel"
+        ],
+        "source_path": "articles/buat-migration-file-dan-migrate-schema-table-laravel-untuk-custom-folder-path.md"
+    },
+    {
+        "id": 26,
+        "type": "article",
+        "slug": "best-practice-laravel",
+        "title": "Best Practice Laravel",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/laravel-best-practice.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/laravel-best-practice.md",
+        "article_short_desc": "",
+        "tags": [
+            "Laravel"
+        ],
+        "source_path": "articles/laravel-best-practice.md"
+    },
+    {
+        "id": 3,
+        "type": "article",
+        "slug": "base64-to-image",
+        "title": "Base64 To Image",
+        "author": "Tilis Tiadi",
+        "published_at": "2026-03-23",
+        "publish": "23 Mar 2026",
+        "url": "article.html?p=articles/base64-to-image.md",
+        "reference_url": "",
+        "article_url": "article.html?p=articles/base64-to-image.md",
+        "article_short_desc": "",
+        "tags": [],
+        "source_path": "articles/base64-to-image.md"
     }
 ]

@@ -1,0 +1,9 @@
+# Fix Credential Windows Authentication Beda Remote
+
+```
+Ubah username credential ketika credential manager windows gak bisa
+git config --global credential.username [username_sendiri]
+
+Atau diunset aja 
+git config --global --unset credential.username [username_sendiri]
+```

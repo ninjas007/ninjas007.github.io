@@ -1,110 +1,476 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Certificates</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
 
-    <title>RESUME</title>
+		<style>
+			:root {
+				--bg-0: #0b0f16;
+				--bg-1: #0f1523;
+				--bg-2: #141b2b;
+				--accent-red: #e74c3c;
+				--accent-blue: #3498db;
+				--accent-gold: #ffd24d;
+				--text: #e8edf7;
+				--muted: #9aa6c5;
+				--panel: #0f1726;
+				--panel-border: rgba(255, 255, 255, 0.08);
+			}
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
 
-    <!-- Start MDBootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
-    <!-- End MDBootstrap -->
+			body {
+				font-family: "Rajdhani", sans-serif;
+				color: var(--text);
+				background:
+					radial-gradient(
+						circle at 20% 10%,
+						rgba(255, 255, 255, 0.06),
+						transparent 45%
+					),
+					radial-gradient(
+						circle at 85% 30%,
+						rgba(52, 152, 219, 0.12),
+						transparent 45%
+					),
+					linear-gradient(
+						180deg,
+						var(--bg-0),
+						var(--bg-1) 55%,
+						var(--bg-2)
+					);
+				min-height: 100vh;
+				overflow-x: hidden;
+			}
 
-    <link rel="stylesheet" href="style.css">
+			.navbar {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				background: rgba(11, 15, 22, 0.95);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				z-index: 1000;
+				padding: 16px 24px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 
-    <style>
-        a {
-            text-decoration: none;
-            color: black;
-            font-size: 14px;
-        }
-    </style>
-</head>
+			.navbar-brand {
+				font-family: "Oswald", sans-serif;
+				font-size: 20px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				color: var(--accent-gold);
+				text-transform: uppercase;
+			}
 
-<body>
-    <div id="wrapper">
-        <div class="body-wrap mb-5">
-            <div class="body">
-                <div class="body-header">
-                    <div class="body-header-content">
-                        CERTIFICATE
-                    </div>
-                </div>
-                <div class="body-content p-2 bg-white">
-                    <div class="mt-5">
-                        <div class="title d-flex justify-content-center">
-                            <h4 class="line">CERTIFICATE</h4>
-                        </div>
-                        <div class="content mt-4"  style="padding-bottom: 80px">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Bootcamp NestJS.pdf">Bootcamp NestJS</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/introduction-to-figma.pdf">Introduction to Figma</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Chat GPT.pdf">Maximizing the use of ChatGPT</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Create Amazing Website with React JS.pdf">Create Amazing Website with React JS</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Function Golang.pdf">Function On Golang</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Hacktiv8 Trial Class JavaScript 2.0.pdf">Hacktiv8 Trial Class JavaScript 2.0</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Web Developer.jpg">Web Fundamental</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Pemograman Dart.pdf">Pemograman Dart</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Belajar Membuat Aplikasi Flutter Pemula.pdf">Belajar Membuat Aplikasi Flutter Pemula</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/English - Part of Speech.pdf">English - Part of Speech</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/English - Type of Verb.pdf">English - Type of Verb</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Laravel Docker & Laravel Sail.pdf">Laravel Docker & Laravel Sail</a>
-                                </li>
-                                <li class="list-group-item mb-3">
-                                    <a target="_blank" href="certificate/Sertifikat%20-%20Tilis%20Tiadi.pdf">Web Penetration Testing</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar-wrap">
-            <div class="menubar-footer">
+			.navbar-menu {
+				display: flex;
+				gap: 30px;
+				list-style: none;
+			}
 
-            </div>
-        </nav>
-    </div>
+			.navbar-menu a {
+				color: var(--text);
+				text-decoration: none;
+				font-size: 14px;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				position: relative;
+				transition: color 0.3s ease;
+			}
 
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+			.navbar-menu a:hover {
+				color: var(--accent-blue);
+			}
 
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+			.menu-toggle {
+				display: none;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 25px;
+				height: 20px;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 0;
+			}
 
-    <script src="script.js"></script>
-</body>
+			.menu-toggle span {
+				display: block;
+				height: 3px;
+				background: var(--text);
+				border-radius: 3px;
+			}
 
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 100px 24px 40px;
+			}
+
+			.section {
+				margin-bottom: 80px;
+			}
+
+			.hero {
+				text-align: center;
+				padding: 60px 0 30px;
+				margin-bottom: 20px;
+			}
+
+			.hero h1 {
+				font-family: "Oswald", sans-serif;
+				font-size: 56px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 12px;
+				background: linear-gradient(
+					135deg,
+					var(--accent-gold),
+					var(--accent-blue)
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.hero p {
+				color: var(--muted);
+				font-size: 16px;
+				letter-spacing: 0.03em;
+				max-width: 720px;
+				margin: 0 auto;
+				line-height: 1.7;
+			}
+
+			.section-title-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin-bottom: 16px;
+			}
+
+			.section-title {
+				font-family: "Oswald", sans-serif;
+				font-size: 36px;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--accent-gold);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: "";
+				position: absolute;
+				bottom: -12px;
+				left: 0;
+				width: 60%;
+				height: 3px;
+				background: linear-gradient(
+					90deg,
+					var(--accent-red),
+					transparent
+				);
+				border-radius: 2px;
+			}
+
+			.cv-main {
+				display: grid;
+				gap: 18px;
+				margin-top: 26px;
+			}
+
+			.experience-card {
+				background: var(--panel);
+				border: 1px solid var(--panel-border);
+				border-radius: 8px;
+				padding: 18px 18px;
+				transition: transform 0.2s ease, border-color 0.2s ease;
+			}
+
+			.experience-card:hover {
+				transform: translateY(-3px);
+				border-color: var(--accent-blue);
+			}
+
+			.experience-title {
+				font-family: "Oswald", sans-serif;
+				font-size: 18px;
+				letter-spacing: 0.05em;
+				margin-bottom: 6px;
+			}
+
+			.experience-title a {
+				color: var(--text);
+				text-decoration: none;
+			}
+
+			.experience-title a:hover {
+				color: var(--accent-blue);
+			}
+
+			.experience-company {
+				color: var(--muted);
+				font-size: 14px;
+			}
+
+			.hero-buttons {
+				display: flex;
+				gap: 14px;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-top: 22px;
+			}
+
+			.btn {
+				padding: 14px 28px;
+				border-radius: 8px;
+				border: none;
+				font-family: "Oswald", sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-size: 14px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.btn-primary {
+				background: linear-gradient(
+					135deg,
+					var(--accent-blue),
+					var(--accent-gold)
+				);
+				color: #0b0f16;
+			}
+
+			.btn-secondary {
+				background: transparent;
+				border: 1px solid var(--panel-border);
+				color: var(--text);
+			}
+
+			.btn-secondary:hover {
+				border-color: var(--accent-blue);
+				color: var(--accent-blue);
+				transform: translateY(-2px);
+			}
+
+			@media (max-width: 900px) {
+				.menu-toggle {
+					display: flex;
+				}
+
+				.navbar-menu {
+					position: fixed;
+					top: 64px;
+					right: 16px;
+					left: 16px;
+					background: rgba(11, 15, 22, 0.98);
+					border: 1px solid rgba(255, 255, 255, 0.1);
+					border-radius: 12px;
+					padding: 18px 16px;
+					flex-direction: column;
+					gap: 16px;
+					display: none;
+				}
+
+				.navbar-menu.open {
+					display: flex;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar-brand">Profile</div>
+			<button class="menu-toggle" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="navbar-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="store.html">Store</a></li>
+				<li><a href="index.html#contact">Contact</a></li>
+			</ul>
+		</nav>
+
+		<div class="container">
+			<section class="hero">
+				<h1>Certificates</h1>
+				<p>
+					Kumpulan sertifikat dan dokumen pelatihan yang sudah saya
+					selesaikan.
+				</p>
+				<div class="hero-buttons">
+					<a href="index.html" class="btn btn-secondary">Back Home</a>
+					<a href="Curicullum_Vitae.pdf" target="_blank" class="btn btn-primary"
+						>Download CV</a
+					>
+				</div>
+			</section>
+
+			<section class="section" id="certificate">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Certificate</h2>
+				</div>
+
+				<div class="cv-main">
+					<div class="experience-card">
+						<div class="experience-title">
+							<a href="certificate/Bootcamp%20NestJS.pdf" target="_blank" rel="noreferrer"
+								>Bootcamp NestJS</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a href="certificate/introduction-to-figma.pdf" target="_blank" rel="noreferrer"
+								>Introduction to Figma</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a href="certificate/Chat%20GPT.pdf" target="_blank" rel="noreferrer"
+								>Maximizing the use of ChatGPT</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Create%20Amazing%20Website%20with%20React%20JS.pdf"
+								target="_blank"
+								rel="noreferrer"
+								>Create Amazing Website with React JS</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a href="certificate/Function%20Golang.pdf" target="_blank" rel="noreferrer"
+								>Function On Golang</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Hacktiv8%20Trial%20Class%20JavaScript%202.0.pdf"
+								target="_blank"
+								rel="noreferrer"
+								>Hacktiv8 Trial Class JavaScript 2.0</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a href="certificate/Web%20Developer.jpg" target="_blank" rel="noreferrer"
+								>Web Fundamental</a
+							>
+						</div>
+						<div class="experience-company">JPG</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a href="certificate/Pemograman%20Dart.pdf" target="_blank" rel="noreferrer"
+								>Pemograman Dart</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Belajar%20Membuat%20Aplikasi%20Flutter%20Pemula.pdf"
+								target="_blank"
+								rel="noreferrer"
+								>Belajar Membuat Aplikasi Flutter Pemula</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/English%20-%20Part%20of%20Speech.pdf"
+								target="_blank"
+								rel="noreferrer"
+								>English - Part of Speech</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/English%20-%20Type%20of%20Verb.pdf"
+								target="_blank"
+								rel="noreferrer"
+								>English - Type of Verb</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Laravel%20Docker%20%26%20Laravel%20Sail.pdf"
+								target="_blank"
+								rel="noreferrer"
+								>Laravel Docker & Laravel Sail</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+					<div class="experience-card">
+						<div class="experience-title">
+							<a
+								href="certificate/Sertifikat%20-%20Tilis%20Tiadi.pdf"
+								target="_blank"
+								rel="noreferrer"
+								>Web Penetration Testing</a
+							>
+						</div>
+						<div class="experience-company">PDF</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<script>
+			document
+				.querySelector(".menu-toggle")
+				.addEventListener("click", function () {
+					const menu = document.querySelector(".navbar-menu");
+					menu.classList.toggle("open");
+				});
+		</script>
+	</body>
 </html>

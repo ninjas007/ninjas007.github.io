@@ -1,0 +1,5 @@
+# How To Show Password Wifi On Windows
+
+```
+Open Terminal and type : netsh wlan show profile YOUR_SSID_NETWORK key=clear
+```

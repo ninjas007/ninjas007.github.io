@@ -1,0 +1,9 @@
+# Find Notes Facebook Versi New
+
+```
+Click the far right top arrow pointing down
+Click Settings and Privacy
+Click Settings
+On Left click Your Facebook Information
+Under that the first item says Access your Information. Click View on the right
+```

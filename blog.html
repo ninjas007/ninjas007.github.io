@@ -1,114 +1,476 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Blog</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
 
-    <title>BLOG</title>
+		<style>
+			:root {
+				--bg-0: #0b0f16;
+				--bg-1: #0f1523;
+				--bg-2: #141b2b;
+				--accent-red: #e74c3c;
+				--accent-blue: #3498db;
+				--accent-gold: #ffd24d;
+				--text: #e8edf7;
+				--muted: #9aa6c5;
+				--panel: #0f1726;
+				--panel-border: rgba(255, 255, 255, 0.08);
+			}
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
 
-    <!-- Start MDBootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
-    <!-- End MDBootstrap -->
+			body {
+				font-family: "Rajdhani", sans-serif;
+				color: var(--text);
+				background:
+					radial-gradient(
+						circle at 20% 10%,
+						rgba(255, 255, 255, 0.06),
+						transparent 45%
+					),
+					radial-gradient(
+						circle at 85% 30%,
+						rgba(52, 152, 219, 0.12),
+						transparent 45%
+					),
+					linear-gradient(
+						180deg,
+						var(--bg-0),
+						var(--bg-1) 55%,
+						var(--bg-2)
+					);
+				min-height: 100vh;
+				overflow-x: hidden;
+			}
 
-    <link rel="stylesheet" href="style.css">
-</head>
+			.navbar {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				background: rgba(11, 15, 22, 0.95);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				z-index: 1000;
+				padding: 16px 24px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 
-<body>
-    <div id="wrapper">
-        <div class="body-wrap mb-3">
-            <div class="body">
-                <div class="body-header">
-                    <div class="body-header-content">
-                        BLOG
-                    </div>
-                </div>
-                <div class="body-content p-2 bg-white">
-                    <div class="mt-5 px-3" style="margin-bottom: 50px" id="contentBlog">
-                        Sedang mengambil data...
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar-wrap">
-            <div class="menubar-footer">
-                
-            </div>
-        </nav>
-    </div>
+			.navbar-brand {
+				font-family: "Oswald", sans-serif;
+				font-size: 20px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				color: var(--accent-gold);
+				text-transform: uppercase;
+			}
 
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+			.navbar-menu {
+				display: flex;
+				gap: 30px;
+				list-style: none;
+			}
 
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+			.navbar-menu a {
+				color: var(--text);
+				text-decoration: none;
+				font-size: 14px;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				position: relative;
+				transition: color 0.3s ease;
+			}
 
-    <script src="script.js"></script>
-    <script type="text/javascript">
-        var data = {};
+			.navbar-menu a:hover {
+				color: var(--accent-blue);
+			}
 
-        function getDataArticle() {
-            $.ajax({
-                dataType: "json",
-                url: "https://monovon-dev.com/wp-json/wp/v2/posts",
-                success: function (articles) {
-                    data.articles = articles;
-                    let html = ``;
-                    $.each(articles, function (index, article) {
-                        let date = new Date(article.date);
-                        let day = date.toLocaleString('default', { weekday: 'short'});
-                        let publish = day + ', ' +date.toLocaleDateString();
-                        
-                        html += `<li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <a href="javascript:void(0)" onclick="detailArticle(`+article.id+`)" class="h5 fw-bold text-info">${article.title.rendered}</a>
-                                    <div class="text-muted my-2 d-flex justify-content-between"> 
-                                        <span data-mdb-toggle="tooltip" title="Author">
-                                            <i data-mdb-toggle="tooltip" title="Author" class="fa fa-user text-white p-1 rounded-pill" style="background-color: #787878"></i>
-                                            ${article.yoast_head_json.author} - Published on ${publish}
-                                        </span>
+			.menu-toggle {
+				display: none;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 25px;
+				height: 20px;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 0;
+			}
 
-                                        <span style="font-style: italic">Reading times ${article.yoast_head_json.twitter_misc['Est. reading time']}</span>
-                                    </div>
-                                    <div class="text-muted mb-1" style="text-align: justify;">
-                                        ${article.excerpt.rendered}
-                                    </div>
-                                </div>
-                            </li>`
-                    });
+			.menu-toggle span {
+				display: block;
+				height: 3px;
+				background: var(--text);
+				border-radius: 3px;
+			}
 
-                    // tags
-                    // <div style="font-size: 10px;" class="mt-3">
-                    //     <i class="fa fa-tags"></i> ${article.tags.join(', ')}
-                    // </div>
-                        
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 100px 24px 40px;
+			}
 
-                    $('#contentBlog').html(`<ul class="list-group list-group-light">${html}</ul>`);
-                }
-            });
-        }
-        
-        function detailArticle(id) {
-            let article = data.articles.find((article) => article.id == id);
+			.section {
+				margin-bottom: 80px;
+			}
 
-            console.log(article);
-            let html = `<h4 class="mb-5">${article.title.rendered}</h4>`;
-            html += article.content.rendered;
+			.hero {
+				text-align: center;
+				padding: 60px 0 30px;
+				margin-bottom: 20px;
+			}
 
+			.hero h1 {
+				font-family: "Oswald", sans-serif;
+				font-size: 56px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 12px;
+				background: linear-gradient(
+					135deg,
+					var(--accent-gold),
+					var(--accent-blue)
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
 
-            $('#contentBlog').html(html);
-        }
+			.hero p {
+				color: var(--muted);
+				font-size: 16px;
+				letter-spacing: 0.03em;
+				max-width: 760px;
+				margin: 0 auto;
+				line-height: 1.7;
+			}
 
-        getDataArticle();
-    </script>
-</body>
+			.section-title-wrapper {
+				margin-bottom: 40px;
+			}
 
+			.section-title {
+				font-family: "Oswald", sans-serif;
+				font-size: 36px;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--accent-gold);
+				position: relative;
+				display: inline-block;
+			}
+
+			.section-title::after {
+				content: "";
+				position: absolute;
+				bottom: -12px;
+				left: 0;
+				width: 60%;
+				height: 3px;
+				background: linear-gradient(
+					90deg,
+					var(--accent-red),
+					transparent
+				);
+				border-radius: 2px;
+			}
+
+			.cv-main {
+				display: grid;
+				gap: 18px;
+			}
+
+			.experience-card {
+				background: var(--panel);
+				border: 1px solid var(--panel-border);
+				border-radius: 8px;
+				padding: 18px 18px;
+				transition: transform 0.2s ease, border-color 0.2s ease;
+			}
+
+			.experience-card:hover {
+				transform: translateY(-3px);
+				border-color: var(--accent-blue);
+			}
+
+			.experience-title {
+				font-family: "Oswald", sans-serif;
+				font-size: 18px;
+				letter-spacing: 0.05em;
+			}
+
+			.experience-title a {
+				color: var(--text);
+				text-decoration: none;
+			}
+
+			.experience-title a:hover {
+				color: var(--accent-blue);
+			}
+
+			.experience-company {
+				color: var(--muted);
+				font-size: 13px;
+				margin-top: 6px;
+			}
+
+			.hero-buttons {
+				display: flex;
+				gap: 14px;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-top: 22px;
+			}
+
+			.btn {
+				padding: 14px 28px;
+				border-radius: 8px;
+				border: none;
+				font-family: "Oswald", sans-serif;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-size: 14px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.btn-primary {
+				background: linear-gradient(
+					135deg,
+					var(--accent-blue),
+					var(--accent-gold)
+				);
+				color: #0b0f16;
+			}
+
+			.btn-secondary {
+				background: transparent;
+				border: 1px solid var(--panel-border);
+				color: var(--text);
+			}
+
+			.btn-secondary:hover {
+				border-color: var(--accent-blue);
+				color: var(--accent-blue);
+				transform: translateY(-2px);
+			}
+
+			@media (max-width: 900px) {
+				.menu-toggle {
+					display: flex;
+				}
+
+				.navbar-menu {
+					position: fixed;
+					top: 64px;
+					right: 16px;
+					left: 16px;
+					background: rgba(11, 15, 22, 0.98);
+					border: 1px solid rgba(255, 255, 255, 0.1);
+					border-radius: 12px;
+					padding: 18px 16px;
+					flex-direction: column;
+					gap: 16px;
+					display: none;
+				}
+
+				.navbar-menu.open {
+					display: flex;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar-brand">Profile</div>
+			<button class="menu-toggle" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="navbar-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="certificate.html">Certificate</a></li>
+				<li><a href="store.html">Store</a></li>
+				<li><a href="index.html#contact">Contact</a></li>
+			</ul>
+		</nav>
+
+		<div class="container">
+			<section class="hero">
+				<h1>Blog</h1>
+				<p>
+					Dummy list postingan seputar IT (Git, Laragon, REST API,
+					deployment, dan lain-lain). Nanti bisa dikembangkan ke
+					halaman artikel detail.
+				</p>
+				<div class="hero-buttons">
+					<a href="index.html" class="btn btn-secondary">Back Home</a>
+					<a href="index.html#contact" class="btn btn-primary"
+						>Get In Touch</a
+					>
+				</div>
+			</section>
+
+			<section class="section" id="posts">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Posts</h2>
+				</div>
+
+				<div class="cv-main" id="postsList" aria-live="polite">
+					<div style="color: var(--muted); font-size: 14px">
+						Loading posts...
+					</div>
+				</div>
+
+				<div class="hero-buttons" style="justify-content: center">
+					<button
+						id="loadMoreBtn"
+						class="btn btn-secondary"
+						type="button"
+						style="display: none"
+					>
+						Load More
+					</button>
+				</div>
+			</section>
+		</div>
+
+		<script>
+			document
+				.querySelector(".menu-toggle")
+				.addEventListener("click", function () {
+					const menu = document.querySelector(".navbar-menu");
+					menu.classList.toggle("open");
+				});
+
+			const PAGE_SIZE = 20;
+			let allPosts = [];
+			let renderedCount = 0;
+
+			function renderNextPage() {
+				const container = document.getElementById("postsList");
+				const btn = document.getElementById("loadMoreBtn");
+				if (!container || !btn) return;
+
+				const slice = allPosts.slice(renderedCount, renderedCount + PAGE_SIZE);
+				for (const item of slice) {
+					const slug = item.slug || "post";
+					const url = item.url || item.article_url || "#";
+					const tags = Array.isArray(item.tags) ? item.tags.filter(Boolean) : [];
+					const isExternal = /^https?:\/\//i.test(url);
+
+					const card = document.createElement("div");
+					card.className = "experience-card";
+					card.id = `post-${slug}`;
+
+					const titleWrap = document.createElement("div");
+					titleWrap.className = "experience-title";
+
+					const link = document.createElement("a");
+					link.href = url;
+					link.textContent = item.title || url;
+					if (isExternal) {
+						link.target = "_blank";
+						link.rel = "noreferrer";
+					}
+					titleWrap.appendChild(link);
+
+					const meta = document.createElement("div");
+					meta.className = "experience-company";
+					const parts = [];
+					if (tags.length) parts.push(tags.slice(0, 3).join(" • "));
+					if (item.type === "video") parts.push("Video");
+					if (item.publish) parts.push(item.publish);
+					meta.textContent = parts.filter(Boolean).join(" • ");
+
+					card.appendChild(titleWrap);
+					card.appendChild(meta);
+					container.appendChild(card);
+				}
+
+				renderedCount += slice.length;
+
+				if (renderedCount < allPosts.length) {
+					btn.style.display = "inline-block";
+					btn.disabled = false;
+					btn.textContent = "Load More";
+				} else {
+					btn.style.display = "none";
+				}
+			}
+
+			async function loadPosts() {
+				const container = document.getElementById("postsList");
+				const btn = document.getElementById("loadMoreBtn");
+				try {
+					const res = await fetch("data/articles.json", {
+						cache: "no-store",
+					});
+					if (!res.ok) throw new Error("Failed to fetch articles.json");
+					const items = await res.json();
+
+					allPosts = items.slice().sort((a, b) => {
+						const ad = a.published_at || a.publish || "";
+						const bd = b.published_at || b.publish || "";
+						if (ad !== bd) return bd.localeCompare(ad);
+						const at = a.type === "video" ? 0 : 1;
+						const bt = b.type === "video" ? 0 : 1;
+						if (at !== bt) return at - bt;
+						return (a.title || "").localeCompare(b.title || "");
+					});
+
+					container.innerHTML = "";
+					renderedCount = 0;
+					renderNextPage();
+
+					if (btn) {
+						btn.addEventListener("click", function () {
+							btn.disabled = true;
+							btn.textContent = "Loading...";
+							renderNextPage();
+						});
+					}
+
+					const hash = decodeURIComponent(window.location.hash || "");
+					if (hash && hash.length > 1) {
+						const el = document.getElementById(hash.slice(1));
+						if (el) {
+							el.scrollIntoView({
+								behavior: "smooth",
+								block: "start",
+							});
+						}
+					}
+				} catch (err) {
+					container.innerHTML = "";
+					if (btn) btn.style.display = "none";
+					const msg = document.createElement("div");
+					msg.style.color = "var(--muted)";
+					msg.style.fontSize = "14px";
+					msg.textContent = "Failed to load posts.";
+					container.appendChild(msg);
+					console.error(err);
+				}
+			}
+
+			loadPosts();
+		</script>
+	</body>
 </html>
