@@ -93,5 +93,17 @@
             "images/porfolio/jihp2.png"
         ],
         "tags": ["Mobile App", "Java", "Android Studio"]
+    },
+    {
+        "id": 9,
+        "title": "Web Aplikasi Tryout Online",
+        "description": "Web aplikasi untuk pengerjaan tryout online.",
+        "url": "",
+        "images": [
+            "images/porfolio/tryout.png",
+            "images/porfolio/tryout1.png",
+            "images/porfolio/tryout2.png"
+        ],
+        "tags": ["Web View", "Javascript", "Laravel"]
     }
 ]
