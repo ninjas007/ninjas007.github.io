@@ -525,3 +525,56 @@
 					display: flex;
 				}
 			}
+
+			/* WhatsApp Floating Button */
+			.wa-float {
+				position: fixed;
+				right: 18px;
+				bottom: 18px;
+				width: 56px;
+				height: 56px;
+				border-radius: 999px;
+				background: #25d366;
+				color: #ffffff;
+				display: grid;
+				place-items: center;
+				text-decoration: none;
+				font-family: "Oswald", sans-serif;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				border: 1px solid rgba(255, 255, 255, 0.18);
+				box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+				z-index: 1500;
+				transition:
+					transform 0.2s ease,
+					filter 0.2s ease;
+			}
+
+			.wa-float:hover {
+				transform: translateY(-2px);
+				filter: brightness(0.98);
+			}
+
+			.wa-float:active {
+				transform: translateY(0) scale(0.98);
+			}
+
+			.wa-float:focus-visible {
+				outline: 3px solid var(--accent-gold, #ffd24d);
+				outline-offset: 4px;
+			}
+
+			.wa-float svg {
+				width: 26px;
+				height: 26px;
+				display: block;
+			}
+
+			@media (max-width: 640px) {
+				.wa-float {
+					right: 14px;
+					bottom: 14px;
+					width: 52px;
+					height: 52px;
+				}
+			}

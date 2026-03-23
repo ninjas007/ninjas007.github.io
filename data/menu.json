@@ -22,5 +22,11 @@
         "title": "Contact",
         "href": "contact.html",
         "icon": "fa fa-user"
+    },
+    {
+        "id": 5,
+        "title": "Services",
+        "href": "services.html",
+        "icon": "fa fa-briefcase"
     }
 ]
