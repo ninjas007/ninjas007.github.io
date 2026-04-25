@@ -1,10 +1,10 @@
 [
 	{
 		"id": 1,
-		"title": "Productivity Template",
-		"description": "Template modern untuk landing page / profile dengan struktur yang rapi.",
-		"price": "Rp 75.000",
-		"images": ["images/store/s1-1.svg", "images/store/s1-2.svg"],
+		"title": "Laporan Keuangan Template",
+		"description": "Template laporan keuangan kirim dari bot telegram atau apk masuk ke google spreadsheet",
+		"price": "Rp 25.000",
+		"images": ["images/store/s1-1.svg", "images/store/Laporan Keuangan.png"],
 		"tags": ["Template", "UI", "HTML/CSS"]
 	},
 	{
