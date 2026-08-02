@@ -133,7 +133,7 @@ def main() -> None:
                 "type": type_,
                 "slug": slug,
                 "title": title,
-                "author": "Tilis Tiadi",
+                "author": "MONOSPACE DEV",
                 "published_at": published_at.isoformat(),
                 "publish": publish_str(published_at),
                 "url": url,

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="id">
 	<head>
 		<meta charset="UTF-8" />
@@ -18,21 +18,13 @@
 	<body>
 		<!-- Navigation Bar -->
 		<nav class="navbar">
-			<div class="navbar-brand">Profile</div>
+			<div class="navbar-brand">MONOSPACE DEV</div>
 			<button class="menu-toggle" aria-label="Toggle navigation">
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
-			<ul class="navbar-menu">
-				<li><a href="#about">About</a></li>
-				<li><a href="#portfolio">Portfolio</a></li>
-				<li><a href="#store">Store</a></li>
-				<li><a href="services.html">Services</a></li>
-				<li><a href="testimonial.html">Testimonial</a></li>
-				<li><a href="#cv">CV</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
+			<ul class="navbar-menu"></ul>
 		</nav>
 
 		<!-- Main Container -->
@@ -40,14 +32,14 @@
 			<!-- Hero Section -->
 			<section class="hero">
 				<div class="hero-content">
-					<h1>MONOSPACE DEV</h1>
+					<h1>Tilis Tiadi</h1>
 					<p>
 						Software developer from Kendari, Indonesia and currently
 						resides in Bantul, Yogyakarta.
 					</p>
 					<div class="hero-buttons">
 						<a
-							href="Curicullum_Vitae.pdf"
+							hrMONOSPACE DEVlum_Vitae.pdf"
 							target="_blank"
 							class="btn btn-primary"
 							>Download CV</a
@@ -66,14 +58,14 @@
 				</div>
 				<div class="about-content">
 					<div class="about-image">
-						<img src="images/profile.jpg" alt="MONOSPACE DEV" />
+						<img src="images/profile.jpg" alt="Tilis Tiadi" />
 					</div>
 					<div class="about-text">
 						<div class="about-header-row">
 							<h3 class="about-heading">Who I Am</h3>
 							<h3 class="about-heading">Skills</h3>
 						</div>
-
+MONOSPACE DEV
 						<div class="about-split">
 							<div>
 								<p style="font-style: italic; text-align: left">
@@ -106,14 +98,14 @@
 												text-align: right;
 											"
 										>
-											MONOSPACE DEV
+											Tilis Tiadi
 										</td>
 									</tr>
 									<tr>
 										<td
 											style="
 												padding: 6px 0;
-												color: var(--muted);
+											MONOSPACE DEV(--muted);
 											"
 										>
 											Phone
@@ -931,7 +923,7 @@
 			aria-atomic="true"
 		>
 			<div class="testimonial-toast__head">
-				<div class="testimonial-toast__avatar" aria-hidden="true">★</div>
+				<div class="testimonial-toast__avatar" aria-hidden="true">?</div>
 				<div class="testimonial-toast__meta">
 					<div class="testimonial-toast__name" id="testimonialToastName"></div>
 					<div class="testimonial-toast__stars" id="testimonialToastStars"></div>
@@ -940,6 +932,7 @@
 			<div class="testimonial-toast__message" id="testimonialToastMessage"></div>
 		</div>
 
+		<script src="script.js"></script>
 		<script>
 			// Smooth scroll untuk navbar links
 			document.querySelectorAll(".navbar-menu a").forEach((anchor) => {
@@ -1809,7 +1802,7 @@
 					.split(/\s+/)
 					.filter(Boolean)
 					.slice(0, 2);
-				if (parts.length === 0) return "★";
+				if (parts.length === 0) return "?";
 				return parts.map((p) => p.slice(0, 1).toUpperCase()).join("");
 			}
 
@@ -1822,7 +1815,7 @@
 				const r = Number.isFinite(rating) ? Math.max(1, Math.min(5, rating)) : 5;
 				if (testimonialToastStarsEl) {
 					testimonialToastStarsEl.textContent =
-						"★".repeat(r) + "☆".repeat(5 - r);
+						"?".repeat(r) + "?".repeat(5 - r);
 				}
 
 				const avatar = testimonialToastEl.querySelector(
@@ -2105,3 +2098,4 @@
 		</script>
 	</body>
 </html>
+

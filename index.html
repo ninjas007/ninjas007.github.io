@@ -1,1 +1,806 @@
-﻿
+﻿<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Store | MONOSPACE DEV</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="styles/style-index.css" />
+	</head>
+
+	<body>
+		<nav class="navbar">
+			<div class="navbar-brand">MONOSPACE DEV</div>
+			<button class="menu-toggle" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="navbar-menu"></ul>
+		</nav>
+
+		<div class="container">
+			<section class="hero" id="home">
+				<div class="hero-content">
+					<h1>Digital Product Store</h1>
+					<p>
+						Temukan produk digital pilihan untuk bantu kebutuhan bisnis dan
+						project kamu.
+					</p>
+					<div class="hero-buttons">
+						<a href="#store" class="btn btn-primary">Explore Products</a>
+						<a href="#contact" class="btn btn-secondary">Get In Touch</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="portfolio">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Portfolio</h2>
+				</div>
+				<div class="portfolio-grid" id="homePortfolioGrid" aria-live="polite">
+					<div style="color: var(--muted); font-size: 14px">Loading...</div>
+				</div>
+				<div class="hero-buttons" style="justify-content: flex-start; margin-top: 22px">
+					<a href="portfolio.html" class="btn btn-secondary">View All Portfolio</a>
+				</div>
+			</section>
+
+			<section class="section" id="store">
+				<div class="section-title-wrapper">
+					<h2 class="section-title">Store</h2>
+				</div>
+				<div class="portfolio-grid" id="homeStoreGrid" aria-live="polite">
+					<div style="color: var(--muted); font-size: 14px">Loading...</div>
+				</div>
+				<div class="hero-buttons" style="justify-content: flex-start; margin-top: 22px">
+					<a href="store.html" class="btn btn-secondary">View All Products</a>
+				</div>
+			</section>
+
+			<section
+				class="section"
+				id="contact"
+				style="text-align: center; padding: 60px 0; margin-bottom: 40px"
+			>
+				<h2 class="section-title" style="display: block; margin: 0 auto 40px">
+					Get In Touch
+				</h2>
+				<p
+					style="
+						color: var(--muted);
+						font-size: 16px;
+						margin-bottom: 32px;
+						max-width: 500px;
+						margin-left: auto;
+						margin-right: auto;
+					"
+				>
+					Feel free to reach out for collaboration, freelance work, or
+					opportunities.
+				</p>
+				<div class="hero-buttons">
+					<a href="mailto:tilistiadi03@gmail.com" class="btn btn-primary">Send Email</a>
+					<a
+						href="https://wa.me/6282389097065"
+						target="_blank"
+						rel="noreferrer"
+						class="btn btn-secondary"
+						>WhatsApp</a
+					>
+					<a
+						href="https://github.com/ninjas007"
+						target="_blank"
+						rel="noreferrer"
+						class="btn btn-secondary"
+						>GitHub</a
+					>
+					<a
+						href="https://www.linkedin.com/in/tilis-tiadi-b7008163/"
+						target="_blank"
+						rel="noreferrer"
+						class="btn btn-secondary"
+						>LinkedIn</a
+					>
+				</div>
+			</section>
+		</div>
+
+		<dialog
+			class="portfolio-modal"
+			id="portfolioModal"
+			aria-label="Portfolio details"
+		>
+			<div class="portfolio-modal__header">
+				<h3 class="portfolio-modal__title" id="portfolioModalTitle">Portfolio</h3>
+				<button
+					type="button"
+					class="portfolio-modal__close"
+					id="portfolioModalClose"
+					aria-label="Close modal"
+				>
+					&times;
+				</button>
+			</div>
+			<p class="portfolio-modal__desc" id="portfolioModalDesc"></p>
+
+			<div class="portfolio-modal__slider" aria-label="Portfolio images">
+				<button
+					type="button"
+					class="portfolio-modal__nav"
+					id="portfolioModalPrev"
+					aria-label="Previous image"
+				>
+					&lsaquo;
+				</button>
+
+				<div class="portfolio-modal__frame">
+					<img class="portfolio-modal__img" id="portfolioModalImg" alt="" />
+					<div class="portfolio-modal__empty" id="portfolioModalEmpty">
+						No images available.
+					</div>
+				</div>
+
+				<button
+					type="button"
+					class="portfolio-modal__nav"
+					id="portfolioModalNext"
+					aria-label="Next image"
+				>
+					&rsaquo;
+				</button>
+			</div>
+
+			<div class="portfolio-modal__dots" id="portfolioModalDots"></div>
+
+			<div class="portfolio-modal__footer">
+				<div class="portfolio-modal__tools" id="portfolioModalTools">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="portfolioModalZoomOut"
+						aria-label="Zoom out"
+					>
+						-
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="portfolioModalZoomIn"
+						aria-label="Zoom in"
+					>
+						+
+					</button>
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="portfolioModalZoomReset"
+						aria-label="Reset zoom"
+					>
+						Reset
+					</button>
+				</div>
+				<a
+					href="#"
+					class="btn btn-primary"
+					id="portfolioModalOpenLink"
+					rel="noreferrer"
+					>Open</a
+				>
+				<button
+					type="button"
+					class="btn btn-secondary"
+					id="portfolioModalClose2"
+				>
+					Close
+				</button>
+			</div>
+		</dialog>
+
+		<dialog class="store-modal" id="storeModal" aria-label="Store product details">
+			<div class="store-modal__header">
+				<h3 class="store-modal__title" id="storeModalTitle">Product</h3>
+				<button type="button" class="store-modal__close" id="storeModalClose" aria-label="Close store details">?</button>
+			</div>
+			<div class="store-modal__body">
+				<div class="store-modal__media">
+					<div class="store-modal__media-frame" id="storeModalFrame">
+						<img id="storeModalImg" alt="Product preview" />
+						<div class="store-modal__media-empty" id="storeModalEmpty">No image available</div>
+					</div>
+					<div class="store-modal__zoom" role="group" aria-label="Zoom controls">
+						<button type="button" class="store-modal__zoom-btn" id="storeModalZoomOut" aria-label="Zoom out">-</button>
+						<button type="button" class="store-modal__zoom-btn" id="storeModalZoomReset" aria-label="Reset zoom">100%</button>
+						<button type="button" class="store-modal__zoom-btn" id="storeModalZoomIn" aria-label="Zoom in">+</button>
+					</div>
+					<div class="store-modal__controls">
+						<button type="button" class="store-modal__nav" id="storeModalPrev" aria-label="Previous image">‹</button>
+						<div class="store-modal__dots" id="storeModalDots" aria-label="Image list"></div>
+						<button type="button" class="store-modal__nav" id="storeModalNext" aria-label="Next image">›</button>
+					</div>
+				</div>
+				<div class="store-modal__meta">
+					<p class="store-modal__desc" id="storeModalDesc"></p>
+					<div class="store-modal__price" id="storeModalPrice"></div>
+					<a class="btn btn-primary" id="storeModalOrder" target="_blank" rel="noreferrer">Order via WhatsApp</a>
+				</div>
+			</div>
+			<div class="store-modal__footer">
+				<button type="button" class="btn btn-secondary" id="storeModalClose2">Close</button>
+			</div>
+		</dialog>
+
+		<script src="script.js"></script>
+		<script>
+			const menuToggle = document.querySelector('.menu-toggle');
+			const navbarMenu = document.querySelector('.navbar-menu');
+
+			menuToggle?.addEventListener('click', () => {
+				navbarMenu?.classList.toggle('active');
+			});
+
+			document.querySelectorAll('.navbar-menu a').forEach((link) => {
+				link.addEventListener('click', () => {
+					navbarMenu?.classList.remove('active');
+				});
+			});
+
+			const portfolioModalEl = document.getElementById('portfolioModal');
+			const portfolioModalTitleEl = document.getElementById('portfolioModalTitle');
+			const portfolioModalDescEl = document.getElementById('portfolioModalDesc');
+			const portfolioModalImgEl = document.getElementById('portfolioModalImg');
+			const portfolioModalEmptyEl = document.getElementById('portfolioModalEmpty');
+			const portfolioModalDotsEl = document.getElementById('portfolioModalDots');
+			const portfolioModalPrevEl = document.getElementById('portfolioModalPrev');
+			const portfolioModalNextEl = document.getElementById('portfolioModalNext');
+			const portfolioModalCloseEl = document.getElementById('portfolioModalClose');
+			const portfolioModalClose2El = document.getElementById('portfolioModalClose2');
+			const portfolioModalOpenLinkEl = document.getElementById('portfolioModalOpenLink');
+			const portfolioModalToolsEl = document.getElementById('portfolioModalTools');
+			const portfolioModalZoomOutEl = document.getElementById('portfolioModalZoomOut');
+			const portfolioModalZoomInEl = document.getElementById('portfolioModalZoomIn');
+			const portfolioModalZoomResetEl = document.getElementById('portfolioModalZoomReset');
+			const portfolioModalFrameEl = portfolioModalEl?.querySelector('.portfolio-modal__frame');
+			const portfolioModalSliderEl = portfolioModalEl?.querySelector('.portfolio-modal__slider');
+
+			const portfolioModalState = {
+				item: null,
+				images: [],
+				index: 0,
+				lastFocus: null,
+			};
+			let portfolioModalZoom = 1;
+
+			function portfolioModalApplyZoom(nextZoom, { resetScroll = false } = {}) {
+				if (!portfolioModalEl) return;
+				const total = portfolioModalState.images.length;
+				if (total === 0) return;
+
+				const clamped = Math.min(4, Math.max(1, nextZoom));
+				portfolioModalZoom = Math.round(clamped * 100) / 100;
+
+				if (portfolioModalZoom === 1) {
+					portfolioModalImgEl.style.width = '100%';
+					portfolioModalImgEl.style.height = '100%';
+				} else {
+					portfolioModalImgEl.style.width = `${portfolioModalZoom * 100}%`;
+					portfolioModalImgEl.style.height = `${portfolioModalZoom * 100}%`;
+				}
+
+				if (resetScroll && portfolioModalFrameEl) {
+					portfolioModalFrameEl.scrollTop = 0;
+					portfolioModalFrameEl.scrollLeft = 0;
+				}
+			}
+
+			function portfolioModalUpdateChrome(total) {
+				if (!portfolioModalEl) return;
+				const single = total <= 1;
+
+				portfolioModalPrevEl.style.display = single ? 'none' : '';
+				portfolioModalNextEl.style.display = single ? 'none' : '';
+				portfolioModalDotsEl.style.display = total > 1 ? '' : 'none';
+				portfolioModalToolsEl.style.display = total > 0 ? 'flex' : 'none';
+				portfolioModalSliderEl?.classList.toggle('is-single', single);
+			}
+
+			function portfolioModalSetSlide(nextIndex) {
+				if (!portfolioModalEl) return;
+				const total = portfolioModalState.images.length;
+				portfolioModalUpdateChrome(total);
+
+				if (total === 0) {
+					portfolioModalState.index = 0;
+					portfolioModalZoom = 1;
+					portfolioModalImgEl.style.display = 'none';
+					portfolioModalImgEl.removeAttribute('src');
+					portfolioModalEmptyEl.style.display = 'block';
+					portfolioModalDotsEl.innerHTML = '';
+					return;
+				}
+
+				const normalized = ((nextIndex % total) + total) % total;
+				portfolioModalState.index = normalized;
+				const src = portfolioModalState.images[normalized];
+
+				portfolioModalEmptyEl.style.display = 'none';
+				portfolioModalImgEl.style.display = 'block';
+				portfolioModalImgEl.src = encodeURI(src);
+				portfolioModalApplyZoom(1, { resetScroll: true });
+				const title = portfolioModalState.item?.title || 'Portfolio';
+				portfolioModalImgEl.alt = `${title} image ${normalized + 1}`;
+
+				for (const dot of portfolioModalDotsEl.querySelectorAll('button')) {
+					const idx = Number(dot.dataset.index);
+					dot.setAttribute('aria-current', String(idx === normalized));
+				}
+			}
+
+			function portfolioModalRenderDots() {
+				if (!portfolioModalEl) return;
+				portfolioModalDotsEl.innerHTML = '';
+				const total = portfolioModalState.images.length;
+				if (total <= 1) return;
+
+				for (let i = 0; i < total; i++) {
+					const dot = document.createElement('button');
+					dot.type = 'button';
+					dot.className = 'portfolio-modal__dot';
+					dot.dataset.index = String(i);
+					dot.setAttribute('aria-label', `Go to image ${i + 1}`);
+					dot.setAttribute('aria-current', 'false');
+					dot.addEventListener('click', () => portfolioModalSetSlide(i));
+					portfolioModalDotsEl.appendChild(dot);
+				}
+			}
+
+			function openPortfolioModal(item) {
+				if (!portfolioModalEl) return;
+
+				portfolioModalState.lastFocus = document.activeElement;
+				portfolioModalState.item = item || null;
+				portfolioModalState.images = Array.isArray(item?.images)
+					? item.images.filter(Boolean)
+					: [];
+				portfolioModalState.index = 0;
+
+				portfolioModalTitleEl.textContent = item?.title || 'Untitled';
+				portfolioModalDescEl.textContent = item?.description || '';
+
+				const rawUrl = String(item?.url || '').trim();
+				const showOpen = rawUrl !== '' && rawUrl !== '#';
+				const url = showOpen ? rawUrl : '#';
+				const isExternal = /^https?:\/\//i.test(url);
+
+				portfolioModalOpenLinkEl.href = encodeURI(url);
+				portfolioModalOpenLinkEl.target = isExternal ? '_blank' : '_self';
+				portfolioModalOpenLinkEl.rel = isExternal ? 'noreferrer' : '';
+				portfolioModalOpenLinkEl.style.display = showOpen ? '' : 'none';
+				portfolioModalOpenLinkEl.setAttribute('aria-hidden', showOpen ? 'false' : 'true');
+
+				portfolioModalRenderDots();
+				portfolioModalSetSlide(0);
+
+				try {
+					portfolioModalEl.showModal();
+				} catch {
+					portfolioModalEl.setAttribute('open', '');
+				}
+
+				setTimeout(() => portfolioModalCloseEl?.focus?.(), 0);
+			}
+
+			function closePortfolioModal() {
+				if (!portfolioModalEl) return;
+				try {
+					portfolioModalEl.close();
+				} catch {
+					portfolioModalEl.removeAttribute('open');
+				}
+			}
+
+			if (portfolioModalEl) {
+				portfolioModalCloseEl?.addEventListener('click', closePortfolioModal);
+				portfolioModalClose2El?.addEventListener('click', closePortfolioModal);
+				portfolioModalPrevEl?.addEventListener('click', () =>
+					portfolioModalSetSlide(portfolioModalState.index - 1),
+				);
+				portfolioModalNextEl?.addEventListener('click', () =>
+					portfolioModalSetSlide(portfolioModalState.index + 1),
+				);
+
+				portfolioModalEl.addEventListener('click', (e) => {
+					if (e.target === portfolioModalEl) closePortfolioModal();
+				});
+
+				portfolioModalEl.addEventListener('keydown', (e) => {
+					if (e.key === 'ArrowLeft') {
+						e.preventDefault();
+						portfolioModalSetSlide(portfolioModalState.index - 1);
+					}
+					if (e.key === 'ArrowRight') {
+						e.preventDefault();
+						portfolioModalSetSlide(portfolioModalState.index + 1);
+					}
+				});
+
+				portfolioModalEl.addEventListener('close', () => {
+					const el = portfolioModalState.lastFocus;
+					if (el && typeof el.focus === 'function') el.focus();
+				});
+
+				portfolioModalZoomOutEl?.addEventListener('click', () =>
+					portfolioModalApplyZoom(portfolioModalZoom - 0.25),
+				);
+				portfolioModalZoomInEl?.addEventListener('click', () =>
+					portfolioModalApplyZoom(portfolioModalZoom + 0.25),
+				);
+				portfolioModalZoomResetEl?.addEventListener('click', () =>
+					portfolioModalApplyZoom(1, { resetScroll: true }),
+				);
+
+				portfolioModalFrameEl?.addEventListener(
+					'wheel',
+					(e) => {
+						if (!e.ctrlKey && !e.metaKey) return;
+						e.preventDefault();
+						const dir = e.deltaY > 0 ? -0.1 : 0.1;
+						portfolioModalApplyZoom(portfolioModalZoom + dir);
+					},
+					{ passive: false },
+				);
+			}
+
+			const storeWhatsappNumber = '6282389097065';
+			const storeModalEl = document.getElementById('storeModal');
+			const storeModalTitleEl = document.getElementById('storeModalTitle');
+			const storeModalDescEl = document.getElementById('storeModalDesc');
+			const storeModalPriceEl = document.getElementById('storeModalPrice');
+			const storeModalImgEl = document.getElementById('storeModalImg');
+			const storeModalEmptyEl = document.getElementById('storeModalEmpty');
+			const storeModalOrderEl = document.getElementById('storeModalOrder');
+			const storeModalCloseEl = document.getElementById('storeModalClose');
+			const storeModalClose2El = document.getElementById('storeModalClose2');
+			const storeModalPrevEl = document.getElementById('storeModalPrev');
+			const storeModalNextEl = document.getElementById('storeModalNext');
+			const storeModalDotsEl = document.getElementById('storeModalDots');
+			const storeModalFrameEl = document.getElementById('storeModalFrame');
+			const storeModalZoomInEl = document.getElementById('storeModalZoomIn');
+			const storeModalZoomOutEl = document.getElementById('storeModalZoomOut');
+			const storeModalZoomResetEl = document.getElementById('storeModalZoomReset');
+
+			const storeModalState = {
+				item: null,
+				images: [],
+				index: 0,
+				lastFocus: null,
+			};
+			let storeModalZoom = 1;
+
+			function storeModalApplyZoom(nextZoom, options = {}) {
+				storeModalZoom = Math.max(1, Math.min(3, nextZoom));
+				if (!storeModalImgEl || !storeModalFrameEl) return;
+				storeModalImgEl.style.transform = `scale(${storeModalZoom})`;
+				if (storeModalZoomResetEl) {
+					storeModalZoomResetEl.textContent = `${Math.round(storeModalZoom * 100)}%`;
+				}
+				if (options.resetScroll) {
+					storeModalFrameEl.scrollTo({ left: 0, top: 0 });
+				}
+			}
+
+			function storeModalSetSlide(nextIndex) {
+				const images = storeModalState.images;
+				const total = images.length;
+
+				if (!total) {
+					storeModalState.index = 0;
+					if (storeModalImgEl) {
+						storeModalImgEl.removeAttribute('src');
+						storeModalImgEl.style.display = 'none';
+					}
+					if (storeModalEmptyEl) storeModalEmptyEl.style.display = 'flex';
+					if (storeModalPrevEl) storeModalPrevEl.disabled = true;
+					if (storeModalNextEl) storeModalNextEl.disabled = true;
+					if (storeModalDotsEl) storeModalDotsEl.innerHTML = '';
+					storeModalApplyZoom(1, { resetScroll: true });
+					return;
+				}
+
+				const index = ((nextIndex % total) + total) % total;
+				storeModalState.index = index;
+				const currentSrc = images[index];
+
+				if (storeModalImgEl) {
+					storeModalImgEl.src = currentSrc;
+					storeModalImgEl.style.display = 'block';
+				}
+				if (storeModalEmptyEl) storeModalEmptyEl.style.display = 'none';
+				if (storeModalPrevEl) storeModalPrevEl.disabled = total < 2;
+				if (storeModalNextEl) storeModalNextEl.disabled = total < 2;
+
+				if (storeModalDotsEl) {
+					Array.from(storeModalDotsEl.children).forEach((dotEl, i) => {
+						dotEl.classList.toggle('is-active', i === index);
+						dotEl.setAttribute('aria-current', i === index ? 'true' : 'false');
+					});
+				}
+
+				storeModalApplyZoom(1, { resetScroll: true });
+			}
+
+			function storeModalRenderDots() {
+				if (!storeModalDotsEl) return;
+				storeModalDotsEl.innerHTML = '';
+				const total = storeModalState.images.length;
+				for (let i = 0; i < total; i++) {
+					const dot = document.createElement('button');
+					dot.type = 'button';
+					dot.className = 'store-modal__dot';
+					dot.dataset.index = String(i);
+					dot.setAttribute('aria-label', `Go to image ${i + 1}`);
+					dot.setAttribute('aria-current', 'false');
+					dot.addEventListener('click', () => storeModalSetSlide(i));
+					storeModalDotsEl.appendChild(dot);
+				}
+			}
+
+			function openStoreModal(item) {
+				if (!storeModalEl) return;
+				storeModalState.lastFocus = document.activeElement;
+				storeModalState.item = item || null;
+				storeModalState.images = Array.isArray(item?.images)
+					? item.images.filter(Boolean)
+					: [];
+				storeModalState.index = 0;
+
+				storeModalTitleEl.textContent = item?.title || 'Untitled';
+				storeModalDescEl.textContent = item?.description || '';
+				storeModalPriceEl.textContent = item?.price ? `Price: ${item.price}` : '';
+				storeModalPriceEl.style.display = item?.price ? '' : 'none';
+
+				const message = `Halo, saya mau order: ${item?.title || 'produk'}${
+					item?.price ? ` (${item.price})` : ''
+				}.`;
+				storeModalOrderEl.href = `https://wa.me/${storeWhatsappNumber}?text=${encodeURIComponent(message)}`;
+
+				storeModalRenderDots();
+				storeModalSetSlide(0);
+
+				try {
+					storeModalEl.showModal();
+				} catch {
+					storeModalEl.setAttribute('open', '');
+				}
+
+				setTimeout(() => storeModalCloseEl?.focus?.(), 0);
+			}
+
+			function closeStoreModal() {
+				if (!storeModalEl) return;
+				try {
+					storeModalEl.close();
+				} catch {
+					storeModalEl.removeAttribute('open');
+				}
+			}
+
+			if (storeModalEl) {
+				storeModalCloseEl?.addEventListener('click', closeStoreModal);
+				storeModalClose2El?.addEventListener('click', closeStoreModal);
+				storeModalPrevEl?.addEventListener('click', () =>
+					storeModalSetSlide(storeModalState.index - 1),
+				);
+				storeModalNextEl?.addEventListener('click', () =>
+					storeModalSetSlide(storeModalState.index + 1),
+				);
+
+				storeModalEl.addEventListener('click', (e) => {
+					if (e.target === storeModalEl) closeStoreModal();
+				});
+
+				storeModalEl.addEventListener('keydown', (e) => {
+					if (e.key === 'ArrowLeft') {
+						e.preventDefault();
+						storeModalSetSlide(storeModalState.index - 1);
+					}
+					if (e.key === 'ArrowRight') {
+						e.preventDefault();
+						storeModalSetSlide(storeModalState.index + 1);
+					}
+				});
+
+				storeModalEl.addEventListener('close', () => {
+					const el = storeModalState.lastFocus;
+					if (el && typeof el.focus === 'function') el.focus();
+				});
+
+				storeModalZoomOutEl?.addEventListener('click', () => storeModalApplyZoom(storeModalZoom - 0.25));
+				storeModalZoomInEl?.addEventListener('click', () => storeModalApplyZoom(storeModalZoom + 0.25));
+				storeModalZoomResetEl?.addEventListener('click', () => storeModalApplyZoom(1, { resetScroll: true }));
+
+				storeModalFrameEl?.addEventListener(
+					'wheel',
+					(e) => {
+						if (!e.ctrlKey && !e.metaKey) return;
+						e.preventDefault();
+						const dir = e.deltaY > 0 ? -0.1 : 0.1;
+						storeModalApplyZoom(storeModalZoom + dir);
+					},
+					{ passive: false },
+				);
+			}
+
+			async function loadHomeStore() {
+				const container = document.getElementById('homeStoreGrid');
+				if (!container) return;
+
+				try {
+					const res = await fetch('data/store.json', { cache: 'no-store' });
+					if (!res.ok) throw new Error('Failed to fetch store.json');
+					const items = await res.json();
+
+					container.innerHTML = '';
+					for (const item of items || []) {
+						const tags = Array.isArray(item.tags) ? item.tags : [];
+						const images = Array.isArray(item.images) ? item.images : [];
+
+						const card = document.createElement('a');
+						card.className = 'portfolio-card';
+						card.href = '#';
+						card.style.textDecoration = 'none';
+						card.style.color = 'inherit';
+						card.setAttribute('role', 'button');
+						card.setAttribute('aria-label', `Open details for ${item.title || 'product'}`);
+						card.addEventListener('click', (e) => {
+							e.preventDefault();
+							openStoreModal(item);
+						});
+						card.addEventListener('keydown', (e) => {
+							if (e.key === ' ') {
+								e.preventDefault();
+								openStoreModal(item);
+							}
+						});
+
+						const img = document.createElement('div');
+						img.className = 'portfolio-image';
+						if (images[0]) {
+							img.classList.add('portfolio-image--photo');
+							img.style.backgroundImage = `url('${encodeURI(images[0])}')`;
+							img.textContent = '';
+						} else {
+							img.textContent = '\u{1F6D2}';
+						}
+
+						const content = document.createElement('div');
+						content.className = 'portfolio-content';
+
+						const h3 = document.createElement('h3');
+						h3.textContent = item.title || 'Untitled';
+
+						const price = document.createElement('div');
+						price.className = 'store-price';
+						price.textContent = item.price || '';
+						price.style.display = item.price ? '' : 'none';
+
+						const p = document.createElement('p');
+						p.textContent = item.description || '';
+
+						const tagsWrap = document.createElement('div');
+						tagsWrap.className = 'portfolio-tags';
+						for (const t of tags.slice(0, 3)) {
+							const tag = document.createElement('span');
+							tag.className = 'portfolio-tag';
+							tag.textContent = t;
+							tagsWrap.appendChild(tag);
+						}
+
+						content.appendChild(h3);
+						content.appendChild(price);
+						content.appendChild(p);
+						content.appendChild(tagsWrap);
+
+						card.appendChild(img);
+						card.appendChild(content);
+						container.appendChild(card);
+					}
+				} catch (err) {
+					container.innerHTML = '';
+					const msg = document.createElement('div');
+					msg.style.color = 'var(--muted)';
+					msg.style.fontSize = '14px';
+					msg.textContent = 'Failed to load products.';
+					container.appendChild(msg);
+					console.error(err);
+				}
+			}
+
+			async function loadHomePortfolio() {
+				const container = document.getElementById('homePortfolioGrid');
+				if (!container) return;
+
+				try {
+					const res = await fetch('data/portfolio.json', { cache: 'no-store' });
+					if (!res.ok) throw new Error('Failed to fetch portfolio.json');
+					const items = await res.json();
+
+					container.innerHTML = '';
+					for (const item of (items || []).slice(0, 6)) {
+						const url = item.url || '#';
+						const tags = Array.isArray(item.tags) ? item.tags : [];
+
+						const card = document.createElement('a');
+						card.className = 'portfolio-card';
+						card.href = url;
+						card.style.textDecoration = 'none';
+						card.style.color = 'inherit';
+						card.setAttribute('role', 'button');
+						card.setAttribute(
+							'aria-label',
+							`Open details for ${item.title || 'portfolio item'}`,
+						);
+						card.addEventListener('click', (e) => {
+							e.preventDefault();
+							openPortfolioModal(item);
+						});
+						card.addEventListener('keydown', (e) => {
+							if (e.key === ' ') {
+								e.preventDefault();
+								openPortfolioModal(item);
+							}
+						});
+
+						const img = document.createElement('div');
+						img.className = 'portfolio-image';
+						img.textContent = item.icon || '\u{1F310}';
+
+						const content = document.createElement('div');
+						content.className = 'portfolio-content';
+
+						const h3 = document.createElement('h3');
+						h3.textContent = item.title || 'Untitled';
+
+						const p = document.createElement('p');
+						p.textContent = item.description || '';
+
+						const tagsWrap = document.createElement('div');
+						tagsWrap.className = 'portfolio-tags';
+						for (const t of tags.slice(0, 3)) {
+							const tag = document.createElement('span');
+							tag.className = 'portfolio-tag';
+							tag.textContent = t;
+							tagsWrap.appendChild(tag);
+						}
+
+						content.appendChild(h3);
+						content.appendChild(p);
+						content.appendChild(tagsWrap);
+
+						card.appendChild(img);
+						card.appendChild(content);
+						container.appendChild(card);
+					}
+				} catch (err) {
+					container.innerHTML = '';
+					const msg = document.createElement('div');
+					msg.style.color = 'var(--muted)';
+					msg.style.fontSize = '14px';
+					msg.textContent = 'Failed to load portfolio.';
+					container.appendChild(msg);
+					console.error(err);
+				}
+			}
+
+			loadHomePortfolio();
+			loadHomeStore();
+		</script>
+	</body>
+</html>

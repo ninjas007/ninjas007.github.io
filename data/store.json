@@ -4,16 +4,16 @@
 		"title": "Laporan Keuangan Template",
 		"description": "Template laporan keuangan kirim dari bot telegram atau apk masuk ke google spreadsheet",
 		"price": "Rp 25.000",
-		"images": ["images/store/s1-1.svg", "images/store/Laporan Keuangan.png"],
+		"images": ["images/store/Laporan Keuangan.png"],
 		"tags": ["Template", "UI", "HTML/CSS"]
 	},
 	{
 		"id": 2,
-		"title": "Design Assets Pack",
-		"description": "Kumpulan icon, ilustrasi, dan gradient untuk project web.",
-		"price": "Rp 50.000",
+		"title": "Aplikasi Kasir",
+		"description": "Aplikasi kasir sederhana untuk toko atau bisnis.",
+		"price": "Rp 200.000",
 		"images": ["images/store/s2-1.svg", "images/store/s2-2.svg"],
-		"tags": ["Design", "Assets", "Icons"]
+		"tags": ["Application", "POS", "JavaScript"]
 	},
 	{
 		"id": 3,
